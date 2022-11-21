@@ -1,20 +1,20 @@
-defmodule SequenceTest do
+defmodule BioPolymerDnaTest do
   use ExUnit.Case
-  doctest Bio.Sequence
+  doctest Bio.Polymer.Dna
 
-  alias Bio.Sequence, as: Seq
+  alias Bio.Polymer.Dna, as: Subject
 
   test "complement to dna" do
     dna = "ttacgtctcagtagc"
     expected = "aatgcagagtcatcg"
 
-    assert Seq.complement(dna) == expected
+    assert Subject.complement(dna) == expected
   end
 
   test "reverse complement to dna" do
     dna = "ttacgtctcagtagc"
     expected = "gctactgagacgtaa"
 
-    assert Seq.reverse_complement(dna) == expected
+    assert Subject.reverse_complement(dna) == expected
   end
 end

@@ -1,4 +1,4 @@
-defmodule Bio.Sequence.Mapping do
+defmodule Bio.Polymer.Dna.Mappings do
   @moduledoc """
   Mappings for various sequences.
 
@@ -24,7 +24,7 @@ defmodule Bio.Sequence.Mapping do
 
   ## Example
 
-      iex> Map.get(Bio.Sequence.Mapping.nucleotide_to_name, "a")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.nucleotide_to_name, "a")
       "adenine"
   """
   def nucleotide_to_name do
@@ -42,7 +42,7 @@ defmodule Bio.Sequence.Mapping do
 
   ## Example
 
-      iex> Map.get(Bio.Sequence.Mapping.dna_complement, "a")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.dna_complement, "a")
       "t"
 
   """
@@ -60,7 +60,7 @@ defmodule Bio.Sequence.Mapping do
 
   ## Example
 
-      iex> Map.get(Bio.Sequence.Mapping.rna_complement, "u")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.rna_complement, "u")
       "a"
 
   """
@@ -79,7 +79,7 @@ defmodule Bio.Sequence.Mapping do
 
   ## Example
 
-      iex> Map.get(Bio.Sequence.Mapping.dna_ambiguous, "b")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.dna_ambiguous, "b")
       ["c", "g", "t"]
 
   """
