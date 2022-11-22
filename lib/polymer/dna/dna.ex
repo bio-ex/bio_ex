@@ -51,7 +51,7 @@ defmodule Bio.Polymer.Dna do
     dna
     |> String.graphemes()
     |> Enum.map(fn char ->
-      Map.get(Self.Mappings.dna_complement(), char)
+      Map.get(Self.Mappings.complement(), char)
     end)
     |> List.to_string()
   end

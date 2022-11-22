@@ -1,13 +1,9 @@
 defmodule Bio.Polymer.Dna.Mappings do
   @moduledoc """
-  Mappings for various sequences.
+  Mappings for DNA
 
-  Essentially, if there is a way to map from one encoding to another for a given
-  sequence, it will live here. Including:
-  - DNA
-  - RNA
-  - Amino Acids
-  - etc...
+  Handles the mapping of the individual code points of "atgc" back to their
+  names, as well as dealing with mapping complementary elements
   """
 
   @ambiguous_dna ~w(r y s w k m b d h v n)
@@ -27,13 +23,12 @@ defmodule Bio.Polymer.Dna.Mappings do
       iex> Map.get(Bio.Polymer.Dna.Mappings.nucleotide_to_name, "a")
       "adenine"
   """
-  def nucleotide_to_name do
+  def name do
     %{
       "a" => "adenine",
       "c" => "cytosine",
       "g" => "guanine",
-      "t" => "thymine",
-      "u" => "uracil"
+      "t" => "thymine"
     }
   end
 
@@ -46,30 +41,12 @@ defmodule Bio.Polymer.Dna.Mappings do
       "t"
 
   """
-  def dna_complement do
+  def complement do
     %{
       "a" => "t",
       "c" => "g",
       "g" => "c",
       "t" => "a"
-    }
-  end
-
-  @doc """
-  Mapping RNA nucleotides to their complements
-
-  ## Example
-
-      iex> Map.get(Bio.Polymer.Dna.Mappings.rna_complement, "u")
-      "a"
-
-  """
-  def rna_complement do
-    %{
-      "a" => "u",
-      "c" => "g",
-      "g" => "c",
-      "u" => "a"
     }
   end
 
