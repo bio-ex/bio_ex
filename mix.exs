@@ -17,7 +17,7 @@ defmodule Bio.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :ftp]
+      extra_applications: [:logger, :ftp, :xmerl]
     ]
   end
 

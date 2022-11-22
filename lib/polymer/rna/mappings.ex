@@ -16,5 +16,4 @@ defmodule Bio.Polymer.Rna.Mappings do
       "u" => "a"
     }
   end
-
 end
