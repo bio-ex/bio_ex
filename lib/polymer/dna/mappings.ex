@@ -20,7 +20,7 @@ defmodule Bio.Polymer.Dna.Mappings do
 
   ## Example
 
-      iex> Map.get(Bio.Polymer.Dna.Mappings.nucleotide_to_name, "a")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.name, "a")
       "adenine"
   """
   def name do
@@ -37,7 +37,7 @@ defmodule Bio.Polymer.Dna.Mappings do
 
   ## Example
 
-      iex> Map.get(Bio.Polymer.Dna.Mappings.dna_complement, "a")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.complement, "a")
       "t"
 
   """
@@ -56,11 +56,11 @@ defmodule Bio.Polymer.Dna.Mappings do
 
   ## Example
 
-      iex> Map.get(Bio.Polymer.Dna.Mappings.dna_ambiguous, "b")
+      iex> Map.get(Bio.Polymer.Dna.Mappings.ambiguous, "b")
       ["c", "g", "t"]
 
   """
-  def dna_ambiguous do
+  def ambiguous do
     %{
       "r" => ["a", "g"],
       "y" => ["c", "t"],
