@@ -1,8 +1,8 @@
-defmodule Bio.Io.FastQ do
+defmodule Bio.IO.FastQ do
   @moduledoc """
   Allow the input/output of FASTQ formatted files.
 
-  Similar to `Bio.Io.Fasta`, this will recursively read the file contents into a
+  Similar to `Bio.IO.Fasta`, this will recursively read the file contents into a
   simple List. This list will be in the format of:
   [score, sequence, header]
   In the reverse order of the appearance in the original file.

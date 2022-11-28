@@ -1,4 +1,4 @@
-defmodule Bio.Io.Fasta do
+defmodule Bio.IO.Fasta do
   @moduledoc """
   Allow the input/output of FASTA formatted files.
 
@@ -38,6 +38,53 @@ defmodule Bio.Io.Fasta do
       not_ok ->
         not_ok
     end
+  end
+
+  def read!(filename) do
+    {:ok, parse(File.read!(filename), "", [], :header)}
+  end
+
+  @doc """
+  Write a file with FASTA data
+
+  The write function supports a few different primitive structures of data,
+  including:
+  - flat list `["header", "seq", ...]`
+  - list of tuples `[{header, seq}, ...]`
+  - a map `%{headers: String[], sequences: String[]}`
+
+  ## Examples
+      iex> Bio.IO.Fasta.write(["header", "sequence", "header2", "sequence2"])
+      {:ok}
+  """
+  def write({header, sequence}) do
+    IO.inspect(header)
+    IO.inspect(sequence)
+  end
+
+  def write([header, sequence]) do
+    IO.inspect(header)
+    IO.inspect(sequence)
+  end
+
+  def write(data) when is_list(data) do
+    first = Enum.at(data, 0)
+
+    if is_tuple(first) do
+      data
+      |> Enum.map(&write/1)
+    else
+      data
+      |> IO.inspect()
+      |> Enum.chunk_every(2)
+      |> IO.inspect()
+      |> Enum.map(&write/1)
+    end
+  end
+
+  def write(%{headers: headers, sequences: sequences}) do
+    Enum.zip(headers, sequences)
+    |> Enum.map(&write/1)
   end
 
   defp parse(content, value, acc, _ctx) when content == "" do

@@ -1,8 +1,8 @@
 defmodule BioIOFastqTest do
   use ExUnit.Case
-  doctest Bio.Io.FastQ
+  doctest Bio.IO.FastQ
 
-  alias Bio.Io.FastQ, as: Subject
+  alias Bio.IO.FastQ, as: Subject
 
   test "reads a file" do
     expected = [

@@ -1,7 +1,7 @@
-defmodule Io.SnapGene.SnapGeneTest do
+defmodule IO.SnapGene.SnapGeneTest do
   use ExUnit.Case, async: true
 
-  alias Bio.Io.SnapGene, as: Subject
+  alias Bio.IO.SnapGene, as: Subject
 
   doctest Subject
 

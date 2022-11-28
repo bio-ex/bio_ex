@@ -1,8 +1,8 @@
 defmodule BioIOFastaTest do
   use ExUnit.Case
-  doctest Bio.Io.Fasta
+  doctest Bio.IO.Fasta
 
-  alias Bio.Io.Fasta, as: Subject
+  alias Bio.IO.Fasta, as: Subject
 
   test "reads a file" do
     expected_seq = "ataatatgatagtagatagatagtcctatga"

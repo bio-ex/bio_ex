@@ -1,4 +1,4 @@
-defmodule Bio.Io.SnapGene do
+defmodule Bio.IO.SnapGene do
   @dna 0x00
   @primers 0x05
   @notes 0x06
