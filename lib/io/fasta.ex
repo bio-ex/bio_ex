@@ -54,37 +54,42 @@ defmodule Bio.IO.Fasta do
   - a map `%{headers: String[], sequences: String[]}`
 
   ## Examples
-      iex> Bio.IO.Fasta.write(["header", "sequence", "header2", "sequence2"])
-      {:ok}
+      iex> Bio.IO.Fasta.write("/tmp/test_file.fasta", ["header", "sequence", "header2", "sequence2"])
+      :ok
   """
-  def write({header, sequence}) do
-    IO.inspect(header)
-    IO.inspect(sequence)
+  def write(filename, {header, sequence}) do
+    File.write(filename, ">#{header}\n#{sequence}\n")
   end
 
-  def write([header, sequence]) do
-    IO.inspect(header)
-    IO.inspect(sequence)
+  def write(filename, [header, sequence]) do
+    File.write(filename, ">#{header}\n#{sequence}\n")
   end
 
-  def write(data) when is_list(data) do
+  def write(filename, data) when is_list(data) do
     first = Enum.at(data, 0)
 
     if is_tuple(first) do
       data
-      |> Enum.map(&write/1)
+      |> Enum.reduce("", fn {header, sequence}, output ->
+        output <> ">#{header}\n#{sequence}\n"
+      end)
+      |> then(fn output -> File.write(filename, output) end)
     else
       data
-      |> IO.inspect()
       |> Enum.chunk_every(2)
-      |> IO.inspect()
-      |> Enum.map(&write/1)
+      |> Enum.reduce("", fn [header, sequence], output ->
+        output <> ">#{header}\n#{sequence}\n"
+      end)
+      |> then(fn output -> File.write(filename, output) end)
     end
   end
 
-  def write(%{headers: headers, sequences: sequences}) do
+  def write(filename, %{headers: headers, sequences: sequences}) do
     Enum.zip(headers, sequences)
-    |> Enum.map(&write/1)
+    |> Enum.reduce("", fn {header, sequence}, output ->
+      output <> ">#{header}\n#{sequence}\n"
+    end)
+    |> then(fn output -> File.write(filename, output) end)
   end
 
   defp parse(content, value, acc, _ctx) when content == "" do
