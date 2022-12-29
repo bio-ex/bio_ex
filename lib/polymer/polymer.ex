@@ -3,9 +3,15 @@ defmodule Bio.Polymer do
   This module houses the functions that act on biological polymers.
 
   Each polymer type is defined as it's own module with a related struct for the
-  polymer definition.
+  polymer definition, while there is a general `Bio.Polymer` struct for things
+  that are not necessarily known (e.g. input from a FASTA file).
+
+  The `Bio.Polymer` struct is the simplest, exposing merely the sequence and its
+  length.
   """
   alias Bio.Polymer.Conversions
+
+  defstruct sequence: "", length: 0
 
   @doc """
   Converts between polymers that can have that done.
