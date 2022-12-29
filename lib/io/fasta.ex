@@ -9,7 +9,7 @@ defmodule Bio.IO.Fasta do
 
   Because of that, the order is naturally reversed. The list will contain N
   sequences and N headers in reverse order, as:
-  [Seq_n, Head_n, Seq_n-1, Head_n-1]
+  [Seq_N, Head_N, Seq_N-1, Head_N-1]
 
   So if you have the following FASTA file:
 
@@ -23,12 +23,19 @@ defmodule Bio.IO.Fasta do
   Then you would expect to get the following:
 
   ["gtac", "header2", "atgc", "header1"]
-
-  This is the lightest weight way to make this functional
   """
 
   @doc """
   Read a FASTA formatted file into memory
+
+  You may read into naive data-types (strings) or you can pass in an option for
+  the `type` parameter which will determine which `Bio.Polymer` struct to read
+  into. The options according to the structs available are:
+
+  `Bio.Polymer`: `:base`
+  `Bio.Polymer.Dna`: `:dna`
+  `Bio.Polymer.Rna`: `:rna`
+  `Bio.Polymer.AminoAcid`: `:amino_acid`
   """
   def read(filename) do
     case File.read(filename) do

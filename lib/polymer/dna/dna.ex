@@ -13,46 +13,9 @@ defmodule Bio.Polymer.Dna do
   described. Therefore, {5, 3} implies that the left hand side of the top is the
   5 prime end, while the bottom is the 3 prime (the normal configuration).
 
-  In order to represent the overhangs that might be present in a given double
-  strand, you have to consider that there are a few different states:
+  Overhangs are represented as a `Bio.Polymer.Overhangs` struct.
 
-  1. The strands are equal lengths
-  This case means that you can have an overhang on either side, or not at all.
-  It's the easiest to reason about.
-
-  2. The strands are different lengths
-  This includes the case above, depending obviously on the offset and relative
-  lengths. But it also includes the cases where you have overhangs that _only_
-  exist on the top or bottom strands.
-
-  In order to represent these cases in a succinct way, I'm opting to have a
-  nested tuple where you have the same {top, bottom} representation for the
-  orientation. This allows you to relate that information back to the
-  orientation easily. But then you have an internal {{left, right}, {left,
-  right}} orientation.
-
-  This is a bit trickier to reason about, but it's concise and appears to
-  contain all the information that you might need.
-
-  The offset of the strands is defined to be relative to the leftmost position
-  of the bottom strand (3 prime usually). Therefore, an offset of 2 would
-  indicate that the bottom strand is two away from the beginning of the top
-  strand:
-
-  atgc
-  --gtac
-
-  As above, the strands may have overhangs on both sides, or they may not if the
-  length of one or the other is greater:
-
-  atgcat
-  --gtac
-
-  If the orientation is with the top strand pushed from the bottom, the number
-  will be negative:
-
-  --atgc
-  gtac
+  The struct will also carry the top/bottom strand lengths.
   """
   alias __MODULE__, as: Self
   alias Bio.Polymer.Overhangs
