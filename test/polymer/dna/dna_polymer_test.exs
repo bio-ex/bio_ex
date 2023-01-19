@@ -12,6 +12,13 @@ defmodule BioPolymerDnaTest do
       assert Subject.complement(dna) == expected
     end
 
+    test "complement to _ambiguous_ dna" do
+      dna = "tmtacgyctcagrtagc"
+      expected = "akatgcrgagtcyatcg"
+
+      assert Subject.complement(dna, ambiguous: true) == expected
+    end
+
     test "reverse complement to dna" do
       dna = "ttacgtctcagtagc"
       expected = "gctactgagacgtaa"
@@ -20,20 +27,16 @@ defmodule BioPolymerDnaTest do
     end
   end
 
-  describe "using a module struct" do
-    test "complement to dna" do
-      dna = Subject.from_binary("ttacgtctcagtagc")
-      IO.puts(Subject.from_binary("ttacgtctcagtagc", 4))
+  describe "reverse complement" do
+    test "it creates a reverse complement to a binary" do
+      assert Subject.reverse_complement("tatgct") == "agcata"
+    end
 
-      expected = %Subject{
-        top: "aatgcagagtcatcg",
-        bottom: "ttacgtctcagtagc",
-        orientation: {3, 5},
-        top_length: 15,
-        bottom_length: 15
-      }
+    test "it creates a reverse complement to a Bio.Polymer" do
+      base = Bio.Polymer.from_binary("tatgct")
+      expected = Bio.Polymer.from_binary("agcata")
 
-      assert Subject.complement(dna) == expected
+      assert Subject.reverse_complement(base) == expected
     end
   end
 end
