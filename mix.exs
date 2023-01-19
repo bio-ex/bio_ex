@@ -10,7 +10,8 @@ defmodule Bio.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       name: "bio_ex",
-      package: package()
+      package: package(),
+      aliases: aliases()
     ]
   end
 
@@ -36,5 +37,9 @@ defmodule Bio.MixProject do
 
   defp describe() do
     "A bioinformatics project for Elixir."
+  end
+
+  defp aliases do
+    []
   end
 end
