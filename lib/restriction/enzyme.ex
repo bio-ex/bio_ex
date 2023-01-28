@@ -17,6 +17,29 @@ defmodule Bio.Restriction.Enzyme do
   @doc """
   Get an enzyme struct by name, where name is either a binary or atom and
   case insensitive.
+
+  # Examples
+      iex>Bio.Restriction.Enzyme.get(:CviRI)
+      %Bio.Restriction.Enzyme{
+          blunt?: true,
+          cut_1: 2,
+          cut_2: 2,
+          cut_3: 0,
+          cut_4: 0,
+          name: "CviRI",
+          pattern: "tgca"
+        }
+
+      iex>Bio.Restriction.Enzyme.get("CviRI")
+      %Bio.Restriction.Enzyme{
+          blunt?: true,
+          cut_1: 2,
+          cut_2: 2,
+          cut_3: 0,
+          cut_4: 0,
+          name: "CviRI",
+          pattern: "tgca"
+        }
   """
   def get(name) when is_atom(name) do
     name
