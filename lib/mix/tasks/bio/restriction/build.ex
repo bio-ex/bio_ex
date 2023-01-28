@@ -70,11 +70,36 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
       \"\"\"
 
       @doc \"\"\"
+      Get an enzyme struct by name, where name is either a binary or atom and
+      case insensitive.
+      \"\"\"
+      def get(name) when is_atom(name) do
+        name
+        |> Atom.to_string()
+        |> get_struct()
+      end
+
+      def get(name) when is_binary(name) do
+        get_struct(name)
+      end
+
+      defp get_struct(name) do
+        func_name = name
+        |> String.downcase()
+        |> String.replace("-", "_")
+
+        try do
+          apply(__MODULE__, String.to_atom(func_name), [])
+        rescue
+          e in UndefinedFunctionError -> raise "Unknown restriction enzyme \#\{func_name\}"
+        end
+      end
+
+      @doc \"\"\"
       The primary struct for interacting with restriction enzymes
       \"\"\"
       defstruct #{to_source(Enum.at(data, 0))}
-      #{data
-      |> Enum.map(fn enzyme_map -> ~s"""
+      #{data |> Enum.map(fn enzyme_map -> ~s"""
         @doc false
         def #{Map.get(enzyme_map, :name) |> String.downcase() |> String.replace("-", "_")} do
           %Bio.Restriction.Enzyme#{stringify(enzyme_map)}
