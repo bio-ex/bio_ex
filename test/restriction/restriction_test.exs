@@ -2,6 +2,27 @@
 defmodule RestrictionTest do
   use ExUnit.Case
   doctest Bio.Restriction
+  doctest Bio.Restriction.Enzyme
+
+  import Bio.Restriction.Enzyme
+
+  describe "get" do
+    test "it takes an atom" do
+      assert bsmbi() == get(:bsmbi)
+    end
+
+    test "it ignores casing" do
+      assert zsp2i() == get(:Zsp2I)
+    end
+
+    test "it takes a binary" do
+      assert aoxi() == get("aoxi")
+    end
+
+    test "deals with '-' symbols" do
+      assert cviki_1() == get("CviKI-1")
+    end
+  end
 
   @doc """
   BsmBI
