@@ -15,6 +15,33 @@ defmodule Bio.Restriction.Enzyme do
   """
 
   @doc """
+  Get an enzyme struct by name, where name is either a binary or atom and
+  case insensitive.
+  """
+  def get(name) when is_atom(name) do
+    name
+    |> Atom.to_string()
+    |> get_struct()
+  end
+
+  def get(name) when is_binary(name) do
+    get_struct(name)
+  end
+
+  defp get_struct(name) do
+    func_name =
+      name
+      |> String.downcase()
+      |> String.replace("-", "_")
+
+    try do
+      apply(__MODULE__, String.to_atom(func_name), [])
+    rescue
+      e in UndefinedFunctionError -> raise "Unknown restriction enzyme #{func_name}"
+    end
+  end
+
+  @doc """
   The primary struct for interacting with restriction enzymes
   """
   defstruct blunt?: nil, cut_1: 0, cut_2: 0, cut_3: 0, cut_4: 0, name: "", pattern: ""
