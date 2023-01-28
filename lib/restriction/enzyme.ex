@@ -37,7 +37,7 @@ defmodule Bio.Restriction.Enzyme do
     try do
       apply(__MODULE__, String.to_atom(func_name), [])
     rescue
-      e in UndefinedFunctionError -> raise "Unknown restriction enzyme #{func_name}"
+      _ in UndefinedFunctionError -> raise "Unknown restriction enzyme #{func_name}"
     end
   end
 
