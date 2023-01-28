@@ -10,6 +10,15 @@ defmodule Bio.Sequence.Mapping do
   - etc...
   """
 
+  @ambiguous_dna ~w(r y s w k m b d h v n)
+
+  @doc """
+  Exposes ambiguous DNA codes according to IUPAC
+  """
+  def ambiguous_dna() do
+    @ambiguous_dna
+  end
+
   @doc """
   Mapping nucleotides to their chemical names
 
