@@ -22,7 +22,7 @@ defmodule Bio.Sequence.RnaStrand do
     %Bio.Sequence.RnaStrand{sequence: "ag", length: 2, label: ""}
 
   """
-  use Bio.Sequence
+  use Bio.SimpleSequence
 end
 
 defmodule Bio.Sequence.Rna do

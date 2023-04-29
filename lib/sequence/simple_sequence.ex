@@ -1,4 +1,4 @@
-defmodule Bio.Sequence do
+defmodule Bio.SimpleSequence do
   @moduledoc """
   This module defines the general behavior for an enumerable sequence struct
   that can be used as a basis for simple string manipulations of sequences of
@@ -7,7 +7,7 @@ defmodule Bio.Sequence do
   This is a way to abstract the familiar behavior of testing for membership and
   breaking apart sequences in the bioinformatics space.
 
-  Calling `use Bio.Sequence` will generate a simple struct in the calling
+  Calling `use Bio.SimpleSequence` will generate a simple struct in the calling
   module, as well as the implementation for the `Enumerable` protocol.
 
   One downside to the current implementation is that the semantics of some of
@@ -15,7 +15,7 @@ defmodule Bio.Sequence do
   I can see this being somewhat useful, but only if it were to capably return
   the enumerable itself. However, it's implemented as a `reduce`, which means
   that an arbitrary accumulator could be defined, and we can't know a priori
-  that we're begin reduced from slide.
+  that we're being reduced from slide.
 
   There may be ways around this that I'm not thinking of right now.
   """
