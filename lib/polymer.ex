@@ -1,9 +1,9 @@
-defmodule Bio.Polymer do
+defmodule Bio.Sequence do
   @moduledoc """
-  `Bio.Polymer` is the basic building block of the sequence types.
+  `Bio.Sequence` is the basic building block of the sequence types.
 
   The core concept here is that a polymer is a sequence of elements encoded as a
-  binary. This is stored in the base `%Bio.Polymer{}` struct, which has both a
+  binary. This is stored in the base `%Bio.Sequence{}` struct, which has both a
   `sequence` and `length` field.
 
   The struct is intentionally sparse on information since this is meant to
@@ -12,25 +12,25 @@ defmodule Bio.Polymer do
   `bottom_strand` fields.
 
   Because many of the sequence behaviors are shared, they are implemented by
-  `Bio.Sequence` and used in the modules that need them. This allows us to
+  `Bio.SimpleSequence` and used in the modules that need them. This allows us to
   ensure that there is a consistent implementation of the `Enumerable` protocol,
   which in turn allows for common interaction patterns a la Python strings:
 
   # Examples
-    iex>polymer = Bio.Polymer.new("agmctbo")
-    ...>Enum.map(polymer, &(&1))
+    iex>sequence = Bio.Sequence.new("agmctbo")
+    ...>Enum.map(sequence, &(&1))
     ["a", "g", "m", "c", "t", "b", "o"]
 
-    iex>polymer = Bio.Polymer.new("agmctbo")
-    iex>"gmc" in polymer
+    iex>sequence = Bio.Sequence.new("agmctbo")
+    iex>"gmc" in sequence
     true
 
-    iex>polymer = Bio.Polymer.new("agmctbo")
-    iex>Enum.slice(polymer, 2, 2)
-    %Bio.Polymer{sequence: "mc", length: 2, label: ""}
+    iex>sequence = Bio.Sequence.new("agmctbo")
+    iex>Enum.slice(sequence, 2, 2)
+    %Bio.Sequence{sequence: "mc", length: 2, label: ""}
 
   My hope is that this alleviates some of the pain of coming from a language
   where strings are slightly more complex objects.
   """
-  use Bio.Sequence
+  use Bio.SimpleSequence
 end

@@ -1,7 +1,7 @@
 defmodule Bio.Sequence.DnaStrand do
   @moduledoc """
-  A single DNA strand can be represented by the basic sequence which implements
-  the `Bio.Polymer` behavior.
+  A single DNA strand can be represented by the basic sequence which uses
+  `Bio.SimpleSequence` .
 
   This module doesn't implement any validations, since those are not well
   defined in every case. For example, it may be valid to contain ambiguous

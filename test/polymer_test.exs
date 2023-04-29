@@ -1,7 +1,7 @@
-defmodule Bio.PolymerTest do
+defmodule Bio.SequenceTest do
   use ExUnit.Case, async: true
 
-  alias Bio.Polymer, as: Subject
+  alias Bio.Sequence, as: Subject
 
   doctest Subject
 end
