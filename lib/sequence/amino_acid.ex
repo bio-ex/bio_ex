@@ -21,5 +21,5 @@ defmodule Bio.Sequence.AminoAcid do
     %Bio.Sequence.AminoAcid{sequence: "ab", length: 2, label: ""}
 
   """
-  use Bio.Sequence
+  use Bio.SimpleSequence
 end
