@@ -1,6 +1,7 @@
 defmodule Bio.Sequence.Dna do
   defmodule Conversions do
     import Bio.Sequence.Utilities, only: [upper?: 1]
+
     def to(Bio.Sequence.RnaStrand), do: {:ok, &to_rna/1}
     def to(_), do: {:error, :undef_conversion}
 

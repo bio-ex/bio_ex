@@ -69,6 +69,16 @@ defmodule Bio.Sequence.Polymer do
   you want to define your own convertible polymer types, you can. It requires
   defining the module and the implementation of `convert/1`. You can read the
   `Bio.Sequence.AminoAcid` source for more clarity on the details.
+
+  This package attempts to define reasonable defaults for all the occasions
+  which it can. This includes converting DNA into RNA, and RNA to DNA. The
+  conversions from DNA/RNA to Amino Acid are done using standard codon tables.
+
+  The Conversion module idea is provided as an escape hatch for more particular
+  applications which may require bespoke logic. An example would be converting
+  Amino Acids into a DNA sequence, as above. There are likely more use cases
+  than I could possibly compile on my own, so I tried to come up with a way to
+  alleviate that pressure.
   """
   alias Bio.Protocols.Convertible
 
