@@ -2,11 +2,6 @@ defmodule Bio.Sequence.AminoAcid do
   @moduledoc """
   Amino acids are modeled as simple sequences using `Bio.Sequence`.
 
-  This module doesn't implement any validations, since those are not well
-  defined in every case. For example, it may be valid to contain ambiguous
-  nucleotides, or it may not. Since that depends on the use, this is left to
-  applications developers to write.
-
   # Examples
     iex>aa = Bio.Sequence.AminoAcid.new("ymabagta")
     ...>"mabag" in aa
@@ -20,6 +15,10 @@ defmodule Bio.Sequence.AminoAcid do
     ...>Enum.slice(aa, 2, 2)
     %Bio.Sequence.AminoAcid{sequence: "ab", length: 2, label: ""}
 
+  If you are interested in defining conversions of amino acids then look into
+  the `Bio.Sequence.Polymer` module for how to deal with creating a Conversion
+  module. The simple `Bio.Sequence.AminoAcid` does define the
+  `Bio.Protocols.Convertible` protocol.
   """
   use Bio.SimpleSequence
 
@@ -29,12 +28,19 @@ defmodule Bio.Sequence.AminoAcid do
 end
 
 defimpl Bio.Protocols.Convertible, for: Bio.Sequence.AminoAcid do
-  alias Bio.Sequence.{AminoAcid, DnaStrand, DnaDoubleStrand, RnaStrand, RnaDoubleStrand}
+  alias Bio.Sequence.{AminoAcid, DnaStrand, RnaStrand}
 
   def convert(%AminoAcid{} = amino, DnaStrand, converter) do
     amino
     |> Enum.map(converter)
     |> Enum.join()
     |> DnaStrand.new(label: amino.label)
+  end
+
+  def convert(%AminoAcid{} = amino, RnaStrand, converter) do
+    amino
+    |> Enum.map(converter)
+    |> Enum.join()
+    |> RnaStrand.new(label: amino.label)
   end
 end
