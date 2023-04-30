@@ -7,7 +7,7 @@ defmodule Bio.Sequence do
   `sequence` and `length` field.
 
   The struct is intentionally sparse on information since this is meant to
-  compose into larger data types. For example, the `Bio.Sequence.Dna` struct,
+  compose into larger data types. For example, the `Bio.Sequence.DnaDoubleStrand` struct,
   which has two polymer `Bio.Sequence.DnaStrand`s as the `top_strand` and
   `bottom_strand` fields.
 
