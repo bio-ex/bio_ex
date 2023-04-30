@@ -22,4 +22,19 @@ defmodule Bio.Sequence.AminoAcid do
 
   """
   use Bio.SimpleSequence
+
+  defmodule DefaultConversions do
+    def to(_), do: {:error, :undef_conversion}
+  end
+end
+
+defimpl Bio.Protocols.Convertible, for: Bio.Sequence.AminoAcid do
+  alias Bio.Sequence.{AminoAcid, DnaStrand, DnaDoubleStrand, RnaStrand, RnaDoubleStrand}
+
+  def convert(%AminoAcid{} = amino, DnaStrand, converter) do
+    amino
+    |> Enum.map(converter)
+    |> Enum.join()
+    |> DnaStrand.new(label: amino.label)
+  end
 end

@@ -10,9 +10,65 @@ defmodule Bio.Sequence.Polymer do
 
   To put that in more concrete terms, I wanted this to be viable:
 
-    iex>dna = Bio.Sequence.DnaStrand.new("ttagccgt", label: "Test sequence")
-    ...>Polymer.convert(dna, Bio.Sequence.RnaStrand)
+    iex>dna = DnaStrand.new("ttagccgt")
+    ...>Polymer.convert(dna, RnaStrand)
     ...>%RnaStrand{sequence: "uuagccgu"}
+
+  But, and this is the important part, other conversions are not well defined by
+  defaults. For example:
+
+    iex>amino = AminoAcid.new("maktg")
+    ...>Polymer.convert(amino, DnaStrand)
+    ...>{:error, :undef_conversion}
+
+  The `:undef_conversion` indicates that there is no viable default
+  implementation of the conversion between these polymers. It _does not_
+  indicate that there is none. Obviously one can convert from an amino acid to
+  _some_ DNA strand. However, because this would imply making a selection from
+  the available codons, that is left to the user.
+
+  The way that you would do that is straight forward, you would define a
+  conversion module and pass it to the `convert/3` function as the keyword
+  argument `:conversion`. For example, if we wanted to defined a mapping that
+  converted into a compressed DNA representation, we could do:
+
+    iex>defmodule CompressedAminoConversion do
+    ...>  def to(DnaStrand), do: {:ok, &compressed/1}
+    ...>  def to(_), do: {:error, :undef_conversion}
+    ...>  def compressed(amino) do
+    ...>    case amino do
+    ...>      "a" -> "gcn"
+    ...>      "r" -> "cgn"
+    ...>      "n" -> "aay"
+    ...>      "d" -> "gay"
+    ...>      "c" -> "tgy"
+    ...>      "e" -> "gar"
+    ...>      "q" -> "car"
+    ...>      "g" -> "ggn"
+    ...>      "h" -> "cay"
+    ...>      "i" -> "ath"
+    ...>      "l" -> "ctn"
+    ...>      "k" -> "aar"
+    ...>      "m" -> "atg"
+    ...>      "f" -> "tty"
+    ...>      "p" -> "ccn"
+    ...>      "s" -> "tcn"
+    ...>      "t" -> "acn"
+    ...>      "w" -> "tgg"
+    ...>      "y" -> "tay"
+    ...>      "v" -> "gtn"
+    ...>    end
+    ...>  end
+    ...>end
+    ...>amino = AminoAcid.new("maktg")
+    ...>Polymer.convert(amino, DnaStrand, conversion: CompressedAminoConversion)
+    ...>%DnaStrand{sequence: "atggcnaaracnggn"}
+
+  This is made possible because of the simple implementation of the
+  `Bio.Protocols.Convertible` interface for the `Bio.Sequence.AminoAcid`. If
+  you want to define your own convertible polymer types, you can. It requires
+  defining the module and the implementation of `convert/1`. You can read the
+  `Bio.Sequence.AminoAcid` source for more clarity on the details.
   """
   alias Bio.Protocols.Convertible
 
@@ -22,17 +78,15 @@ defmodule Bio.Sequence.Polymer do
         conversion_module = Module.concat(data.__struct__, DefaultConversions)
 
         case apply(conversion_module, :to, [module]) do
-          {:ok, converter} ->
-            Convertible.convert(data, module, converter)
-
-          {:error, :undef_converter} ->
-            {:error, "Conversion of #{data.__struct__} to #{module} is not defined. You
-            must create a module defining the conversion to be used and pass to
-            convert."}
+          {:ok, converter} -> Convertible.convert(data, module, converter)
+          otherwise -> otherwise
         end
 
       conversion_module ->
-        Convertible.convert(data, module, apply(conversion_module, :to, [module]))
+        case apply(conversion_module, :to, [module]) do
+          {:ok, converter} -> Convertible.convert(data, module, converter)
+          otherwise -> otherwise
+        end
     end
   end
 end
