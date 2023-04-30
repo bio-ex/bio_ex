@@ -4,7 +4,7 @@ defmodule Bio.Sequence do
 
   The core concept here is that a polymer is a sequence of elements encoded as a
   binary. This is stored in the base `%Bio.Sequence{}` struct, which has both a
-  `sequence` and `length` field.
+  `sequence` and `length` field, and may carry a `label` as well.
 
   The struct is intentionally sparse on information since this is meant to
   compose into larger data types. For example, the `Bio.Sequence.DnaDoubleStrand` struct,

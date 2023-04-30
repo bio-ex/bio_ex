@@ -1,5 +1,7 @@
 defmodule Bio.Sequence.Alphabets do
+  @moduledoc false
   defmodule Dna do
+    @moduledoc false
     @common "ATGCatgc"
     @with_n "ACGTNacgtn"
     @iupac "ACGTRYSWKMBDHVNZacgtryswkmbdhvnz"
@@ -10,6 +12,7 @@ defmodule Bio.Sequence.Alphabets do
   end
 
   defmodule Rna do
+    @moduledoc false
     @common "ACGUacgu"
     @with_n "ACGUNacgun"
     @iupac "ACGURYSWKMBDHVNZacguryswkmbdhvnz"
@@ -20,6 +23,7 @@ defmodule Bio.Sequence.Alphabets do
   end
 
   defmodule AminoAcid do
+    @moduledoc false
     @common "ARNDCEQGHILKMFPSTWYVarndceqghilkmfpstwyv"
     @iupac "ABCDEFGHIKLMNPQRSTVWXYZabcdefghiklmnpqrstvwxyz"
 

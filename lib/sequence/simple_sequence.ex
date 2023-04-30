@@ -1,12 +1,5 @@
 defmodule Bio.SimpleSequence do
   @moduledoc """
-  This module defines the general behavior for an enumerable sequence struct
-  that can be used as a basis for simple string manipulations of sequences of
-  known sizes.
-
-  This is a way to abstract the familiar behavior of testing for membership and
-  breaking apart sequences in the bioinformatics space.
-
   Calling `use Bio.SimpleSequence` will generate a simple struct in the calling
   module, as well as the implementation for the `Enumerable` protocol.
 
