@@ -103,7 +103,7 @@ defmodule Bio.SimpleSequence do
              <<_before::binary-size(start), chunk::binary-size(amount), _rest::binary>> =
                poly.sequence
 
-             @parent.new(chunk, length: amount)
+             String.to_charlist(chunk)
            end}
         end
       end
