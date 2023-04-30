@@ -1,13 +1,13 @@
 defmodule Bio.Sequence.DnaDoubleStrand do
-  alias Bio.Sequence.DnaStrand
+  alias Bio.Sequence.{DnaStrand, RnaStrand, RnaDoubleStrand}
 
   defstruct top_strand: DnaStrand.new("", length: 0),
             bottom_strand: DnaStrand.new("", length: 0),
             complement_offset: 0
 
   defmodule DefaultConversions do
-    def to(Bio.Sequence.RnaDoubleStrand),
-      do: DnaStrand.DefaultConversions.to(Bio.Sequence.RnaStrand)
+    def to(RnaDoubleStrand), do: DnaStrand.DefaultConversions.to(RnaStrand)
+    def to(_), do: {:error, :undef_conversion}
   end
 end
 
