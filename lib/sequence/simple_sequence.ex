@@ -6,11 +6,12 @@ defmodule Bio.SimpleSequence do
   One downside to the current implementation is that the semantics of some of
   the Enum methods is a little wonky. The best example of this is `Enum.slide`.
   I can see this being somewhat useful, but only if it were to capably return
-  the enumerable itself. However, it's implemented as a `reduce`, which means
-  that an arbitrary accumulator could be defined, and we can't know a priori
-  that we're being reduced from slide.
+  the enumerable itself. However, the implementation will return a list
+  regardless of your defined implementation because it uses `Enum.reduce`, and
+  then further manipulates the output as lists.
 
-  There may be ways around this that I'm not thinking of right now.
+  To get around this limitation, I have implemented a `slide/3` function within
+  the `Bio.Sequence.Utilities` module.
   """
   defmacro __using__(_) do
     quote do
@@ -34,13 +35,21 @@ defmodule Bio.SimpleSequence do
           do_reduce(to_str_list(poly.sequence), acc, fun)
         end
 
-        defp do_reduce(_, {:halt, acc}, _fun), do: {:halted, acc}
+        defp do_reduce(_, {:halt, acc}, _fun) do
+          {:halted, acc}
+        end
 
-        defp do_reduce(list, {:suspend, acc}, fun),
-          do: {:suspended, acc, &do_reduce(list, &1, fun)}
+        defp do_reduce(list, {:suspend, acc}, fun) do
+          {:suspended, acc, &do_reduce(list, &1, fun)}
+        end
 
-        defp do_reduce([], {:cont, acc}, _fun), do: {:done, acc}
-        defp do_reduce([h | t], {:cont, acc}, fun), do: do_reduce(t, fun.(h, acc), fun)
+        defp do_reduce([], {:cont, acc}, _fun) do
+          {:done, acc}
+        end
+
+        defp do_reduce([h | t], {:cont, acc}, fun) do
+          do_reduce(t, fun.(h, acc), fun)
+        end
 
         defp to_str_list(obj) when is_binary(obj) do
           obj
