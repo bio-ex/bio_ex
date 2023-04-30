@@ -6,10 +6,10 @@ defmodule Sequence.DnaStrandTest do
   doctest Subject
 end
 
-defmodule Sequence.DnaTest do
+defmodule Sequence.DnaDoubleStrandTest do
   use ExUnit.Case, async: true
 
-  alias Bio.Sequence.Dna, as: Subject
+  alias Bio.Sequence.DnaDoubleStrand, as: Subject
 
   doctest Subject
 end

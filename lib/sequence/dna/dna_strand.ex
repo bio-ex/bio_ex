@@ -23,12 +23,21 @@ defmodule Bio.Sequence.DnaStrand do
 
   """
   use Bio.SimpleSequence
+
+  alias Bio.Sequence.Dna.Conversions
+
+  defmodule DefaultConversions do
+    def to(value), do: Conversions.to(value)
+  end
 end
 
-defmodule Bio.Sequence.Dna do
-  alias Bio.Sequence.DnaStrand
+defimpl Bio.Protocols.Convertible, for: Bio.Sequence.DnaStrand do
+  alias Bio.Sequence.{DnaStrand, RnaStrand}
 
-  defstruct top_strand: DnaStrand.new("", length: 0),
-            bottom_strand: DnaStrand.new("", length: 0),
-            complement_offset: 0
+  def convert(%DnaStrand{} = sequence, RnaStrand, converter) do
+    sequence
+    |> Enum.map(converter)
+    |> Enum.join("")
+    |> RnaStrand.new(label: sequence.label)
+  end
 end
