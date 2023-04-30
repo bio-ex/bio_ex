@@ -37,6 +37,6 @@ defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaStrand do
     sequence
     |> Enum.map(converter)
     |> Enum.join("")
-    |> RnaStrand.new(label: sequence.label)
+    |> DnaStrand.new(label: sequence.label)
   end
 end
