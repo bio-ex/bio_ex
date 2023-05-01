@@ -181,8 +181,17 @@ defmodule Bio.Enum do
 
   def shuffle(), do: {}
 
-  def slice(a), do: {a}
-  def slice(a, b), do: {a, b}
+  def slice(enumerable, index_range),
+    do:
+      Enum.slice(enumerable, index_range)
+      |> List.to_string()
+      |> then(&apply(enumerable.__struct__, :new, [&1, label: enumerable.label]))
+
+  def slice(enumerable, start_index, amount),
+    do:
+      Enum.slice(enumerable, start_index, amount)
+      |> List.to_string()
+      |> then(&apply(enumerable.__struct__, :new, [&1, label: enumerable.label]))
 
   def slide(), do: {}
 

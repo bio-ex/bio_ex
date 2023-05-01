@@ -14,11 +14,11 @@ defmodule Bio.Sequence.RnaStrand do
     true
 
     iex>rna = Bio.Sequence.RnaStrand.new("uuagcu")
-    ...>Enum.map(rna, &(&1))
+    ...>Bio.Enum.map(rna, &(&1))
     ["u", "u", "a", "g", "c", "u"]
 
     iex>rna = Bio.Sequence.RnaStrand.new("uuagcu")
-    ...>Enum.slice(rna, 2, 2)
+    ...>Bio.Enum.slice(rna, 2, 2)
     %Bio.Sequence.RnaStrand{sequence: "ag", length: 2, label: ""}
 
   """
