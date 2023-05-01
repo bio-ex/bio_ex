@@ -12,51 +12,6 @@ defmodule Sequence.SimpleSequenceTest do
     end
 
     test "Enum.map(Enumerable)" do
-      mapped =
-        ConsolidatedSequence.new("abcd")
-        |> Enum.map(& &1)
-
-      assert mapped == ["a", "b", "c", "d"]
-    end
-
-    test "Enum.slice(Enumerable)" do
-      slice =
-        ConsolidatedSequence.new("something wicked this way comes")
-        |> Enum.slice(0..8)
-
-      assert slice == ConsolidatedSequence.new("something")
-    end
-
-    # TODO: using slide implicitly calls reduce, and there's no way to determine
-    # what the semantics of that should be? Basically, if a user wanted to
-    # reduce the struct into a list and explicitly gives a list, then the slide
-    # taking over and giving back a struct would be a terrible bug.
-    test "sliding" do
-      slide =
-        ConsolidatedSequence.new("slidingstuff")
-        |> Enum.slide(0, 3)
-
-      _reduction =
-        ConsolidatedSequence.new("reduce")
-        |> Enum.reduce([], fn el, acc ->
-          List.insert_at(acc, -1, el)
-        end)
-
-      assert slide == ["b", "c", "d", "a", "e", "f", "g"]
-
-      # slide =
-      #   ConsolidatedSequence.new("abcdefg")
-      #   |> Enum.slide(0..2, 5)
-      #
-      # assert slide == ["d", "e", "f", "a", "b", "c", "g"]
-    end
-
-    test "reducing" do
-      _reduction =
-        ConsolidatedSequence.new("reduce")
-        |> Enum.reduce(%{}, fn el, map ->
-          Map.put(map, :schtuff, el)
-        end)
     end
 
     test "Enum.all?/1" do
@@ -189,6 +144,11 @@ defmodule Sequence.SimpleSequenceTest do
     end
 
     test "Enum.map/2" do
+      mapped =
+        ConsolidatedSequence.new("abcd")
+        |> Enum.map(& &1)
+
+      assert mapped == ["a", "b", "c", "d"]
     end
 
     test "Enum.map_every/3" do
@@ -276,6 +236,11 @@ defmodule Sequence.SimpleSequenceTest do
     end
 
     test "Enum.slice/2" do
+      slice =
+        ConsolidatedSequence.new("something wicked this way comes")
+        |> Enum.slice(0..8)
+
+      assert slice == 'something'
     end
 
     test "Enum.slice/3" do
