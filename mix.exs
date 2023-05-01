@@ -1,18 +1,22 @@
 defmodule Bio.MixProject do
   use Mix.Project
 
+  @version "0.1.1"
+  @source_url "https://github.com/pcapel/bio_ex"
+
   def project do
     [
       app: :bio_ex,
       description: describe(),
-      version: "0.1.1",
+      version: @version,
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      name: "bio_ex",
+      name: "bio_elixir",
       package: package(),
-      aliases: aliases()
+      aliases: aliases(),
+      docs: docs()
     ]
   end
 
@@ -47,4 +51,63 @@ defmodule Bio.MixProject do
   defp elixirc_paths(:test), do: ["lib", "test/support"]
 
   defp elixirc_paths(_), do: ["lib"]
+
+  defp docs do
+    [
+      source_ref: "v#{@version}",
+      source_url: @source_url,
+      extras: extras(),
+      groups_for_extras: groups_for_extras(),
+      groups_for_functions: [
+        group_for_function("none")
+      ],
+      groups_for_modules: [
+        "General Polymers": [
+          Bio.SimpleSequence,
+          Bio.Sequence.Polymer,
+          Bio.Sequence
+        ],
+        DNA: [
+          Bio.Sequence.Dna,
+          Bio.Sequence.Dna.Conversions,
+          Bio.Sequence.DnaStrand,
+          Bio.Sequence.DnaDoubleStrand
+        ],
+        RNA: [
+          Bio.Sequence.Rna,
+          Bio.Sequence.Rna.Conversions,
+          Bio.Sequence.RnaStrand,
+          Bio.Sequence.RnaDoubleStrand
+        ],
+        "Amino Acid": [
+          Bio.Sequence.AminoAcid
+        ],
+        Restriction: [
+          Bio.Restriction,
+          Bio.Restriction.Enzyme
+        ],
+        Utilities: [
+          Bio.Enum,
+          Bio.Protocols.Convertible,
+          Bio.Sequence.Mapping
+        ]
+      ]
+    ]
+  end
+
+  def extras() do
+    [
+      # "guides/introduction/Getting Started.md",
+    ]
+  end
+
+  defp group_for_function(group), do: {String.to_atom(group), &(&1[:group] == group)}
+
+  defp groups_for_extras do
+    [
+      Introduction: ~r/guides\/introduction\/.?/,
+      Cheatsheets: ~r/cheatsheets\/.?/,
+      "How-To's": ~r/guides\/howtos\/.?/
+    ]
+  end
 end

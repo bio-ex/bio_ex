@@ -25,7 +25,8 @@ defmodule Bio.Sequence.Polymer do
   implementation of the conversion between these polymers. It _does not_
   indicate that there is none. Obviously one can convert from an amino acid to
   _some_ DNA strand. However, because this would imply making a selection from
-  the available codons, that is left to the user.
+  the available codons, that is left to the logic of whatever application is
+  doing so.
 
   The way that you would do that is straight forward, you would define a
   conversion module and pass it to the `convert/3` function as the keyword

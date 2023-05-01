@@ -7,6 +7,9 @@ defmodule Bio.Sequence.RnaDoubleStrand do
             complement_offset: 0
 
   defmodule DefaultConversions do
+    @moduledoc false
+
+    @doc false
     def to(DnaDoubleStrand), do: Conversions.to(DnaStrand)
   end
 end

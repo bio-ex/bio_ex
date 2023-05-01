@@ -1,16 +1,16 @@
 defmodule Bio.Enum do
   @moduledoc """
-  Implements a wrapper around the Enum module's public interface.
+  Implements a wrapper around the `Enum` module's public interface.
 
-  The semantics of the Enum module don't always match up with what I would think
+  The semantics of the `Enum` module don't always match up with what I would think
   is best for certain cases. The best example of this is the `slide/3` function.
-  Because of the Enum implementation, there is no way to coerce the return
+  Because of the `Enum` implementation, there is no way to coerce the return
   value back into a struct. So for example, given a `Bio.Sequence.DnaStrand` it
   would return a list of graphemes. This is not what I want users to expect.
 
   That said, there are other functions that _do_ behave well. Or at the very
   least, their semantics seem meaningfully useful. So in order to preserve the
-  maximum utility, I will wrap the module.
+  maximum utility, I wrap the module.
 
   The expectation should be as follows:
   `Enum` functions will return bare data.
