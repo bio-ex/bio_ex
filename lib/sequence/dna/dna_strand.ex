@@ -9,17 +9,19 @@ defmodule Bio.Sequence.DnaStrand do
   applications developers to write.
 
   # Examples
-    iex>dna = Bio.Sequence.DnaStrand.new("ttagct")
+    iex>dna = DnaStrand.new("ttagct")
     ...>"tagc" in dna
     true
 
-    iex>dna = Bio.Sequence.DnaStrand.new("ttagct")
-    ...>Bio.Enum.map(dna, &(&1))
-    ["t", "t", "a", "g", "c", "t"]
+    iex>alias Bio.Enum, as: Bnum
+    ...>dna = DnaStrand.new("ttagct")
+    ...>Bnum.map(dna, &(&1))
+    %DnaStrand{sequence: "ttagct", length: 6}
 
-    iex>dna = Bio.Sequence.DnaStrand.new("ttagct")
-    ...>Bio.Enum.slice(dna, 2, 2)
-    %Bio.Sequence.DnaStrand{sequence: "ag", length: 2, label: ""}
+    iex>alias Bio.Enum, as: Bnum
+    ...>dna = DnaStrand.new("ttagct")
+    ...>Bnum.slice(dna, 2, 2)
+    %DnaStrand{sequence: "ag", length: 2, label: ""}
 
   """
   use Bio.SimpleSequence
