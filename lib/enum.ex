@@ -28,6 +28,8 @@ defmodule Bio.Enum do
   def all?(enumerable), do: Enum.all?(enumerable)
   def all?(enumerable, func), do: Enum.all?(enumerable, func)
 
+  # TODO: add a check for `func` in `any?/2` is_binary to allow
+  # `any?(seq, "char")` as a valid approach.
   def any?(enumerable), do: Enum.any?(enumerable)
   def any?(enumerable, func), do: Enum.any?(enumerable, func)
 

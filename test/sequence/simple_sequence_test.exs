@@ -11,22 +11,41 @@ defmodule Sequence.SimpleSequenceTest do
       assert "test" in seq
     end
 
-    test "Enum.map(Enumerable)" do
-    end
-
     test "Enum.all?/1" do
+      seq = ConsolidatedSequence.new("")
+      assert Enum.all?(seq)
+
+      seq = ConsolidatedSequence.new("things")
+      assert Enum.all?(seq)
     end
 
     test "Enum.all?/2" do
+      seq = ConsolidatedSequence.new("ggggg")
+      assert Enum.all?(seq, &(&1 == "g"))
     end
 
     test "Enum.any?/1" do
+      seq = ConsolidatedSequence.new("")
+      assert not Enum.any?(seq)
+
+      seq = ConsolidatedSequence.new("things")
+      assert Enum.any?(seq)
     end
 
     test "Enum.any?/2" do
+      seq = ConsolidatedSequence.new("ggggg")
+      assert not Enum.any?(seq, &(&1 == "c"))
+
+      seq = ConsolidatedSequence.new("tagacat-")
+      assert Enum.any?(seq, &(&1 == "-"))
     end
 
     test "Enum.at/2" do
+      assert ConsolidatedSequence.new("")
+             |> Enum.at(10) == nil
+
+      assert ConsolidatedSequence.new("total")
+             |> Enum.at(3) == ?a
     end
 
     test "Enum.at/3" do

@@ -17,17 +17,17 @@ defmodule Bio.Sequence do
   which in turn allows for common interaction patterns a la Python strings:
 
   # Examples
-    iex>sequence = Bio.Sequence.new("agmctbo")
-    ...>Enum.map(sequence, &(&1))
-    ["a", "g", "m", "c", "t", "b", "o"]
+      iex>sequence = Bio.Sequence.new("agmctbo")
+      ...>Enum.map(sequence, &(&1))
+      ["a", "g", "m", "c", "t", "b", "o"]
 
-    iex>sequence = Bio.Sequence.new("agmctbo")
-    iex>"gmc" in sequence
-    true
+      iex>sequence = Bio.Sequence.new("agmctbo")
+      iex>"gmc" in sequence
+      true
 
-    iex>sequence = Bio.Sequence.new("agmctbo")
-    iex>Enum.slice(sequence, 2, 2)
-    %Bio.Sequence{sequence: "mc", length: 2, label: ""}
+      iex>sequence = Bio.Sequence.new("agmctbo")
+      iex>Enum.slice(sequence, 2, 2)
+      %Bio.Sequence{sequence: "mc", length: 2, label: ""}
 
   My hope is that this alleviates some of the pain of coming from a language
   where strings are slightly more complex objects.
