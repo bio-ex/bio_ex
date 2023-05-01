@@ -45,16 +45,8 @@ defmodule Bio.Enum do
 
   def chunk_by(enumerable, func) do
     Enum.chunk_by(enumerable, func)
-    |> Enum.map(fn sub ->
-      sub
-      |> Enum.join()
-      |> then(
-        &apply(enumerable.__struct__, :new, [
-          &1,
-          [label: enumerable.label]
-        ])
-      )
-    end)
+    |> Enum.map(&Enum.join/1)
+    |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
   end
 
   def chunk_every(enumerable, count),
@@ -75,13 +67,19 @@ defmodule Bio.Enum do
       |> Stream.map(&Enum.join/1)
       |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
-  def chunk_while(), do: {}
+  def chunk_while(enumerable, acc, chunk_fun, after_fun),
+    do:
+      Enum.chunk_while(enumerable, acc, chunk_fun, after_fun)
+      |> Enum.map(&Enum.join/1)
+      |> Enum.map(&apply(enumerable.__struct__, :new, [&1, label: enumerable.label]))
 
+  # TODO: figure out the semantics for concatenation with non-sequence
+  # enumerables
   def concat(a), do: {a}
   def concat(a, b), do: {a, b}
 
-  def count(a), do: {a}
-  def count(a, b), do: {a, b}
+  def count(enumerable), do: Enum.count(enumerable)
+  def count(enumerable, fun), do: Enum.count(enumerable, fun)
 
   def count_until(a), do: {a}
   def count_until(a, b), do: {a, b}
