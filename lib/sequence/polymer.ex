@@ -10,16 +10,16 @@ defmodule Bio.Sequence.Polymer do
 
   To put that in more concrete terms, I wanted this to be viable:
 
-    iex>dna = DnaStrand.new("ttagccgt")
-    ...>Polymer.convert(dna, RnaStrand)
-    ...>%RnaStrand{sequence: "uuagccgu"}
+      iex>dna = DnaStrand.new("ttagccgt", label: "a label")
+      ...>Polymer.convert(dna, RnaStrand)
+      %RnaStrand{sequence: "uuagccgu", length: 8, label: "a label"}
 
   But, and this is the important part, other conversions are not well defined by
   defaults. For example:
 
-    iex>amino = AminoAcid.new("maktg")
-    ...>Polymer.convert(amino, DnaStrand)
-    ...>{:error, :undef_conversion}
+      iex>amino = AminoAcid.new("maktg")
+      ...>Polymer.convert(amino, DnaStrand)
+      {:error, :undef_conversion}
 
   The `:undef_conversion` indicates that there is no viable default
   implementation of the conversion between these polymers. It _does not_
@@ -32,37 +32,37 @@ defmodule Bio.Sequence.Polymer do
   argument `:conversion`. For example, if we wanted to defined a mapping that
   converted into a compressed DNA representation, we could do:
 
-    iex>defmodule CompressedAminoConversion do
-    ...>  def to(DnaStrand), do: {:ok, &compressed/1}
-    ...>  def to(_), do: {:error, :undef_conversion}
-    ...>  def compressed(amino) do
-    ...>    case amino do
-    ...>      "a" -> "gcn"
-    ...>      "r" -> "cgn"
-    ...>      "n" -> "aay"
-    ...>      "d" -> "gay"
-    ...>      "c" -> "tgy"
-    ...>      "e" -> "gar"
-    ...>      "q" -> "car"
-    ...>      "g" -> "ggn"
-    ...>      "h" -> "cay"
-    ...>      "i" -> "ath"
-    ...>      "l" -> "ctn"
-    ...>      "k" -> "aar"
-    ...>      "m" -> "atg"
-    ...>      "f" -> "tty"
-    ...>      "p" -> "ccn"
-    ...>      "s" -> "tcn"
-    ...>      "t" -> "acn"
-    ...>      "w" -> "tgg"
-    ...>      "y" -> "tay"
-    ...>      "v" -> "gtn"
-    ...>    end
-    ...>  end
-    ...>end
-    ...>amino = AminoAcid.new("maktg")
-    ...>Polymer.convert(amino, DnaStrand, conversion: CompressedAminoConversion)
-    ...>%DnaStrand{sequence: "atggcnaaracnggn"}
+      iex>defmodule CompressedAminoConversion do
+      ...>  def to(DnaStrand), do: {:ok, &compressed/1}
+      ...>  def to(_), do: {:error, :undef_conversion}
+      ...>  def compressed(amino) do
+      ...>    case amino do
+      ...>      "a" -> "gcn"
+      ...>      "r" -> "cgn"
+      ...>      "n" -> "aay"
+      ...>      "d" -> "gay"
+      ...>      "c" -> "tgy"
+      ...>      "e" -> "gar"
+      ...>      "q" -> "car"
+      ...>      "g" -> "ggn"
+      ...>      "h" -> "cay"
+      ...>      "i" -> "ath"
+      ...>      "l" -> "ctn"
+      ...>      "k" -> "aar"
+      ...>      "m" -> "atg"
+      ...>      "f" -> "tty"
+      ...>      "p" -> "ccn"
+      ...>      "s" -> "tcn"
+      ...>      "t" -> "acn"
+      ...>      "w" -> "tgg"
+      ...>      "y" -> "tay"
+      ...>      "v" -> "gtn"
+      ...>    end
+      ...>  end
+      ...>end
+      ...>amino = AminoAcid.new("maktg", label: "polypeptide-∂")
+      ...>Polymer.convert(amino, DnaStrand, conversion: CompressedAminoConversion)
+      %DnaStrand{sequence: "atggcnaaracnggn", length: 15, label: "polypeptide-∂"}
 
   This is made possible because of the simple implementation of the
   `Bio.Protocols.Convertible` interface for the `Bio.Sequence.AminoAcid`. If
