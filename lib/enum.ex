@@ -131,7 +131,11 @@ defmodule Bio.Enum do
   def join(a), do: {a}
   def join(a, b), do: {a, b}
 
-  def map(), do: {}
+  def map(enumerable, func),
+    do:
+      Enum.map(enumerable, func)
+      |> Enum.join()
+      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
   def map_every(), do: {}
 
@@ -185,13 +189,13 @@ defmodule Bio.Enum do
     do:
       Enum.slice(enumerable, index_range)
       |> List.to_string()
-      |> then(&apply(enumerable.__struct__, :new, [&1, label: enumerable.label]))
+      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
   def slice(enumerable, start_index, amount),
     do:
       Enum.slice(enumerable, start_index, amount)
       |> List.to_string()
-      |> then(&apply(enumerable.__struct__, :new, [&1, label: enumerable.label]))
+      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
   def slide(), do: {}
 
