@@ -1,5 +1,9 @@
 defmodule Bio.Sequence.Dna do
   defmodule Conversions do
+    @moduledoc """
+    Default conversion definition used by the `Bio.Sequence.DnaStrand` and
+    `Bio.Sequence.DnaDoubleStrand` modules.
+    """
     import Bio.Sequence.Utilities, only: [upper?: 1]
 
     def to(Bio.Sequence.RnaStrand), do: {:ok, &to_rna/1}

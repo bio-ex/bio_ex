@@ -1,6 +1,6 @@
 defmodule Bio.Sequence.AminoAcid do
   @moduledoc """
-  Amino acids are modeled as simple sequences using `Bio.Sequence`.
+  Amino acids are modeled as simple sequences using `Bio.SimpleSequence`.
 
   # Examples
     iex>aa = AminoAcid.new("ymabagta")
@@ -25,6 +25,9 @@ defmodule Bio.Sequence.AminoAcid do
   use Bio.SimpleSequence
 
   defmodule DefaultConversions do
+    @moduledoc false
+
+    @doc false
     def to(_), do: {:error, :undef_conversion}
   end
 end

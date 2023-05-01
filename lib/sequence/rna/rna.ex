@@ -9,6 +9,10 @@ defmodule Bio.Sequence.Rna do
   alias Bio.Sequence.DnaStrand
 
   defmodule Conversions do
+    @moduledoc """
+    Default conversions used by the `Bio.Sequence.RnaStrand` and
+    `Bio.Sequence.RnaDoubleStrand` modules
+    """
     import Bio.Sequence.Utilities, only: [upper?: 1]
     def to(DnaStrand), do: {:ok, &to_dna/1}
     def to(_), do: {:error, :undef_conversion}

@@ -3,15 +3,25 @@ defmodule Bio.SimpleSequence do
   Calling `use Bio.SimpleSequence` will generate a simple struct in the calling
   module, as well as the implementation for the `Enumerable` protocol.
 
-  One downside to the current implementation is that the semantics of some of
-  the Enum methods is a little wonky. The best example of this is `Enum.slide`.
-  I can see this being somewhat useful, but only if it were to capably return
-  the enumerable itself. However, the implementation will return a list
-  regardless of your defined implementation because it uses `Enum.reduce`, and
-  then further manipulates the output as lists.
+  Because the `Enum` module makes certain assumptions about the data that it is
+  given, we cannot trust that the functions therein will always behave how it
+  makes the most sense. As an example, there is no way to ensure that
+  `Enum.slide/3` returns anything other than a list. I believe that it makes
+  sense for it to return the enumerable type, so you would get e.g. a
+  `Bio.Sequence.DnaStrand` back.
 
-  To get around this limitation, I have implemented a `slide/3` function within
-  the `Bio.Sequence.Utilities` module.
+  With that said, many of the `Enum` module's functions _shouldn't_ make
+  assumptions. This is largely idiosynctratic, and so instead of trying to
+  ham-fist the `Enum` functions to work, I just wrapped them up with `Bio.Enum`.
+
+  The implementations in `Bio.Enum` rely on the `Enum` functions to work, but
+  they go the extra mile in terms of returning things that seem to make the most
+  sense. See the documentation of `Bio.Enum` for more on that.
+
+  This module will also cause `new/2` to be defined. This function takes a
+  sequence as well as the keywords `:label` and `:length`. For more examples of
+  using `new/2` see `Bio.Sequence.AminoAcid`, `Bio.Sequence.DnaStrand`, or
+  `Bio.Sequence.RnaStrand`.
   """
   defmacro __using__(_) do
     quote do

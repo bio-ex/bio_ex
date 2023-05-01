@@ -28,6 +28,9 @@ defmodule Bio.Sequence.RnaStrand do
   alias Bio.Sequence.Rna.Conversions
 
   defmodule DefaultConversions do
+    @moduledoc false
+
+    @doc false
     def to(value), do: Conversions.to(value)
   end
 end
