@@ -183,7 +183,12 @@ defmodule Bio.Enum do
       |> Enum.join()
       |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
-  def reverse(a, b), do: {a, b}
+  # TODO: what type is tail?
+  def reverse(enumerable, tail),
+    do:
+      Enum.reverse(enumerable, tail)
+      |> Enum.join()
+      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
   def reverse_slice(), do: {}
 

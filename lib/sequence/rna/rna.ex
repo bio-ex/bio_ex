@@ -3,12 +3,22 @@ defmodule Bio.Sequence.Rna do
   `Bio.Sequence.Rna` implements the basic conversions that one expects from RNA
   polymers. Namely, they can by default be converted to the
   `Bio.Sequence.DnaStrand` and `Bio.Sequence.AminoAcid` structs.
-
-
   """
-  alias Bio.Sequence.{DnaStrand, DnaDoubleStrand}
+  alias Bio.Sequence.{RnaStrand, DnaStrand, DnaDoubleStrand}
   alias Bio.Behaviors.Converter
+  alias Bio.Enum, as: Bnum
   import Bio.Sequence.Utilities, only: [upper?: 1]
+
+  @complement %{
+    "a" => "u",
+    "A" => "U",
+    "u" => "a",
+    "U" => "A",
+    "g" => "c",
+    "G" => "C",
+    "c" => "g",
+    "C" => "G"
+  }
 
   defmodule Conversions do
     @moduledoc """
@@ -39,5 +49,21 @@ defmodule Bio.Sequence.Rna do
           end
       end
     end
+  end
+
+  # TODO: not sure this is how I want this to work, but I _do_ want these
+  # semantics.
+  def reverse_complement(%RnaStrand{} = sequence) do
+    sequence
+    |> Bnum.map(&Map.get(@complement, &1))
+    |> Bnum.reverse()
+  end
+
+  def reverse_complement(sequence) when is_binary(sequence) do
+    sequence
+    |> String.graphemes()
+    |> Enum.map(&Map.get(@complement, &1))
+    |> Enum.reverse()
+    |> Enum.join()
   end
 end
