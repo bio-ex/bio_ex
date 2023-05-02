@@ -3,26 +3,23 @@ defmodule Bio.Sequence.DnaStrand do
   A single DNA strand can be represented by the basic sequence which uses
   `Bio.SimpleSequence` .
 
-  This module doesn't implement any validations, since those are not well
-  defined in every case. For example, it may be valid to contain ambiguous
-  nucleotides, or it may not. Since that depends on the use, this is left to
-  applications developers to write.
-
   # Examples
-    iex>dna = DnaStrand.new("ttagct")
-    ...>"tagc" in dna
-    true
+      iex>"tagc" in DnaStrand.new("ttagct")
+      true
 
-    iex>alias Bio.Enum, as: Bnum
-    ...>dna = DnaStrand.new("ttagct")
-    ...>Bnum.map(dna, &(&1))
-    %DnaStrand{sequence: "ttagct", length: 6}
+      iex>alias Bio.Enum, as: Bnum
+      ...>DnaStrand.new("ttagct")
+      ...>|> Bnum.map(&(&1))
+      %DnaStrand{sequence: "ttagct", length: 6}
 
-    iex>alias Bio.Enum, as: Bnum
-    ...>dna = DnaStrand.new("ttagct")
-    ...>Bnum.slice(dna, 2, 2)
-    %DnaStrand{sequence: "ag", length: 2, label: ""}
+      iex>alias Bio.Enum, as: Bnum
+      ...>DnaStrand.new("ttagct")
+      ...>|> Bnum.slice(2, 2)
+      %DnaStrand{sequence: "ag", length: 2, label: ""}
 
+
+  In order to validate the sequence of nucleotides, you can pass an alphabet  to
+  the `valid?/2` function.
   """
   use Bio.SimpleSequence
 

@@ -20,6 +20,20 @@ defmodule Bio.Sequence.Dna do
     @moduledoc """
     Default conversion definition used by the `Bio.Sequence.DnaStrand` and
     `Bio.Sequence.DnaDoubleStrand` modules.
+
+    The default conversions use conventional nucleotides and map them to their
+    relevant RNA nucleotides:
+
+    ```
+    a -> a
+    t -> u
+    g -> g
+    c -> c
+    ```
+
+    Casing is preserved, so mixed case sequences will not be altered. This
+    behavior allows encoding more information in the casing of a sequence than
+    merely the structure and is a guarantee of the conversions of this system.
     """
     use Converter do
       def to(RnaStrand), do: {:ok, &to_rna/1}

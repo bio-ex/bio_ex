@@ -17,16 +17,16 @@ defmodule Bio.Sequence do
   which in turn allows for common interaction patterns a la Python strings:
 
   # Examples
-      iex>sequence = Bio.Sequence.new("agmctbo")
-      ...>Enum.map(sequence, &(&1))
-      ["a", "g", "m", "c", "t", "b", "o"]
-
-      iex>sequence = Bio.Sequence.new("agmctbo")
-      iex>"gmc" in sequence
+      iex>"gmc" in Bio.Sequence.new("agmctbo")
       true
 
-      iex>sequence = Bio.Sequence.new("agmctbo")
-      iex>Enum.slice(sequence, 2, 2)
+      iex>Bio.Sequence.new("agmctbo")
+      ...>|> Enum.map(&(&1))
+      ["a", "g", "m", "c", "t", "b", "o"]
+
+      iex>alias Bio.Enum, as: Bnum
+      ...>Bio.Sequence.new("agmctbo")
+      ...>|> Bnum.slice(2, 2)
       %Bio.Sequence{sequence: "mc", length: 2, label: ""}
 
   My hope is that this alleviates some of the pain of coming from a language
