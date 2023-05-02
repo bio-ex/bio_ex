@@ -1,17 +1,15 @@
 defmodule Bio.Sequence.RnaDoubleStrand do
+  @behaviour Bio.Behaviors.Sequence
   alias Bio.Sequence.{RnaStrand, DnaStrand, DnaDoubleStrand}
-  alias Bio.Sequence.Rna.Conversions
 
   defstruct top_strand: RnaStrand.new("", length: 0),
             bottom_strand: RnaStrand.new("", length: 0),
             complement_offset: 0
 
-  defmodule DefaultConversions do
-    @moduledoc false
-
-    @doc false
-    def to(DnaDoubleStrand), do: Conversions.to(DnaStrand)
+  def new(_base, _options) do
   end
+
+  def converter, do: Bio.Sequence.Rna.Conversions
 end
 
 defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaDoubleStrand do
@@ -44,4 +42,6 @@ defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaDoubleStrand do
       complement_offset: offset
     }
   end
+
+  def convert(_, _, _), do: {:error, :undef_conversion}
 end

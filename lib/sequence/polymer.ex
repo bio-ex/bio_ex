@@ -12,7 +12,7 @@ defmodule Bio.Sequence.Polymer do
 
       iex>dna = DnaStrand.new("ttagccgt", label: "a label")
       ...>Polymer.convert(dna, RnaStrand)
-      %RnaStrand{sequence: "uuagccgu", length: 8, label: "a label"}
+      {:ok, %RnaStrand{sequence: "uuagccgu", length: 8, label: "a label"}}
 
   But, and this is the important part, other conversions are not well defined by
   defaults. For example:
@@ -63,7 +63,7 @@ defmodule Bio.Sequence.Polymer do
       ...>end
       ...>amino = AminoAcid.new("maktg", label: "polypeptide-∂")
       ...>Polymer.convert(amino, DnaStrand, conversion: CompressedAminoConversion)
-      %DnaStrand{sequence: "atggcnaaracnggn", length: 15, label: "polypeptide-∂"}
+      {:ok, %DnaStrand{sequence: "atggcnaaracnggn", length: 15, label: "polypeptide-∂"}}
 
   This is made possible because of the simple implementation of the
   `Bio.Protocols.Convertible` interface for the `Bio.Sequence.AminoAcid`. If
@@ -83,20 +83,27 @@ defmodule Bio.Sequence.Polymer do
   """
   alias Bio.Protocols.Convertible
 
+  @spec convert(struct(), module(), keyword()) :: {:ok, struct()} | {:error, :undef_conversion}
   def convert(%_{} = data, module, opts \\ []) do
     case Keyword.get(opts, :conversion) do
       nil ->
-        conversion_module = Module.concat(data.__struct__, DefaultConversions)
+        conversion_module = apply(data.__struct__, :converter, [])
 
         case apply(conversion_module, :to, [module]) do
-          {:ok, converter} -> Convertible.convert(data, module, converter)
-          otherwise -> otherwise
+          {:ok, elementwise_converter} ->
+            {:ok, Convertible.convert(data, module, elementwise_converter)}
+
+          otherwise ->
+            otherwise
         end
 
       conversion_module ->
         case apply(conversion_module, :to, [module]) do
-          {:ok, converter} -> Convertible.convert(data, module, converter)
-          otherwise -> otherwise
+          {:ok, elementwise_converter} ->
+            {:ok, Convertible.convert(data, module, elementwise_converter)}
+
+          otherwise ->
+            otherwise
         end
     end
   end

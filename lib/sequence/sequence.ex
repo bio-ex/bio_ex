@@ -33,4 +33,11 @@ defmodule Bio.Sequence do
   where strings are slightly more complex objects.
   """
   use Bio.SimpleSequence
+
+  defmodule Conversions do
+    use Bio.Behaviors.Converter
+  end
+
+  @impl Bio.Behaviors.Sequence
+  def converter, do: Conversions
 end

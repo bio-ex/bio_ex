@@ -26,8 +26,11 @@ defmodule Bio.SimpleSequence do
   defmacro __using__(_) do
     quote do
       using_module = __MODULE__
+      @behaviour Bio.Behaviors.Sequence
+
       defstruct sequence: "", length: 0, label: ""
 
+      @impl Bio.Behaviors.Sequence
       def new(seq, opts \\ []) when is_binary(seq) do
         [label: &String.slice(&1, 0, 0), length: &String.length(&1)]
         |> Enum.map(fn {key, default} ->
