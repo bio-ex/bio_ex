@@ -12,7 +12,7 @@ defmodule Sequence.PolymerDnaRnaTest do
       test = DnaStrand.new("ttaaggcc", label: label)
       expected = RnaStrand.new("uuaaggcc", label: label)
 
-      assert expected == Subject.convert(test, RnaStrand)
+      assert {:ok, expected} == Subject.convert(test, RnaStrand)
     end
 
     test "dna to rna doesn't break casing" do
@@ -20,7 +20,7 @@ defmodule Sequence.PolymerDnaRnaTest do
       test = DnaStrand.new("TtAaGgCc", label: label)
       expected = RnaStrand.new("UuAaGgCc", label: label)
 
-      assert expected == Subject.convert(test, RnaStrand)
+      assert {:ok, expected} == Subject.convert(test, RnaStrand)
     end
 
     test "converts rna to dna using default mapping" do
@@ -28,7 +28,7 @@ defmodule Sequence.PolymerDnaRnaTest do
       test = RnaStrand.new("uuaaggcc", label: label)
       expected = DnaStrand.new("ttaaggcc", label: label)
 
-      assert expected == Subject.convert(test, DnaStrand)
+      assert {:ok, expected} == Subject.convert(test, DnaStrand)
     end
 
     test "rna to dna doesn't break casing" do
@@ -36,7 +36,7 @@ defmodule Sequence.PolymerDnaRnaTest do
       test = RnaStrand.new("UuAaGgCc", label: label)
       expected = DnaStrand.new("TtAaGgCc", label: label)
 
-      assert expected == Subject.convert(test, DnaStrand)
+      assert {:ok, expected} == Subject.convert(test, DnaStrand)
     end
 
     test "converts rna double to dna double using default mapping" do
@@ -52,7 +52,7 @@ defmodule Sequence.PolymerDnaRnaTest do
         bottom_strand: DnaStrand.new("aattccgg", label: label)
       }
 
-      assert expected == Subject.convert(test, DnaDoubleStrand)
+      assert {:ok, expected} == Subject.convert(test, DnaDoubleStrand)
     end
 
     test "rna double to dna double preserves casing" do
@@ -68,7 +68,7 @@ defmodule Sequence.PolymerDnaRnaTest do
         bottom_strand: DnaStrand.new("aAtTcCgG", label: label)
       }
 
-      assert expected == Subject.convert(test, DnaDoubleStrand)
+      assert {:ok, expected} == Subject.convert(test, DnaDoubleStrand)
     end
 
     test "converts dna double to rna double using default mapping" do
@@ -84,7 +84,7 @@ defmodule Sequence.PolymerDnaRnaTest do
         bottom_strand: RnaStrand.new("aauuccgg", label: label)
       }
 
-      assert expected == Subject.convert(test, RnaDoubleStrand)
+      assert {:ok, expected} == Subject.convert(test, RnaDoubleStrand)
     end
 
     test "dna double to rna double preserves casing" do
@@ -100,7 +100,7 @@ defmodule Sequence.PolymerDnaRnaTest do
         bottom_strand: RnaStrand.new("aAuUcCgG", label: label)
       }
 
-      assert expected == Subject.convert(test, RnaDoubleStrand)
+      assert {:ok, expected} == Subject.convert(test, RnaDoubleStrand)
     end
   end
 end

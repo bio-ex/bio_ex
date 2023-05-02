@@ -24,12 +24,13 @@ defmodule Bio.Sequence.AminoAcid do
   """
   use Bio.SimpleSequence
 
-  defmodule DefaultConversions do
+  defmodule Conversions do
     @moduledoc false
-
-    @doc false
-    def to(_), do: {:error, :undef_conversion}
+    use Bio.Behaviors.Converter
   end
+
+  @impl Bio.Behaviors.Sequence
+  def converter, do: Conversions
 end
 
 defimpl Bio.Protocols.Convertible, for: Bio.Sequence.AminoAcid do

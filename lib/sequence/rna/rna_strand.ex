@@ -24,15 +24,10 @@ defmodule Bio.Sequence.RnaStrand do
     %RnaStrand{sequence: "ag", length: 2, label: ""}
 
   """
+  @behaviour Bio.Behaviors.Sequence
   use Bio.SimpleSequence
-  alias Bio.Sequence.Rna.Conversions
 
-  defmodule DefaultConversions do
-    @moduledoc false
-
-    @doc false
-    def to(value), do: Conversions.to(value)
-  end
+  def converter, do: Bio.Sequence.Rna.Conversions
 end
 
 defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaStrand do
@@ -44,4 +39,6 @@ defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaStrand do
     |> Enum.join("")
     |> DnaStrand.new(label: sequence.label)
   end
+
+  def convert(_, _, _), do: {:error, :undef_conversion}
 end
