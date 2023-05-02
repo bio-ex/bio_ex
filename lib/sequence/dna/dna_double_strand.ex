@@ -8,8 +8,12 @@ defmodule Bio.Sequence.DnaDoubleStrand do
 
   @impl Bio.Behaviors.Sequence
   def new(top_strand, opts \\ []) when is_binary(top_strand) do
-    top = DnaStrand.new(top_strand)
-    bottom = Keyword.get(opts, :bottom_strand, Dna.reverse_complement(top))
+    label = Keyword.get(opts, :label, "")
+    top = DnaStrand.new(top_strand, label: label)
+
+    bottom =
+      Keyword.get(opts, :bottom_strand, Dna.complement(top_strand))
+      |> DnaStrand.new(label: "#{label} <bottom>")
 
     %__MODULE__{
       top_strand: top,

@@ -8,8 +8,12 @@ defmodule Bio.Sequence.RnaDoubleStrand do
 
   @impl Bio.Behaviors.Sequence
   def new(top_strand, opts \\ []) when is_binary(top_strand) do
-    top = RnaStrand.new(top_strand)
-    bottom = Keyword.get(opts, :bottom_strand, Rna.reverse_complement(top))
+    label = Keyword.get(opts, :label, "")
+    top = RnaStrand.new(top_strand, label: label)
+
+    bottom =
+      Keyword.get(opts, :bottom_strand, Rna.complement(top_strand))
+      |> RnaStrand.new(label: "#{label} <bottom>")
 
     %__MODULE__{
       top_strand: top,

@@ -51,6 +51,18 @@ defmodule Bio.Sequence.Rna do
     end
   end
 
+  def complement(%RnaStrand{} = sequence) do
+    sequence
+    |> Bnum.map(&Map.get(@complement, &1))
+  end
+
+  def complement(sequence) when is_binary(sequence) do
+    sequence
+    |> String.graphemes()
+    |> Enum.map(&Map.get(@complement, &1))
+    |> Enum.join()
+  end
+
   # TODO: not sure this is how I want this to work, but I _do_ want these
   # semantics.
   def reverse_complement(%RnaStrand{} = sequence) do
