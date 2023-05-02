@@ -1,4 +1,8 @@
-defmodule SequenceMappingTest do
+defmodule SequenceMonomerNameTest do
   use ExUnit.Case
-  doctest Bio.Sequence.Mapping
+
+  alias Bio.Sequence.MonomerName
+  alias Bio.Sequence.MonomerName, as: Subject
+
+  doctest MonomerName
 end
