@@ -47,6 +47,18 @@ defmodule Bio.Sequence.Dna do
     end
   end
 
+  def complement(%DnaStrand{} = sequence) do
+    sequence
+    |> Bnum.map(&Map.get(@complement, &1))
+  end
+
+  def complement(sequence) when is_binary(sequence) do
+    sequence
+    |> String.graphemes()
+    |> Enum.map(&Map.get(@complement, &1))
+    |> Enum.join()
+  end
+
   def reverse_complement(%DnaStrand{} = sequence) do
     sequence
     |> Bnum.map(&Map.get(@complement, &1))
