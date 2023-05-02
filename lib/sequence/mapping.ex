@@ -1,10 +1,13 @@
 defmodule Bio.Sequence.MonomerName do
   @moduledoc """
-  Mappings for various sequences.
+  Get the full name for a given monomer.
 
-  This module exists to provide convenience mappings from polymer elements to
-  alternative representations that don't make sense as members of the
-  `Bio.Sequence.Alphabets` module.
+  # Example
+    iex>MonomerName.nucleic_acid("a")
+    "adenine"
+
+    iex>MonomerName.amino_acid("a")
+    "alanine"
   """
 
   # TODO: should these all be lists and we include all the ambiguous stuff?
