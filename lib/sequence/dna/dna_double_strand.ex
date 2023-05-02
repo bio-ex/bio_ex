@@ -2,6 +2,15 @@ defmodule Bio.Sequence.DnaDoubleStrand do
   @behaviour Bio.Behaviors.Sequence
   alias Bio.Sequence.{Dna, DnaStrand, RnaStrand, RnaDoubleStrand}
 
+  @moduledoc """
+  A representative struct for Double Stranded DNA polymers.
+
+  This structure complexes two `Bio.Sequence.DnaStrand` structs along with the
+  information regarding how to offset them. The `complement_offset` allows you
+  to realize the correct representation of the string, and is used in the
+  implementation for the `String.Chars` protocol.
+  """
+
   defstruct top_strand: DnaStrand.new("", length: 0),
             bottom_strand: DnaStrand.new("", length: 0),
             complement_offset: 0

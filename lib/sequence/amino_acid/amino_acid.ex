@@ -3,19 +3,19 @@ defmodule Bio.Sequence.AminoAcid do
   Amino acids are modeled as simple sequences using `Bio.SimpleSequence`.
 
   # Examples
-    iex>aa = AminoAcid.new("ymabagta")
-    ...>"mabag" in aa
-    true
+      iex>aa = AminoAcid.new("ymabagta")
+      ...>"mabag" in aa
+      true
 
-    iex>alias Bio.Enum, as: Bnum
-    ...>aa = AminoAcid.new("ymabagta")
-    ...>Bnum.map(aa, &(&1))
-    %AminoAcid{sequence: "ymabagta", length: 8}
+      iex>alias Bio.Enum, as: Bnum
+      ...>AminoAcid.new("ymabagta")
+      ...>|>Bnum.map(&(&1))
+      %AminoAcid{sequence: "ymabagta", length: 8}
 
-    iex>alias Bio.Enum, as: Bnum
-    ...>aa = AminoAcid.new("ymabagta")
-    ...>Bnum.slice(aa, 2, 2)
-    %AminoAcid{sequence: "ab", length: 2, label: ""}
+      iex>alias Bio.Enum, as: Bnum
+      ...>AminoAcid.new("ymabagta")
+      ...>|>Bnum.slice(2, 2)
+      %AminoAcid{sequence: "ab", length: 2, label: ""}
 
   If you are interested in defining conversions of amino acids then look into
   the `Bio.Sequence.Polymer` module for how to deal with creating a Conversion

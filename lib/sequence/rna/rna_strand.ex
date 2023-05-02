@@ -9,20 +9,18 @@ defmodule Bio.Sequence.RnaStrand do
   applications developers to write.
 
   # Examples
-    iex>rna = RnaStrand.new("uuagcu")
-    ...>"uagc" in rna
-    true
+      iex>"uagc" in  RnaStrand.new("uuagcu")
+      true
 
-    iex>alias Bio.Enum, as: Bnum
-    ...>rna = RnaStrand.new("uuagcu")
-    ...>Bnum.map(rna, &(&1))
-    %RnaStrand{sequence: "uuagcu", length: 6}
+      iex>alias Bio.Enum, as: Bnum
+      ...>RnaStrand.new("uuagcu")
+      ...>|> Bnum.map(&(&1))
+      %RnaStrand{sequence: "uuagcu", length: 6}
 
-    iex>alias Bio.Enum, as: Bnum
-    ...>rna = RnaStrand.new("uuagcu")
-    ...>Bnum.slice(rna, 2, 2)
-    %RnaStrand{sequence: "ag", length: 2, label: ""}
-
+      iex>alias Bio.Enum, as: Bnum
+      ...>RnaStrand.new("uuagcu")
+      ...>|> Bnum.slice(2, 2)
+      %RnaStrand{sequence: "ag", length: 2, label: ""}
   """
   use Bio.SimpleSequence
 
