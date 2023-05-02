@@ -2,6 +2,7 @@ defmodule IO.SnapGene.SnapGeneTest do
   use ExUnit.Case, async: true
 
   alias Bio.IO.SnapGene, as: Subject
+  alias Bio.IO.SnapGene
   alias Bio.XML
 
   doctest Subject
@@ -11,7 +12,7 @@ defmodule IO.SnapGene.SnapGeneTest do
       dna =
         "gcacactaagccttccatctattcggcttcttgctctgcaatgcctacccatagctgctggaagctaacgaggtaagtttcgcctgggatatgcgccccatagcacgtataacggtaactttctacgacctatcatctaactagaaatcacagtatacgaggaagctcgtcgaccatatggcacctaacggtagtggaaggcgccaatcacagatggttcactaacggtcttaagatcgaattacaatgctgtgaacttatagaggacgggagcaagcgtcgtccacccgcgtagggttagcgttaacacagtctttcagtcgttcgtctaggagaggaggctctttcacaaaacaaaccagatgtctttgggcacgttgaaattagcgggttgaggtgctctacgtccgacacctttgccagaggtgtaaaaagggattaccttaatcccgtgtgtgataccctgtagtacccacgacttaacaactagaggccggtgtataccagttacccgacaatgcaaatcgtattattgcggtagtatcgatcctccccgatgctcgatcttgtacagaagaaaagcccgaaaatttaatgaagcaaaataccctatctgcccaggaggatagaagccccatcaatgacttaaactccgacgattttacgggcggtctaccgctcacaggcaggtgaagacatcacatatgctccgtgtacgcatcggatccaagaaacttccgtccagctgtcataaacctggactttttgtatctggaggtgacttagccgatagcaacgaaatctcaattgagctggttctaaatctttcttttagacggagcatatgtgaagtagtaaaatcatctctaggttcacggaggtaatcgtcggtctgccaccctgactcggctattaggtggaggagcttttaagctctttacaacacctaagtctgcccatattatgcatggttttccgacacatttcctcctaatcgtag"
 
-      {:ok, result} = Subject.read("test/io/snapgene/sample-d.dna")
+      {:ok, result} = Subject.read("test/io/snap_gene/sample-d.dna")
 
       refute result.circular?
       assert result.valid?
@@ -20,7 +21,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature names" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-d.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-d.dna")
 
       query_results =
         f
@@ -31,7 +32,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature qualifiers" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-d.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-d.dna")
 
       query_results =
         f
@@ -66,7 +67,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading segment ranges" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-d.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-d.dna")
 
       query_results =
         f
@@ -77,7 +78,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature type" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-d.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-d.dna")
 
       query_results =
         f
@@ -88,7 +89,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature directionality" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-d.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-d.dna")
 
       query_results =
         f
@@ -111,7 +112,7 @@ defmodule IO.SnapGene.SnapGeneTest do
       dna =
         "gtcagcctgtctcttctgacagccacacagccattgcttgttaccaggattaacagcagcattccttcataaaagttatggtacccttttctttctgcgccggttcgtgcaaatgaccaatgcccacaagtgaagttcgtaataacgaccgagacctgggcgggaccgtatgtagttgatgatatgggctttaaccagctataggatctcgcgaccggtggaattccttcgtgaggattaaggtaaacgatgctcatgatgctgaggtgtgccatgacccagagtcgtatcgatccttatatgtgctatcactcttattatcattatactgattttccacgtggtggttgcaggtatcgctttctggcgagtatcaagttgctgctttatgatcggcgaactggcactcatagacggtctccctccaactcactagtacctggatcggaatcggcggctctgacatgtatcaggaagtgactgtgatcaaaactggcaaaagtgcaatataaatcgtcaccactgctgctcataagcgttcattcaacccgaggtagtaaggccgcagacaactcccaggcggagggtccaaccctgagtcagcgcgacacacaacagctcaacgctataaacctcggtcgttgacgctcggggggttaaagccgtgaagttctcaatacactctcttattccttcggctattaccaaattaaggtccatgccccgcgaactccttgaacgcaacctcgataaataaaaaacgattgaaggttacatgcgtaagggcctaaagataaaaacctccgataggcatgttatcggtcccttctacagggcgactagcgctgggagggatacgcaaacccggacaggaaaggtagctgaaagcaacgggtacggtagataaaatttgtccgcaagcagagctttgtacggtccgcccgatggtggaatcatatcgtttgctgaagtgctaacaccctccatctgactagctata"
 
-      {:ok, result} = Subject.read("test/io/snapgene/sample-e.dna")
+      {:ok, result} = Subject.read("test/io/snap_gene/sample-e.dna")
 
       assert result.circular?
       assert result.valid?
@@ -120,7 +121,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature names" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-e.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-e.dna")
 
       query_results =
         f
@@ -131,7 +132,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading segment ranges" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-e.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-e.dna")
 
       query_results =
         f
@@ -142,7 +143,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature type" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-e.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-e.dna")
 
       query_results =
         f
@@ -153,7 +154,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature directionality" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-e.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-e.dna")
 
       query_results =
         f
@@ -171,7 +172,7 @@ defmodule IO.SnapGene.SnapGeneTest do
       dna =
         "gtcagcctgtctcttctgacagccacacagccattgcttgttaccaggattaacagcagcattccttcataaaagttatggtacccttttctttctgcgccggttcgtgcaaatgaccaatgcccacaagtgaagttcgtaataacgaccgagacctgggcgggaccgtatgtagttgatgatatgggctttaaccagctataggatctcgcgaccggtggaattccttcgtgaggattaaggtaaacgatgctcatgatgctgaggtgtgccatgacccagagtcgtatcgatccttatatgtgctatcactcttattatcattatactgattttccacgtggtggttgcaggtatcgctttctggcgagtatcaagttgctgctttatgatcggcgaactggcactcatagacggtctccctccaactcactagtacctggatcggaatcggcggctctgacatgtatcaggaagtgactgtgatcaaaactggcaaaagtgcaatataaatcgtcaccactgctgctcataagcgttcattcaacccgaggtagtaaggccgcagacaactcccaggcggagggtccaaccctgagtcagcgcgacacacaacagctcaacgctataaacctcggtcgttgacgctcggggggttaaagccgtgaagttctcaatacactctcttattccttcggctattaccaaattaaggtccatgccccgcgaactccttgaacgcaacctcgataaataaaaaacgattgaaggttacatgcgtaagggcctaaagataaaaacctccgataggcatgttatcggtcccttctacagggcgactagcgctgggagggatacgcaaacccggacaggaaaggtagctgaaagcaacgggtacggtagataaaatttgtccgcaagcagagctttgtacggtccgcccgatggtggaatcatatcgtttgctgaagtgctaacaccctccatctgactagctata"
 
-      {:ok, result} = Subject.read("test/io/snapgene/sample-f.dna")
+      {:ok, result} = Subject.read("test/io/snap_gene/sample-f.dna")
 
       assert result.circular?
       assert result.valid?
@@ -180,7 +181,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature names" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-f.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-f.dna")
 
       query_results =
         f
@@ -191,7 +192,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading segment ranges" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-f.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-f.dna")
 
       query_results =
         f
@@ -212,7 +213,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature type" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-f.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-f.dna")
 
       query_results =
         f
@@ -223,7 +224,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature directionality" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/sample-f.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/sample-f.dna")
 
       query_results =
         f
@@ -241,7 +242,7 @@ defmodule IO.SnapGene.SnapGeneTest do
       dna =
         "gaacgcggccgccagctgaagcttcgtacgctgcaggtcgacggatccccgggttaattaaggcgcgccagatctgtttagcttgcctcgtccccgccgggtcacccggccagcgacatggaggcccagaataccctccttgacagtcttgacgtgcgcagctcaggggcatgatgtgactgtcgcccgtacatttagcccatacatccccatgtataatcatttgcatccatacattttgatggccgcacggcgcgaagcaaaaattacggctcctcgctgcagacctgcgagcagggaaacgctcccctcacagacgcgttgaattgtccccacgccgcgcccctgtagagaaatataaaaggttaggatttgccactgaggttcttctttcatatacttccttttaaaatcttgctaggatacagttctcacatcacatccgaacataaacaaccatgggtaaggaaaagactcacgtttcgaggccgcgattaaattccaacatggatgctgatttatatgggtataaatgggctcgcgataatgtcgggcaatcaggtgcgacaatctatcgattgtatgggaagcccgatgcgccagagttgtttctgaaacatggcaaaggtagcgttgccaatgatgttacagatgagatggtcagactaaactggctgacggaatttatgcctcttccgaccatcaagcattttatccgtactcctgatgatgcatggttactcaccactgcgatccccggcaaaacagcattccaggtattagaagaatatcctgattcaggtgaaaatattgttgatgcgctggcagtgttcctgcgccggttgcattcgattcctgtttgtaattgtccttttaacagcgatcgcgtatttcgtctcgctcaggcgcaatcacgaatgaataacggtttggttgatgcgagtgattttgatgacgagcgtaatggctggcctgttgaacaagtctggaaagaaatgcataagcttttgccattctcaccggattcagtcgtcactcatggtgatttctcacttgataaccttatttttgacgaggggaaattaataggttgtattgatgttggacgagtcggaatcgcagaccgataccaggatcttgccatcctatggaactgcctcggtgagttttctccttcattacagaaacggctttttcaaaaatatggtattgataatcctgatatgaataaattgcagtttcatttgatgctcgatgagtttttctaatcagtactgacaataaaaagattcttgttttcaagaacttgtcatttgtatagtttttttatattgtagttgttctattttaatcaaatgttagcgtgatttatattttttttcgcctcgacatcatctgcccagatgcgaagttaagtgcgcagaaagtaatatcatgcgtcaatcgtatgtgaatgctggtcgctatactgctgtcgattcgatactaacgccgccatccagtgtcgaaaacgagctcgaattcatcgatgatatcagatccactagtggcctatgcggccgcggatctgccggtctccctatagtgagtcgtattaatttcgataagccaggttaacctgcattaatgaatcggccaacgcgcggggagaggcggtttgcgtattgggcgctcttccgcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcaatgctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaaggacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttaccaatgcttaatcagtgaggcacctatctcagcgatctgtctatttcgttcatccatagttgcctgactccccgtcgtgtagataactacgatacgggagggcttaccatctggccccagtgctgcaatgataccgcgagacccacgctcaccggctccagatttatcagcaataaaccagccagccggaagggccgagcgcagaagtggtcctgcaactttatccgcctccatccagtctattaattgttgccgggaagctagagtaagtagttcgccagttaatagtttgcgcaacgttgttgccattgctacaggcatcgtggtgtcacgctcgtcgtttggtatggcttcattcagctccggttcccaacgatcaaggcgagttacatgatcccccatgttgtgcaaaaaagcggttagctccttcggtcctccgatcgttgtcagaagtaagttggccgcagtgttatcactcatggttatggcagcactgcataattctcttactgtcatgccatccgtaagatgcttttctgtgactggtgagtactcaaccaagtcattctgagaatagtgtatgcggcgaccgagttgctcttgcccggcgtcaatacgggataataccgcgccacatagcagaactttaaaagtgctcatcattggaaaacgttcttcggggcgaaaactctcaaggatcttaccgctgttgagatccagttcgatgtaacccactcgtgcacccaactgatcttcagcatcttttactttcaccagcgtttctgggtgagcaaaaacaggaaggcaaaatgccgcaaaaaagggaataagggcgacacggaaatgttgaatactcatactcttcctttttcaatattattgaagcatttatcagggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacatttccccgaaaagtgccacctgacgtctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggccctttcgtctcgcgcgtttcggtgatgacggtgaaaacctctgacacatgcagctcccggagacggtcacagcttgtctgtaagcggatgccgggagcagacaagcccgtcagggcgcgtcagcgggtgttggcgggtgtcggggctggcttaactatgcggcatcagagcagattgtactgagagtgcaccatatggacatattgtcgttagaacgcggctacaattaatacataaccttatgtatcatacacatacgatttaggtgacactata"
 
-      {:ok, result} = Subject.read("test/io/snapgene/pFA-KanMX4.dna")
+      {:ok, result} = Subject.read("test/io/snap_gene/pFA-KanMX4.dna")
 
       assert result.circular?
       assert result.valid?
@@ -250,7 +251,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature names" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/pFA-KanMX4.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/pFA-KanMX4.dna")
 
       query_results =
         f
@@ -271,7 +272,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading segment ranges" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/pFA-KanMX4.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/pFA-KanMX4.dna")
 
       query_results =
         f
@@ -293,7 +294,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature type" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/pFA-KanMX4.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/pFA-KanMX4.dna")
 
       query_results =
         f
@@ -314,7 +315,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature directionality" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/pFA-KanMX4.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/pFA-KanMX4.dna")
 
       query_results =
         f
@@ -337,7 +338,7 @@ defmodule IO.SnapGene.SnapGeneTest do
     end
 
     test "reading feature qualifiers" do
-      {:ok, %{features: f}} = Subject.read("test/io/snapgene/pFA-KanMX4.dna")
+      {:ok, %{features: f}} = Subject.read("test/io/snap_gene/pFA-KanMX4.dna")
 
       query_results =
         f
