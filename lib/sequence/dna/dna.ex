@@ -1,8 +1,20 @@
 defmodule Bio.Sequence.Dna do
-  alias Bio.Sequence.{RnaStrand, RnaDoubleStrand}
+  alias Bio.Sequence.{DnaStrand, RnaStrand, RnaDoubleStrand}
   alias Bio.Behaviors.Converter
+  alias Bio.Enum, as: Bnum
 
   import Bio.Sequence.Utilities, only: [upper?: 1]
+
+  @complement %{
+    "a" => "t",
+    "A" => "T",
+    "t" => "a",
+    "T" => "A",
+    "g" => "c",
+    "G" => "C",
+    "c" => "g",
+    "C" => "G"
+  }
 
   defmodule Conversions do
     @moduledoc """
@@ -33,5 +45,19 @@ defmodule Bio.Sequence.Dna do
           end
       end
     end
+  end
+
+  def reverse_complement(%DnaStrand{} = sequence) do
+    sequence
+    |> Bnum.map(&Map.get(@complement, &1))
+    |> Bnum.reverse()
+  end
+
+  def reverse_complement(sequence) when is_binary(sequence) do
+    sequence
+    |> String.graphemes()
+    |> Enum.map(&Map.get(@complement, &1))
+    |> Enum.reverse()
+    |> Enum.join()
   end
 end

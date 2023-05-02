@@ -177,7 +177,12 @@ defmodule Bio.Enum do
 
   def reject(), do: {}
 
-  def reverse(a), do: {a}
+  def reverse(enumerable),
+    do:
+      Enum.reverse(enumerable)
+      |> Enum.join()
+      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+
   def reverse(a, b), do: {a, b}
 
   def reverse_slice(), do: {}
