@@ -51,6 +51,11 @@ defmodule Bio.Sequence.Rna do
     end
   end
 
+  @doc """
+  Returns the complement of a given strand.
+
+  Takes a `binary` or a `Bio.Sequence.RnaStrand`
+  """
   def complement(%RnaStrand{} = sequence) do
     sequence
     |> Bnum.map(&Map.get(@complement, &1))
@@ -63,6 +68,9 @@ defmodule Bio.Sequence.Rna do
     |> Enum.join()
   end
 
+  @doc """
+  Returns the reverse complement of a given strand.
+  """
   # TODO: not sure this is how I want this to work, but I _do_ want these
   # semantics.
   def reverse_complement(%RnaStrand{} = sequence) do
