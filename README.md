@@ -78,3 +78,10 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/restrict_ex](https://hexdocs.pm/restrict_ex).
+
+## Credit
+
+Big shout out to the [BioPython](https://github.com/biopython) team. I used many data sources according to
+their implementations, and referenced many details of the file types for parsing
+from their implementations as well. While I wouldn't consider this a port, it is
+definitely spiritually related to that project!

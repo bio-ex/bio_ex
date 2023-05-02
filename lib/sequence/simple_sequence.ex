@@ -41,6 +41,11 @@ defmodule Bio.SimpleSequence do
         |> then(&struct!(__MODULE__, &1))
       end
 
+      @impl Bio.Behaviors.Sequence
+      def fasta_line(%__MODULE__{sequence: seq, label: label}) when is_binary(seq) do
+        ">#{label}\n#{seq}\n"
+      end
+
       defimpl Enumerable, for: using_module do
         @parent using_module
 
