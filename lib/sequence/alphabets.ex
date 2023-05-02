@@ -1,5 +1,10 @@
 defmodule Bio.Sequence.Alphabets do
-  @moduledoc false
+  @moduledoc """
+  Alphabets relevant to the sequences:
+  - `Bio.Sequence.Dna`
+  - `Bio.Sequence.Rna`
+  - `Bio.Sequence.AminoAcid`
+  """
   defmodule Dna do
     @moduledoc false
     @common "ATGCatgc"
