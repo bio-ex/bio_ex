@@ -24,9 +24,9 @@ defmodule Bio.Sequence.RnaStrand do
     %RnaStrand{sequence: "ag", length: 2, label: ""}
 
   """
-  @behaviour Bio.Behaviors.Sequence
   use Bio.SimpleSequence
 
+  @impl Bio.Behaviors.Sequence
   def converter, do: Bio.Sequence.Rna.Conversions
 end
 
