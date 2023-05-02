@@ -3,11 +3,11 @@ defmodule Bio.Sequence.MonomerName do
   Get the full name for a given monomer.
 
   # Example
-    iex>MonomerName.nucleic_acid("a")
-    "adenine"
+      iex>MonomerName.nucleic_acid("a")
+      "adenine"
 
-    iex>MonomerName.amino_acid("a")
-    "alanine"
+      iex>MonomerName.amino_acid("a")
+      "alanine"
   """
 
   # TODO: should these all be lists and we include all the ambiguous stuff?
