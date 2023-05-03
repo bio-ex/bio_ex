@@ -21,10 +21,14 @@ end
 
 defmodule BioIOFastaTest.Read do
   use ExUnit.Case
+
+  alias Bio.IO.Fasta, as: Subject
+  alias Bio.IO.Fasta
+  alias Bio.Sequence.{DnaStrand, DnaDoubleStrand, AminoAcid, Sequence}
+
   doctest Bio.IO.Fasta
 
   alias Bio.IO.Fasta, as: Subject
-  alias Bio.Sequence.{DnaStrand, DnaDoubleStrand, AminoAcid, Sequence}
 
   setup do
     {tmp_dir, tmp_file} = Testing.Tempfile.get()
@@ -187,7 +191,6 @@ end
 
 defmodule BioIOFastaTest.Write do
   use ExUnit.Case
-  doctest Bio.IO.Fasta
 
   alias Bio.IO.Fasta, as: Subject
   alias Bio.Sequence.DnaStrand
