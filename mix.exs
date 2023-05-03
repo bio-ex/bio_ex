@@ -65,6 +65,7 @@ defmodule Bio.MixProject do
       groups_for_modules: [
         IO: [
           Bio.IO.Fasta,
+          Bio.IO.FastQ,
           Bio.IO.SnapGene
         ],
         "General Polymers": [
