@@ -2,18 +2,22 @@ defmodule Bio.IO.SnapGene do
   @moduledoc ~S"""
   Read a SnapGene file
 
-  The file is read into a map with the following fields:
-      %{
-          sequence: String.t(),
-          circular?: Boolean,
-          valid?: Boolean,
-          length: Integer,
-          features: Tuple{XML},
-        }
+  The file is read into a struct with the following fields:
 
-  The `circular?` and `sequence` fields are parsed from the DNA packet. The
-  `sequence` field is a lowercase binary of the sequence, whose length is
-  determined and stored in the `length` field.
+  ``` elixir
+  %SnapGene{
+      sequence: %DnaStrand{},
+      circular?: boolean(),
+      valid?: boolean(),
+      features: tuple()
+    }
+  ```
+
+  The `circular?` and `sequence` fields are parsed from the DNA packet.
+
+  The `sequence` field is represented by default as a `Bio.Sequence.DnaStrand`,
+  but any module that behaves as a `Bio.Behaviors.Sequence` can be used, since
+  the `new/2` method is applied to create the struct.
 
   Validity is determined by parsing the SnapGene cookie to ensure that it
   contains the requisite "SnapGene" string.
@@ -69,20 +73,32 @@ defmodule Bio.IO.SnapGene do
   up guide with further examples of queries, and an explanation of the mapping
   of concepts between the XML and what is parsed from BioPython.
   """
-  @dna 0x00
+  @sequence 0x00
   @primers 0x05
   @notes 0x06
   @cookie 0x09
   @features 0x0A
 
-  def read(filename) do
+  defstruct sequence: nil, circular?: false, valid?: false, features: {}
+  @type posix :: File.posix()
+
+  @doc """
+  Read the contents of a SnapGene file.
+
+  Takes a filename and reads the contents into the `%Bio.IO.SnapGene{}` struct.
+  Returns an error tuple on failure with the cause from `File.read/1`.
+  """
+  @spec read(filename :: String.t()) :: {:ok, struct()} | {:error, posix()}
+  def read(filename, opts \\ []) do
+    sequence_module = Keyword.get(opts, :sequence_type, Bio.Sequence.DnaStrand)
+
     case File.read(filename) do
-      {:ok, content} -> {:ok, parse(content, %{})}
+      {:ok, content} -> {:ok, struct(__MODULE__, parse(content, %{}, sequence_module))}
       not_ok -> not_ok
     end
   end
 
-  defp parse(<<>>, output), do: output
+  defp parse(<<>>, output, _module), do: output
 
   # A SnapGene file is made of packets, each packet being a Type-Length-Value
   # structure comprising:
@@ -92,25 +108,42 @@ defmodule Bio.IO.SnapGene do
   #   - the actual data.
   # perfect case for binary pattern matching if there ever was one
   # https://en.wikipedia.org/wiki/Type%E2%80%93length%E2%80%93value)
-  defp parse(data, output) do
+  defp parse(data, output, module) do
     <<packet_type::size(8), content::binary>> = data
     <<packet_length::size(32), content::binary>> = content
     <<packet::binary-size(packet_length), content::binary>> = content
 
     case packet_type do
-      @dna -> parse(content, Map.merge(output, parse_dna(packet)))
-      @primers -> parse(content, Map.merge(output, parse_primers(packet)))
-      @notes -> parse(content, Map.merge(output, parse_notes(packet)))
-      @cookie -> parse(content, Map.merge(output, parse_cookie(packet)))
-      @features -> parse(content, Map.merge(output, parse_features(packet)))
-      _ -> parse(content, output)
+      @sequence ->
+        new_output = Map.merge(output, parse_sequence(packet, module))
+        parse(content, new_output, module)
+
+      @primers ->
+        parse(content, Map.merge(output, parse_primers(packet)), module)
+
+      @notes ->
+        parse(content, Map.merge(output, parse_notes(packet)), module)
+
+      @cookie ->
+        parse(content, Map.merge(output, parse_cookie(packet)), module)
+
+      @features ->
+        new_output = Map.merge(output, parse_features(packet))
+        parse(content, new_output, module)
+
+      _ ->
+        parse(content, output, module)
     end
   end
 
-  defp parse_dna(data) do
+  defp parse_sequence(data, module) do
     <<circular::size(8), rest::binary>> = data
     circular = Bitwise.band(circular, 0x01) == 1
-    %{sequence: String.downcase(rest), length: String.length(rest), circular?: circular}
+
+    %{
+      sequence: apply(module, :new, [String.downcase(rest), [length: String.length(rest)]]),
+      circular?: circular
+    }
   end
 
   defp parse_notes(data), do: %{notes: xml(data)}
