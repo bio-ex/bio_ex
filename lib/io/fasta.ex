@@ -14,6 +14,15 @@ defmodule Bio.IO.Fasta do
   expectation is that the data is ASCII encoded.
   """
 
+  @type posix :: File.posix()
+  @type header :: String.t()
+  @type sequence :: String.t()
+  @type fasta_data ::
+          [String.t()]
+          | [struct()]
+          | [{header(), sequence()}]
+          | %{headers: [header()], sequences: [sequence()]}
+
   @doc """
   Read a FASTA formatted file
 
@@ -29,9 +38,7 @@ defmodule Bio.IO.Fasta do
   - `:parse_header` - A callable for parsing the header values of the FASTA
   file. Should be a `(String.t() -> String.t())` lambda.
   """
-  @spec read(filename :: String.t(), opts :: keyword()) ::
-          {:ok, any()}
-          | {:error, code :: atom()}
+  @spec read(filename :: Path.t(), opts :: keyword()) :: {:ok, any()} | {:error, posix()}
   def read(filename, opts \\ []) do
     type = Keyword.get(opts, :type, Bio.Sequence)
     h_fn = Keyword.get(opts, :parse_header, & &1)
@@ -45,8 +52,12 @@ defmodule Bio.IO.Fasta do
     end
   end
 
-  # TODO: does this actually raise?
-  @spec read!(filename :: String.t(), opts :: keyword()) :: any() | no_return()
+  @doc """
+  Read a FASTA formatted file
+
+  The same as `read/2`, but will raise a `File.Error` on failure.
+  """
+  @spec read!(filename :: Path.t(), opts :: keyword()) :: any() | no_return()
   def read!(filename, opts \\ []) do
     type = Keyword.get(opts, :type)
     h_fn = Keyword.get(opts, :parse_header, & &1)
@@ -80,9 +91,10 @@ defmodule Bio.IO.Fasta do
   ```
 
   ## Examples
-      iex> Bio.IO.Fasta.write("/tmp/test_file.fasta", ["header", "sequence", "header2", "sequence2"])
+      iex> Fasta.write("/tmp/test_file.fasta", ["header", "sequence", "header2", "sequence2"])
       :ok
   """
+  @spec write(filename :: Path.t(), data :: fasta_data()) :: :ok | {:error, posix()}
   def write(filename, {header, sequence}) do
     File.write(filename, ">#{header}\n#{sequence}\n")
   end
