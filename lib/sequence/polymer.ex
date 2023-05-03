@@ -83,6 +83,34 @@ defmodule Bio.Sequence.Polymer do
   """
   alias Bio.Protocols.Convertible
 
+  @doc """
+  Apply a conversion to a given datum.
+
+  The `convert/3` function is at the core of using the `Bio.Sequence.Polymer`
+  module. By passing the function a struct and the module you wish to convert
+  to, you are hooking into the underlying implementation of the
+  `Bio.Behaviours.Converter` for that module. This means that both the struct
+  you given _as well as the module_ must have this implemented.
+
+  # Examples
+  Given a struct and module with a known conversion:
+
+      iex>dna = DnaStrand.new("ttagccgt", label: "a label")
+      ...>Polymer.convert(dna, RnaStrand)
+      {:ok, %RnaStrand{sequence: "uuagccgu", length: 8, label: "a label"}}
+
+  Given a struct and module with unknown conversions:
+
+      iex>amino = AminoAcid.new("maktg")
+      ...>Polymer.convert(amino, DnaStrand)
+      {:error, :undef_conversion}
+
+  Given a struct that doesn't implement `Bio.Behaviours.Converter`:
+
+      iex>amino = Bio.IO.QualityScore.new("maktg", encoding: :phred_33)
+      ...>Polymer.convert(amino, DnaStrand)
+      {:error, :no_converter}
+  """
   @spec convert(struct(), module(), keyword()) :: {:ok, struct()} | {:error, :undef_conversion}
   def convert(%_{} = data, module, opts \\ []) do
     case Keyword.get(opts, :conversion) do
@@ -106,5 +134,7 @@ defmodule Bio.Sequence.Polymer do
             otherwise
         end
     end
+  rescue
+    UndefinedFunctionError -> {:error, :no_converter}
   end
 end
