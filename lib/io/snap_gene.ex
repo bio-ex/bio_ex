@@ -80,6 +80,7 @@ defmodule Bio.IO.SnapGene do
   @features 0x0A
 
   defstruct sequence: nil, circular?: false, valid?: false, features: {}
+# TODO: Look into the available types for XML data
   @type posix :: File.posix()
 
   @doc """
