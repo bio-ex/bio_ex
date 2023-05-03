@@ -35,9 +35,13 @@ defmodule Bio.Sequence do
   use Bio.SimpleSequence
 
   defmodule Conversions do
+    @moduledoc false
     use Bio.Behaviors.Converter
   end
 
   @impl Bio.Behaviors.Sequence
   def converter, do: Conversions
+
+  @impl Bio.Behaviors.Sequence
+  def fasta_line(%__MODULE__{sequence: seq, label: label}), do: ">#{label}\n#{seq}\n"
 end
