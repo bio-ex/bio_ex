@@ -26,11 +26,11 @@ defmodule Bio.SimpleSequence do
   defmacro __using__(_) do
     quote do
       using_module = __MODULE__
-      @behaviour Bio.Behaviors.Sequence
+      @behaviour Bio.Behaviours.Sequence
 
       defstruct sequence: "", length: 0, label: ""
 
-      @impl Bio.Behaviors.Sequence
+      @impl Bio.Behaviours.Sequence
       def new(seq, opts \\ []) when is_binary(seq) do
         [label: &String.slice(&1, 0, 0), length: &String.length(&1)]
         |> Enum.map(fn {key, default} ->
@@ -41,7 +41,7 @@ defmodule Bio.SimpleSequence do
         |> then(&struct!(__MODULE__, &1))
       end
 
-      @impl Bio.Behaviors.Sequence
+      @impl Bio.Behaviours.Sequence
       def fasta_line(%__MODULE__{sequence: seq, label: label}) when is_binary(seq) do
         ">#{label}\n#{seq}\n"
       end

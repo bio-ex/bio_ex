@@ -23,7 +23,7 @@ defmodule Bio.Sequence.DnaStrand do
   """
   use Bio.SimpleSequence
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def converter(), do: Bio.Sequence.Dna.Conversions
 end
 

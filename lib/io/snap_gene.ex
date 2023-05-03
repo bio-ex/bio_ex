@@ -16,7 +16,7 @@ defmodule Bio.IO.SnapGene do
   The `circular?` and `sequence` fields are parsed from the DNA packet.
 
   The `sequence` field is represented by default as a `Bio.Sequence.DnaStrand`,
-  but any module that behaves as a `Bio.Behaviors.Sequence` can be used, since
+  but any module that behaves as a `Bio.Behaviours.Sequence` can be used, since
   the `new/2` method is applied to create the struct.
 
   Validity is determined by parsing the SnapGene cookie to ensure that it
@@ -81,15 +81,16 @@ defmodule Bio.IO.SnapGene do
 
   defstruct sequence: nil, circular?: false, valid?: false, features: {}
   # TODO: Look into the available types for XML data
-  @type posix :: File.posix()
 
   @doc """
   Read the contents of a SnapGene file.
 
   Takes a filename and reads the contents into the `%Bio.IO.SnapGene{}` struct.
   Returns an error tuple on failure with the cause from `File.read/1`.
+
+  You can use `:file.format_error/1` to get a descriptive string of the error.
   """
-  @spec read(filename :: String.t()) :: {:ok, struct()} | {:error, posix()}
+  @spec read(filename :: Path.t(), opts :: keyword()) :: {:ok, struct()} | {:error, File.posix()}
   def read(filename, opts \\ []) do
     sequence_module = Keyword.get(opts, :sequence_type, Bio.Sequence.DnaStrand)
 

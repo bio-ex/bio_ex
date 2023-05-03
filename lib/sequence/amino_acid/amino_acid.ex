@@ -26,10 +26,10 @@ defmodule Bio.Sequence.AminoAcid do
 
   defmodule Conversions do
     @moduledoc false
-    use Bio.Behaviors.Converter
+    use Bio.Behaviours.Converter
   end
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def converter, do: Conversions
 end
 

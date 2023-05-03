@@ -5,7 +5,7 @@ defmodule Bio.Sequence.Rna do
   `Bio.Sequence.DnaStrand` and `Bio.Sequence.AminoAcid` structs.
   """
   alias Bio.Sequence.{RnaStrand, DnaStrand, DnaDoubleStrand}
-  alias Bio.Behaviors.Converter
+  alias Bio.Behaviours.Converter
   alias Bio.Enum, as: Bnum
   import Bio.Sequence.Utilities, only: [upper?: 1]
 

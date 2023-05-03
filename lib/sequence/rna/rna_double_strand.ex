@@ -1,12 +1,12 @@
 defmodule Bio.Sequence.RnaDoubleStrand do
-  @behaviour Bio.Behaviors.Sequence
+  @behaviour Bio.Behaviours.Sequence
   alias Bio.Sequence.{Rna, RnaStrand, DnaStrand, DnaDoubleStrand}
 
   defstruct top_strand: RnaStrand.new("", length: 0),
             bottom_strand: RnaStrand.new("", length: 0),
             complement_offset: 0
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def new(top_strand, opts \\ []) when is_binary(top_strand) do
     label = Keyword.get(opts, :label, "")
     top = RnaStrand.new(top_strand, label: label)
@@ -22,7 +22,7 @@ defmodule Bio.Sequence.RnaDoubleStrand do
     }
   end
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def converter, do: Bio.Sequence.Rna.Conversions
 end
 

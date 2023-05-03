@@ -24,7 +24,7 @@ defmodule Bio.Sequence.RnaStrand do
   """
   use Bio.SimpleSequence
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def converter, do: Bio.Sequence.Rna.Conversions
 end
 
