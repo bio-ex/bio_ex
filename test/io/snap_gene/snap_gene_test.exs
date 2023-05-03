@@ -16,7 +16,7 @@ defmodule IO.SnapGene.SnapGeneTest do
 
       refute result.circular?
       assert result.valid?
-      assert result.dna == dna
+      assert result.sequence == dna
       assert result.length == 1000
     end
 
@@ -116,7 +116,7 @@ defmodule IO.SnapGene.SnapGeneTest do
 
       assert result.circular?
       assert result.valid?
-      assert result.dna == dna
+      assert result.sequence == dna
       assert result.length == 1000
     end
 
@@ -176,7 +176,7 @@ defmodule IO.SnapGene.SnapGeneTest do
 
       assert result.circular?
       assert result.valid?
-      assert result.dna == dna
+      assert result.sequence == dna
       assert result.length == 1000
     end
 
@@ -246,7 +246,7 @@ defmodule IO.SnapGene.SnapGeneTest do
 
       assert result.circular?
       assert result.valid?
-      assert result.dna == dna
+      assert result.sequence == dna
       assert result.length == 3941
     end
 

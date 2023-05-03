@@ -1,11 +1,5 @@
 defmodule Bio.IO.SnapGene do
-  @dna 0x00
-  @primers 0x05
-  @notes 0x06
-  @cookie 0x09
-  @features 0x0A
-
-  @doc ~S"""
+  @moduledoc ~S"""
   Read a SnapGene file
 
   The file is read into a map with the following fields:
@@ -17,14 +11,13 @@ defmodule Bio.IO.SnapGene do
           features: Tuple{XML},
         }
 
-  The `circular?` and `dna` fields are parsed from the DNA packet. The `dna`
-  field is a lowercase binary of the sequence, whose length is determined and
-  stored in the `length` field.
+  The `circular?` and `sequence` fields are parsed from the DNA packet. The
+  `sequence` field is a lowercase binary of the sequence, whose length is
+  determined and stored in the `length` field.
 
   Validity is determined by parsing the SnapGene cookie to ensure that it
   contains the requisite "SnapGene" string.
 
-  # TODO: link to guide
   Features require a bit more explanation, since they are stored in XML. Parsing
   them into a map is certainly a possibility, but it seemed like doing so would
   reduce the ability of a developer to leverage what I am hoping is a lower
@@ -39,7 +32,6 @@ defmodule Bio.IO.SnapGene do
   you have a terminator feature as the first feature and you want to get the
   segment range:
 
-  # Example
       iex>{:ok, sample} = SnapGene.read("test/io/snap_gene/sample-e.dna")
       ...>:xmerl_xpath.string('string(/*/Feature[1]/Segment/@range)', sample.features)
       {:xmlObj, :string, '400-750'}
@@ -48,7 +40,6 @@ defmodule Bio.IO.SnapGene do
   for example whether or not a range is exclusive or inclusive on either end.
   Attempting to access a node that doesn't exist will return an empty array.
 
-  # Example
       iex>{:ok, sample} = SnapGene.read("test/io/snap_gene/sample-e.dna")
       ...>:xmerl_xpath.string('string(/*/Feature[1]/Unknown/Path/@range)', sample.features)
       {:xmlObj, :string, []}
@@ -73,10 +64,17 @@ defmodule Bio.IO.SnapGene do
       ...>Enum.map(1..2, fn i -> :xmerl_xpath.string('string(/*/Feature[#{i}]/Segment/@range)', sample.features) end)
       [{:xmlObj, :string, '400-750'},{:xmlObj, :string, '161-241'}]
 
-  For further examples of queries, and an explanation of the mapping of concepts
-  between the XML and what is parsed from BioPython, see the `SnapGene Features`
-  guide.
+  I cover the basics of using XPath to perform queries in the [Using
+  XML](guides/howtos/use_xml_and_xpath.md) guide. I also plan to write a follow
+  up guide with further examples of queries, and an explanation of the mapping
+  of concepts between the XML and what is parsed from BioPython.
   """
+  @dna 0x00
+  @primers 0x05
+  @notes 0x06
+  @cookie 0x09
+  @features 0x0A
+
   def read(filename) do
     case File.read(filename) do
       {:ok, content} -> {:ok, parse(content, %{})}
@@ -86,12 +84,14 @@ defmodule Bio.IO.SnapGene do
 
   defp parse(<<>>, output), do: output
 
-  # A SnapGene file is made of packets, each packet being a TLV-like
+  # A SnapGene file is made of packets, each packet being a Type-Length-Value
   # structure comprising:
   #   - 1 single byte indicating the packet's type;
   #   - 1 big-endian long integer (4 bytes) indicating the length of the
   #     packet's data;
   #   - the actual data.
+  # perfect case for binary pattern matching if there ever was one
+  # https://en.wikipedia.org/wiki/Type%E2%80%93length%E2%80%93value)
   defp parse(data, output) do
     <<packet_type::size(8), content::binary>> = data
     <<packet_length::size(32), content::binary>> = content
@@ -110,7 +110,7 @@ defmodule Bio.IO.SnapGene do
   defp parse_dna(data) do
     <<circular::size(8), rest::binary>> = data
     circular = Bitwise.band(circular, 0x01) == 1
-    %{dna: String.downcase(rest), length: String.length(rest), circular?: circular}
+    %{sequence: String.downcase(rest), length: String.length(rest), circular?: circular}
   end
 
   defp parse_notes(data), do: %{notes: xml(data)}

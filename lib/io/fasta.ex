@@ -21,6 +21,13 @@ defmodule Bio.IO.Fasta do
   `File.read`. You can specify the return type of the contents by using a module
   which matches the `Bio.Behaviors.Sequence`. Specifically the type must have a
   `new/2` method that matches the spec of the behaviour.
+
+  ## Options
+  - `:type` - The module for the type of struct you wish to have returned. This
+  should minimally implement a `new/2` function equivalent to the
+  `Bio.Behaviors.Sequence` behaviour.
+  - `:parse_header` - A callable for parsing the header values of the FASTA
+  file. Should be a `(String.t() -> String.t())` lambda.
   """
   @spec read(filename :: String.t(), opts :: keyword()) ::
           {:ok, any()}
@@ -48,17 +55,30 @@ defmodule Bio.IO.Fasta do
   end
 
   @doc """
-  Write a file with FASTA data
-  You can give a list or map
+  Write a FASTA file using sequence data.
+
+  The data type that this function accepts is varied. Help with whatever your
+  workflow requires, the `List` types are:
+
   List:
-    [{header, sequence}, ....]
-    [header, sequence, header, sequence ....]
-    [Struct, Struct]
-  The write function supports a few different primitive structures of data,
-  including:
-  - flat list `["header", "seq", ...]`
-  - list of tuples `[{header, seq}, ...]`
-  - a map `%{headers: String[], sequences: String[]}`
+  ``` elixir
+    [{header, sequence}, ...]
+    [header, sequence, header, sequence ...]
+    [%Bio.Sequence._{}, ...]
+  ```
+
+  Where `%Bio.Sequence._{}` indicates any struct of the `Bio.Sequence` module or
+  child modules implementing the `Bio.Behaviors.Sequence` behaviour.
+
+  It also supports data in a `Map` format:
+
+  ``` elixir
+  %{
+    headers: [String.t(), ...],
+    sequences: [String.t(), ...]
+  }
+  ```
+
   ## Examples
       iex> Bio.IO.Fasta.write("/tmp/test_file.fasta", ["header", "sequence", "header2", "sequence2"])
       :ok
