@@ -7,6 +7,7 @@ defmodule Bio.IO.FastQ do
   uses the Phred scoring 33 offset by default.
   """
   @type quality_encoding :: :phred_33 | :phred_64 | :decimal
+  @type read_opts :: {:quality_encoding, quality_encoding()} | {:type, module()}
 
   alias Bio.IO.QualityScore
 
@@ -20,10 +21,9 @@ defmodule Bio.IO.FastQ do
   - `type` - The module for the Sequence type that you want the returned value
   in. Defaults to `Bio.Sequence.DnaStrand`. Module should implement the
   `Bio.Behaviours.Sequence` behaviour.
-  - `quality_encoding` - Determines the encoding of the quality scores for
-  adjusting the offset. Options are one of `t:Bio.IO.FastQ.quality_encoding/0`
+  - `quality_encoding` - Determines the encoding of the quality scores.
   """
-  @spec read(filename :: Path.t(), opts :: keyword()) ::
+  @spec read(filename :: Path.t(), opts :: [read_opts]) ::
           {:ok, [{struct(), struct()}]} | {:error, File.posix()}
   def read(filename, opts \\ []) do
     type_module = Keyword.get(opts, :type, Bio.Sequence.DnaStrand)
