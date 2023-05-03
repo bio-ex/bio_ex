@@ -5,8 +5,8 @@ defmodule Bio.IO.SnapGene do
   The file is read into a struct with the following fields:
 
   ``` elixir
-  %SnapGene{
-      sequence: %DnaStrand{},
+  %Bio.IO.SnapGene{
+      sequence: %Bio.Sequence.DnaStrand{},
       circular?: boolean(),
       valid?: boolean(),
       features: tuple()
@@ -19,8 +19,18 @@ defmodule Bio.IO.SnapGene do
   but any module that behaves as a `Bio.Behaviours.Sequence` can be used, since
   the `new/2` method is applied to create the struct.
 
-  Validity is determined by parsing the SnapGene cookie to ensure that it
+  > #### Error {: .error}
+  >
+  > No validation is applied to the sequence, so you can force an invalid sequence
+  > struct by passing a module for the incorrect sequence.
+
+  The `valid?` property is determined by parsing the SnapGene cookie to ensure that it
   contains the requisite "SnapGene" string.
+
+  > #### Note {: .neutral}
+  >
+  > The concept of validity has to do with the snap gene file, and not the
+  > sequence or any other of the parsed data.
 
   Features require a bit more explanation, since they are stored in XML. Parsing
   them into a map is certainly a possibility, but it seemed like doing so would
