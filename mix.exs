@@ -63,6 +63,10 @@ defmodule Bio.MixProject do
         group_for_function("none")
       ],
       groups_for_modules: [
+        IO: [
+          Bio.IO.Fasta,
+          Bio.IO.SnapGene
+        ],
         "General Polymers": [
           Bio.SimpleSequence,
           Bio.Sequence.Polymer,

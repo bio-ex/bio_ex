@@ -113,6 +113,9 @@ defmodule Bio.IO.Fasta do
   end
 
   defmodule Binary do
+    @moduledoc false
+
+    @doc false
     def new(sequence, label: label), do: {sequence, label}
   end
 end
