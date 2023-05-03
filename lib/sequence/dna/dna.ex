@@ -1,6 +1,6 @@
 defmodule Bio.Sequence.Dna do
   alias Bio.Sequence.{DnaStrand, RnaStrand, RnaDoubleStrand}
-  alias Bio.Behaviors.Converter
+  alias Bio.Behaviours.Converter
   alias Bio.Enum, as: Bnum
 
   import Bio.Sequence.Utilities, only: [upper?: 1]

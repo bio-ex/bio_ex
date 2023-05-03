@@ -14,9 +14,11 @@ defmodule Bio.IO.Fasta do
   expectation is that the data is ASCII encoded.
   """
 
-  @type posix :: File.posix()
   @type header :: String.t()
   @type sequence :: String.t()
+  @type read_opts ::
+          {:type, any()}
+          | {:parse_header, (String.t() -> String.t())}
   @type fasta_data ::
           [String.t()]
           | [struct()]
@@ -27,18 +29,21 @@ defmodule Bio.IO.Fasta do
   Read a FASTA formatted file
 
   The `read/2` function returns an error tuple of the content or error code from
-  `File.read`. You can specify the return type of the contents by using a module
-  which matches the `Bio.Behaviors.Sequence`. Specifically the type must have a
+  `File.read`. You can use `:file.format_error/1` to get a descriptive string of
+  the error.
+
+  You can specify the return type of the contents by using a module
+  which matches the `Bio.Behaviours.Sequence`. Specifically the type must have a
   `new/2` method that matches the spec of the behaviour.
 
   ## Options
   - `:type` - The module for the type of struct you wish to have returned. This
   should minimally implement a `new/2` function equivalent to the
-  `Bio.Behaviors.Sequence` behaviour.
+  `Bio.Behaviours.Sequence` behaviour.
   - `:parse_header` - A callable for parsing the header values of the FASTA
-  file. Should be a `(String.t() -> String.t())` lambda.
+  file.
   """
-  @spec read(filename :: Path.t(), opts :: keyword()) :: {:ok, any()} | {:error, posix()}
+  @spec read(filename :: Path.t(), opts :: [read_opts]) :: {:ok, any()} | {:error, File.posix()}
   def read(filename, opts \\ []) do
     type = Keyword.get(opts, :type, Bio.Sequence)
     h_fn = Keyword.get(opts, :parse_header, & &1)
@@ -57,7 +62,7 @@ defmodule Bio.IO.Fasta do
 
   The same as `read/2`, but will raise a `File.Error` on failure.
   """
-  @spec read!(filename :: Path.t(), opts :: keyword()) :: any() | no_return()
+  @spec read!(filename :: Path.t(), opts :: [read_opts]) :: any() | no_return()
   def read!(filename, opts \\ []) do
     type = Keyword.get(opts, :type)
     h_fn = Keyword.get(opts, :parse_header, & &1)
@@ -79,7 +84,7 @@ defmodule Bio.IO.Fasta do
   ```
 
   Where `%Bio.Sequence._{}` indicates any struct of the `Bio.Sequence` module or
-  child modules implementing the `Bio.Behaviors.Sequence` behaviour.
+  child modules implementing the `Bio.Behaviours.Sequence` behaviour.
 
   It also supports data in a `Map` format:
 
@@ -96,8 +101,8 @@ defmodule Bio.IO.Fasta do
 
   Will return error types in common with `File.write/3`
   """
-  @spec write(filename :: Path.t(), data :: fasta_data(), [File.mode()]) ::
-          :ok | {:error, posix()}
+  @spec write(filename :: Path.t(), data :: fasta_data, [File.mode()]) ::
+          :ok | {:error, File.posix()}
   def write(filename, data, modes \\ [])
 
   def write(filename, {header, sequence}, modes) do

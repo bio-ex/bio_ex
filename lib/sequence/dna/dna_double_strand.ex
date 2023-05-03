@@ -1,5 +1,5 @@
 defmodule Bio.Sequence.DnaDoubleStrand do
-  @behaviour Bio.Behaviors.Sequence
+  @behaviour Bio.Behaviours.Sequence
   alias Bio.Sequence.{Dna, DnaStrand, RnaStrand, RnaDoubleStrand}
 
   @moduledoc """
@@ -15,7 +15,7 @@ defmodule Bio.Sequence.DnaDoubleStrand do
             bottom_strand: DnaStrand.new("", length: 0),
             complement_offset: 0
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def new(top_strand, opts \\ []) when is_binary(top_strand) do
     label = Keyword.get(opts, :label, "")
     top = DnaStrand.new(top_strand, label: label)
@@ -31,7 +31,7 @@ defmodule Bio.Sequence.DnaDoubleStrand do
     }
   end
 
-  @impl Bio.Behaviors.Sequence
+  @impl Bio.Behaviours.Sequence
   def converter(), do: Bio.Sequence.Dna.Conversions
 end
 

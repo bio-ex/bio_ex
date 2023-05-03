@@ -96,8 +96,8 @@ defmodule Bio.MixProject do
           Bio.Restriction.Enzyme
         ],
         Behaviours: [
-          Bio.Behaviors.Sequence,
-          Bio.Behaviors.Converter
+          Bio.Behaviours.Sequence,
+          Bio.Behaviours.Converter
         ],
         Utilities: [
           Bio.Enum,
