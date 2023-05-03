@@ -57,6 +57,7 @@ defmodule Bio.MixProject do
       source_ref: "v#{@version}",
       source_url: @source_url,
       extras: extras(),
+      extra_section: "GUIDES",
       groups_for_extras: groups_for_extras(),
       groups_for_functions: [
         group_for_function("none")
@@ -97,7 +98,7 @@ defmodule Bio.MixProject do
 
   def extras() do
     [
-      # "guides/introduction/Getting Started.md",
+      "guides/howtos/use_xml_and_xpath.md"
     ]
   end
 
@@ -105,7 +106,6 @@ defmodule Bio.MixProject do
 
   defp groups_for_extras do
     [
-      Introduction: ~r/guides\/introduction\/.?/,
       Cheatsheets: ~r/cheatsheets\/.?/,
       "How-To's": ~r/guides\/howtos\/.?/
     ]
