@@ -24,14 +24,22 @@ defmodule Bio.Enum do
 
   Contrast that with the `Enum.at/2` function, which will return a raw char.
   """
+  @type acc() :: any()
+  @type default() :: any()
+  @type element() :: any()
+  @type index() :: integer()
+  @type t() :: Enumerable.t()
 
-  def all?(enumerable), do: Enum.all?(enumerable)
-  def all?(enumerable, func), do: Enum.all?(enumerable, func)
+  # def all?(enumerable), do: Enum.all?(enumerable)
+  # def all?(enumerable, func), do: Enum.all?(enumerable, func)
+
+  # @spec any?(t()) :: boolean()
+  # def any?(enumerable), do: Enum.any?(enumerable)
 
   # TODO: add a check for `func` in `any?/2` is_binary to allow
   # `any?(seq, "char")` as a valid approach.
-  def any?(enumerable), do: Enum.any?(enumerable)
-  def any?(enumerable, func), do: Enum.any?(enumerable, func)
+  # @spec any?(t(), (element() -> as_boolean(term()))) :: boolean()
+  # def any?(enumerable, func), do: Enum.any?(enumerable, func)
 
   def at(enumerable, index) when is_integer(index) do
     Enum.at(enumerable, index)
@@ -45,11 +53,11 @@ defmodule Bio.Enum do
     |> List.to_string()
   end
 
-  def chunk_by(enumerable, func) do
-    Enum.chunk_by(enumerable, func)
-    |> Enum.map(&Enum.join/1)
-    |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
-  end
+  # def chunk_by(enumerable, func) do
+  #   Enum.chunk_by(enumerable, func)
+  #   |> Enum.map(&Enum.join/1)
+  #   |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+  # end
 
   def chunk_every(enumerable, count),
     do:
@@ -77,61 +85,61 @@ defmodule Bio.Enum do
 
   # TODO: figure out the semantics for concatenation with non-sequence
   # enumerables
-  def concat(a), do: {a}
-  def concat(a, b), do: {a, b}
+  # def concat(a), do: {a}
+  # def concat(a, b), do: {a, b}
 
-  def count(enumerable), do: Enum.count(enumerable)
-  def count(enumerable, fun), do: Enum.count(enumerable, fun)
+  # def count(enumerable), do: Enum.count(enumerable)
+  # def count(enumerable, fun), do: Enum.count(enumerable, fun)
 
-  def count_until(a), do: {a}
-  def count_until(a, b), do: {a, b}
+  # def count_until(a), do: {a}
+  # def count_until(a, b), do: {a, b}
 
-  def dedup(), do: {}
+  # def dedup(), do: {}
 
-  def dedup_by(), do: {}
+  # def dedup_by(), do: {}
 
-  def drop(), do: {}
-
-  def drop_every(), do: {}
-
-  def drop_while(), do: {}
-
-  def each(), do: {}
-
-  def empty?(), do: {}
-
-  def fetch!(), do: {}
-
-  def fetch(), do: {}
-
-  def filter(), do: {}
-
-  def find(a), do: {a}
-  def find(a, b), do: {a, b}
-
-  def find_index(), do: {}
-
-  def find_value(a), do: {a}
-  def find_value(a, b), do: {a, b}
-
-  def flat_map(), do: {}
-
-  def flat_map_reduce(), do: {}
-
-  def frequencies(), do: {}
-
-  def frequencies_by(), do: {}
-
-  def group_by(a), do: {a}
-  def group_by(a, b), do: {a, b}
-
-  def intersperse(), do: {}
-
-  def into(a), do: {a}
-  def into(a, b), do: {a, b}
-
-  def join(a), do: {a}
-  def join(a, b), do: {a, b}
+  # def drop(), do: {}
+  #
+  # def drop_every(), do: {}
+  #
+  # def drop_while(), do: {}
+  #
+  # def each(), do: {}
+  #
+  # def empty?(), do: {}
+  #
+  # def fetch!(), do: {}
+  #
+  # def fetch(), do: {}
+  #
+  # def filter(), do: {}
+  #
+  # def find(a), do: {a}
+  # def find(a, b), do: {a, b}
+  #
+  # def find_index(), do: {}
+  #
+  # def find_value(a), do: {a}
+  # def find_value(a, b), do: {a, b}
+  #
+  # def flat_map(), do: {}
+  #
+  # def flat_map_reduce(), do: {}
+  #
+  # def frequencies(), do: {}
+  #
+  # def frequencies_by(), do: {}
+  #
+  # def group_by(a), do: {a}
+  # def group_by(a, b), do: {a, b}
+  #
+  # def intersperse(), do: {}
+  #
+  # def into(a), do: {a}
+  # def into(a, b), do: {a, b}
+  #
+  # def join(a), do: {a}
+  # def join(a, b), do: {a, b}
 
   def map(enumerable, func),
     do:
@@ -139,43 +147,43 @@ defmodule Bio.Enum do
       |> Enum.join()
       |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
-  def map_every(), do: {}
-
-  def map_intersperse(), do: {}
-
-  def map_join(a), do: {a}
-  def map_join(a, b), do: {a, b}
-
-  def map_reduce(), do: {}
-
-  def max(), do: {}
-
-  def max_by(a), do: {a}
-  def max_by(a, b), do: {a, b}
-
-  def member?(), do: {}
-
-  def min(), do: {}
-
-  def min_by(a), do: {a}
-  def min_by(a, b), do: {a, b}
-
-  def min_max(a), do: {a}
-  def min_max(a, b), do: {a, b}
-
-  def min_max_by(a), do: {a}
-  def min_max_by(a, b), do: {a, b}
-
-  def product(), do: {}
-
-  def random(), do: {}
-
-  def reduce(a), do: {a}
-  def reduce(a, b), do: {a, b}
-
-  def reduce_while(), do: {}
-
-  def reject(), do: {}
+  # def map_every(), do: {}
+  #
+  # def map_intersperse(), do: {}
+  #
+  # def map_join(a), do: {a}
+  # def map_join(a, b), do: {a, b}
+  #
+  # def map_reduce(), do: {}
+  #
+  # def max(), do: {}
+  #
+  # def max_by(a), do: {a}
+  # def max_by(a, b), do: {a, b}
+  #
+  # def member?(), do: {}
+  #
+  # def min(), do: {}
+  #
+  # def min_by(a), do: {a}
+  # def min_by(a, b), do: {a, b}
+  #
+  # def min_max(a), do: {a}
+  # def min_max(a, b), do: {a, b}
+  #
+  # def min_max_by(a), do: {a}
+  # def min_max_by(a, b), do: {a, b}
+  #
+  # def product(), do: {}
+  #
+  # def random(), do: {}
+  #
+  # def reduce(a), do: {a}
+  # def reduce(a, b), do: {a, b}
+  #
+  # def reduce_while(), do: {}
+  #
+  # def reject(), do: {}
 
   def reverse(enumerable),
     do:
@@ -190,12 +198,12 @@ defmodule Bio.Enum do
       |> Enum.join()
       |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
-  def reverse_slice(), do: {}
-
-  def scan(a), do: {a}
-  def scan(a, b), do: {a, b}
-
-  def shuffle(), do: {}
+  # def reverse_slice(), do: {}
+  #
+  # def scan(a), do: {a}
+  # def scan(a, b), do: {a, b}
+  #
+  # def shuffle(), do: {}
 
   def slice(enumerable, index_range),
     do:
@@ -209,47 +217,47 @@ defmodule Bio.Enum do
       |> List.to_string()
       |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
 
-  def slide(), do: {}
-
-  def sort(a), do: {a}
-  def sort(a, b), do: {a, b}
-
-  def sort_by(a), do: {a}
-  def sort_by(a, b), do: {a, b}
-
-  def split(), do: {}
-
-  def split_while(), do: {}
-
-  def split_with(), do: {}
-
-  def sum(), do: {}
-
-  def take(), do: {}
-
-  def take_every(), do: {}
-
-  def take_random(), do: {}
-
-  def take_while(), do: {}
-
-  def to_list(), do: {}
-
-  def uniq(), do: {}
-
-  def uniq_by(), do: {}
-
-  def unzip(), do: {}
-
-  def with_index(a), do: {a}
-  def with_index(a, b), do: {a, b}
-
-  def zip(a), do: {a}
-  def zip(a, b), do: {a, b}
-
-  def zip_reduce(a), do: {a}
-  def zip_reduce(a, b), do: {a, b}
-
-  def zip_with(a), do: {a}
-  def zip_with(a, b), do: {a, b}
+  # def slide(), do: {}
+  #
+  # def sort(a), do: {a}
+  # def sort(a, b), do: {a, b}
+  #
+  # def sort_by(a), do: {a}
+  # def sort_by(a, b), do: {a, b}
+  #
+  # def split(), do: {}
+  #
+  # def split_while(), do: {}
+  #
+  # def split_with(), do: {}
+  #
+  # def sum(), do: {}
+  #
+  # def take(), do: {}
+  #
+  # def take_every(), do: {}
+  #
+  # def take_random(), do: {}
+  #
+  # def take_while(), do: {}
+  #
+  # def to_list(), do: {}
+  #
+  # def uniq(), do: {}
+  #
+  # def uniq_by(), do: {}
+  #
+  # def unzip(), do: {}
+  #
+  # def with_index(a), do: {a}
+  # def with_index(a, b), do: {a, b}
+  #
+  # def zip(a), do: {a}
+  # def zip(a, b), do: {a, b}
+  #
+  # def zip_reduce(a), do: {a}
+  # def zip_reduce(a, b), do: {a, b}
+  #
+  # def zip_with(a), do: {a}
+  # def zip_with(a, b), do: {a, b}
 end
