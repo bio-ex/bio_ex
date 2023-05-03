@@ -2,7 +2,7 @@ defmodule BioIOFastqTest do
   use ExUnit.Case
 
   alias Bio.IO.FastQ, as: Subject
-  alias Bio.IO.{FastQ, QualityScore}
+  alias Bio.IO.{QualityScore}
   alias Bio.Sequence.DnaStrand
 
   doctest Bio.IO.FastQ
