@@ -66,6 +66,7 @@ defmodule Bio.MixProject do
         IO: [
           Bio.IO.Fasta,
           Bio.IO.FastQ,
+          Bio.IO.QualityScore,
           Bio.IO.SnapGene
         ],
         "General Polymers": [

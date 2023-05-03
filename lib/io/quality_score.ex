@@ -1,8 +1,22 @@
 defmodule Bio.IO.QualityScore do
+  @moduledoc """
+  A struct representing the quality score of a FASTQ file.
+
+  ``` elixir
+  %QualityScore{
+    scoring_characters: binary(),
+    scores: [integer()],
+    label: binary(),
+    encoding: Bio.IO.FastQ.quality_encoding()
+  }
+  ```
+  """
   defstruct scoring_characters: "",
             scores: '',
-            label: ""
+            label: "",
+            encoding: :phred_33
 
+  @doc false
   def new(bin, opts \\ []) do
     label = Keyword.get(opts, :label, "")
     encoding = Keyword.get(opts, :encoding)
@@ -10,7 +24,8 @@ defmodule Bio.IO.QualityScore do
     %__MODULE__{
       scoring_characters: bin,
       scores: parse_scores(bin, encoding),
-      label: label
+      label: label,
+      encoding: encoding
     }
   end
 
