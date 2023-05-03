@@ -10,7 +10,6 @@ defmodule Bio.Sequence.MonomerName do
       "alanine"
   """
 
-  # TODO: should these all be lists and we include all the ambiguous stuff?
   @dna_names %{
     "a" => "adenine",
     "c" => "cytosine",
@@ -44,8 +43,8 @@ defmodule Bio.Sequence.MonomerName do
     "v" => "valine",
     "b" => "aspartic acid or asparagine",
     "z" => "glutamic acid or glutamine",
-    "x" => "any amino acid",
-    "j" => "leucine or isoleucine"
+    "j" => "leucine or isoleucine",
+    "x" => "any amino acid"
   }
 
   @doc """
