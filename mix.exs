@@ -70,7 +70,9 @@ defmodule Bio.MixProject do
         "General Polymers": [
           Bio.SimpleSequence,
           Bio.Sequence.Polymer,
-          Bio.Sequence
+          Bio.Sequence,
+          Bio.Sequence.Alphabets,
+          Bio.Sequence.MonomerName
         ],
         DNA: [
           Bio.Sequence.Dna,
@@ -90,6 +92,10 @@ defmodule Bio.MixProject do
         Restriction: [
           Bio.Restriction,
           Bio.Restriction.Enzyme
+        ],
+        Behaviours: [
+          Bio.Behaviors.Sequence,
+          Bio.Behaviors.Converter
         ],
         Utilities: [
           Bio.Enum,
