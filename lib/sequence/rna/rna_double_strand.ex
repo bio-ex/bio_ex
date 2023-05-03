@@ -24,6 +24,9 @@ defmodule Bio.Sequence.RnaDoubleStrand do
 
   @impl Bio.Behaviours.Sequence
   def converter, do: Bio.Sequence.Rna.Conversions
+
+  @impl Bio.Behaviours.Sequence
+  def fasta_line(%__MODULE__{top_strand: rna}), do: "#{rna.label}\n#{rna.sequence}\n"
 end
 
 defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaDoubleStrand do
