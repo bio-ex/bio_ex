@@ -73,8 +73,8 @@ defmodule Bio.IO.Fasta do
 
   List:
   ``` elixir
-    [{header, sequence}, ...]
-    [header, sequence, header, sequence ...]
+    [{header(), sequence()}, ...]
+    [header(), sequence(), header(), sequence(), ...]
     [%Bio.Sequence._{}, ...]
   ```
 
@@ -85,25 +85,30 @@ defmodule Bio.IO.Fasta do
 
   ``` elixir
   %{
-    headers: [String.t(), ...],
-    sequences: [String.t(), ...]
+    headers: [header(), ...],
+    sequences: [sequence(), ...]
   }
   ```
 
   ## Examples
       iex> Fasta.write("/tmp/test_file.fasta", ["header", "sequence", "header2", "sequence2"])
       :ok
+
+  Will return error types in common with `File.write/3`
   """
-  @spec write(filename :: Path.t(), data :: fasta_data()) :: :ok | {:error, posix()}
-  def write(filename, {header, sequence}) do
-    File.write(filename, ">#{header}\n#{sequence}\n")
+  @spec write(filename :: Path.t(), data :: fasta_data(), [File.mode()]) ::
+          :ok | {:error, posix()}
+  def write(filename, data, modes \\ [])
+
+  def write(filename, {header, sequence}, modes) do
+    File.write(filename, ">#{header}\n#{sequence}\n", modes)
   end
 
-  def write(filename, [header, sequence]) do
-    File.write(filename, ">#{header}\n#{sequence}\n")
+  def write(filename, [header, sequence], modes) do
+    File.write(filename, ">#{header}\n#{sequence}\n", modes)
   end
 
-  def write(filename, data) when is_list(data) do
+  def write(filename, data, modes) when is_list(data) do
     [datum | _] = data
 
     data =
@@ -115,13 +120,13 @@ defmodule Bio.IO.Fasta do
 
     data
     |> Enum.reduce("", &to_line/2)
-    |> then(fn output -> File.write(filename, output) end)
+    |> then(fn output -> File.write(filename, output, modes) end)
   end
 
-  def write(filename, %{headers: headers, sequences: sequences}) do
+  def write(filename, %{headers: headers, sequences: sequences}, modes) do
     Enum.zip(sequences, headers)
     |> Enum.reduce("", &to_line/2)
-    |> then(fn output -> File.write(filename, output) end)
+    |> then(fn output -> File.write(filename, output, modes) end)
   end
 
   defp parse(content, value, acc, _ctx, type, header_fn) when content == "" do
