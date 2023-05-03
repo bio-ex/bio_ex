@@ -14,6 +14,9 @@ defmodule Bio.IO.FastQ do
   @doc """
   Read a FASTQ formatted file into memory
 
+  Returns a list of tuples where the first struct is the type from the `type`
+  option, and the second is a `Bio.IO.QualityScore` struct.
+
   ## Options
   - `type` - The module for the Sequence type that you want the returned value
   in. Defaults to `Bio.Sequence.DnaStrand`. Module should implement the
