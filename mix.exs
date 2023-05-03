@@ -116,8 +116,8 @@ defmodule Bio.MixProject do
 
   defp groups_for_extras do
     [
-      Cheatsheets: ~r/cheatsheets\/.?/,
-      "How-To's": ~r/guides\/howtos\/.?/
+      "How-To's": ~r/guides\/howtos\/.?/,
+      Cheatsheets: ~r/cheatsheets\/.?/
     ]
   end
 end

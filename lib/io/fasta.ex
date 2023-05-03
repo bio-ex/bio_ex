@@ -2,10 +2,29 @@ defmodule Bio.IO.Fasta do
   @moduledoc """
   Allow the input/output of FASTA formatted files. Reads and writes fasta data
   to and from a number of formats.
+
+  The FASTA file format is composed of pairs of lines where the pair is
+  demarcated by the ">" character. All data proceeding the ">" character
+  represents the 'header' of the pair, while the next line after a newline
+  represents sequence data.
+
+  The FASTA file format does not specify the type of the data in the sequence.
+  That means that you can reasonably store RNA, DNA, amino acid, or
+  realistically any other polymer sequence using the format. In general, the
+  expectation is that the data is ASCII encoded.
   """
 
   @doc """
+  Read a FASTA formatted file
+
+  The `read/2` function returns an error tuple of the content or error code from
+  `File.read`. You can specify the return type of the contents by using a module
+  which matches the `Bio.Behaviors.Sequence`. Specifically the type must have a
+  `new/2` method that matches the spec of the behaviour.
   """
+  @spec read(filename :: String.t(), opts :: keyword()) ::
+          {:ok, any()}
+          | {:error, code :: atom()}
   def read(filename, opts \\ []) do
     type = Keyword.get(opts, :type, Bio.Sequence)
     h_fn = Keyword.get(opts, :parse_header, & &1)
@@ -19,6 +38,8 @@ defmodule Bio.IO.Fasta do
     end
   end
 
+  # TODO: does this actually raise?
+  @spec read!(filename :: String.t(), opts :: keyword()) :: any() | no_return()
   def read!(filename, opts \\ []) do
     type = Keyword.get(opts, :type)
     h_fn = Keyword.get(opts, :parse_header, & &1)
