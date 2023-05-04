@@ -1,13 +1,14 @@
 defmodule Bio.Restriction do
   @moduledoc """
-  **NOTE: Currently we don't support enzymes that have two cut sites**
+  Functions related to restriction enzyme data.
 
-  **NOTE: Currently we don't support enzymes with ambiguous DNA recognition**
+  The primary function is `digest`. The `digest` function works by recursively
+  breaking down a binary and checking to see if the pattern for a given enzyme
+  exists within it.
 
-  `Bio.Restriction` houses the functions related to restriction enzyme data and
-  activity. The primary function is `digest`. The `digest` function works by
-  recursively breaking down a binary and checking to see if the pattern for a
-  given enzyme exists within it.
+  > #### Note {: .neutral}
+  > Currently we don't support enzymes that have two cut sites, or
+  > enzymes with ambiguous DNA recognition.
 
   Restriction is also the namespace for `Enzyme`, where functions for accessing
   all the downloaded restriction enzyme data lives. Inside of
