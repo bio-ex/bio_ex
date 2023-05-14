@@ -20,23 +20,70 @@ defmodule Bio.Sequence.RnaStrand do
       iex>alias Bio.Enum, as: Bnum
       ...>RnaStrand.new("uuagcu")
       ...>|> Bnum.slice(2, 2)
-      %RnaStrand{sequence: "ag", length: 2, label: ""}
+      %RnaStrand{sequence: "ag", length: 2}
   """
-  use Bio.SimpleSequence
+  use Bio.BaseSequence
 
-  @impl Bio.Behaviours.Sequence
+  @impl Bio.Sequential
   def converter, do: Bio.Sequence.Rna.Conversions
 end
 
-defimpl Bio.Protocols.Convertible, for: Bio.Sequence.RnaStrand do
-  alias Bio.Sequence.{RnaStrand, DnaStrand}
+defimpl Bio.Polymeric, for: Bio.Sequence.RnaStrand do
+  alias Bio.Sequence.RnaStrand
 
-  def convert(%RnaStrand{} = sequence, DnaStrand, converter) do
-    sequence
-    |> Enum.map(converter)
-    |> Enum.join("")
-    |> DnaStrand.new(label: sequence.label)
+  def kmers(%RnaStrand{} = sequence, k) do
+    case rem(sequence.length, k) do
+      0 ->
+        {:ok,
+         sequence
+         |> Enum.chunk_every(k)
+         |> Enum.map(&Enum.join(&1, "")), sequence |> Map.from_struct() |> Map.drop([:sequence])}
+
+      _ ->
+        {:error, :seq_len_mismatch}
+    end
   end
 
-  def convert(_, _, _), do: {:error, :undef_conversion}
+  def valid?(%RnaStrand{sequence: seq}, alphabet) do
+    with {:ok, regex} <- Regex.compile("[^#{alphabet}]") do
+      not Regex.match?(regex, seq)
+    else
+      bad -> bad
+    end
+  end
+
+  def validate(%RnaStrand{} = sequence, alphabet) do
+    # TODO: this is generalizable
+    parsed =
+      sequence
+      |> Enum.with_index()
+      |> Enum.reduce(%{}, fn {char, index}, acc ->
+        case String.contains?(alphabet, char) do
+          true ->
+            (Map.get(acc, :result, "") <> char)
+            |> then(&Map.put(acc, :result, &1))
+
+          false ->
+            Map.get(acc, :errors, [])
+            |> List.insert_at(-1, {:mismatch_alpha, char, index})
+            |> then(&Map.put(acc, :errors, &1))
+        end
+      end)
+
+    case parsed do
+      %{errors: [_ | _]} ->
+        {:error, parsed.errors}
+
+      %{result: string} ->
+        given =
+          sequence
+          |> Map.from_struct()
+          |> Map.drop([:sequence, :alphabet])
+
+        {:ok,
+         RnaStrand.new(string, alphabet: alphabet, length: given.length)
+         |> Map.merge(given)
+         |> Map.put(:valid?, true)}
+    end
+  end
 end

@@ -1,4 +1,4 @@
-defmodule Sequence.SimpleSequenceTest do
+defmodule Sequence.BaseSequenceTest do
   use ExUnit.Case, async: true
   # This uses the `ConsolidatedSequence` from test/support in order to ensure that
   # the Enum implementation is consolidated. These tests aim to support the

@@ -1,5 +1,5 @@
 defmodule ConsolidatedSequence do
-  use Bio.SimpleSequence
+  use Bio.BaseSequence
 
   @impl Bio.Behaviours.Sequence
   def converter, do: nil

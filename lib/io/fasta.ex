@@ -1,17 +1,38 @@
 defmodule Bio.IO.Fasta do
   @moduledoc """
-  Allow the input/output of FASTA formatted files. Reads and writes fasta data
-  to and from a number of formats.
+  Allow the input/output of FASTA formatted files.
 
   The FASTA file format is composed of pairs of lines where the pair is
   demarcated by the ">" character. All data proceeding the ">" character
   represents the 'header' of the pair, while the next line after a newline
   represents sequence data.
 
+  Any data after subsequent newlines that are _not_ preceded by a second ">"
+  character are assumed to be multi-line data. For example, the following two
+  files would be considered equivalent data:
+
+  ```
+  # fasta 1
+  >header1
+  atgcatgca
+  ```
+
+  and
+
+  ```
+  # fasta 2
+  >header1
+  atgc
+  atgca
+  ```
+
   The FASTA file format does not specify the type of the data in the sequence.
-  That means that you can reasonably store RNA, DNA, amino acid, or
-  realistically any other polymer sequence using the format. In general, the
-  expectation is that the data is ASCII encoded.
+  That means that you can reasonably store RNA, DNA, amino acid, or any other
+  sequence using the format. In general, the expectation is that the data is
+  ASCII encoded.
+
+  The methods in this module do support reading into specified types. See
+  `read/2` for more details.
   """
 
   @type header :: String.t()
@@ -32,16 +53,16 @@ defmodule Bio.IO.Fasta do
   `File.read`. You can use `:file.format_error/1` to get a descriptive string of
   the error.
 
-  You can specify the return type of the contents by using a module
-  which matches the `Bio.Behaviours.Sequence`. Specifically the type must have a
-  `new/2` method that matches the spec of the behaviour.
+  You can specify the return type of the contents by using a module which
+  implements the `Bio.Sequential` behaviour. Specifically the type must have a
+  `new/2` method.
 
   ## Options
   - `:type` - The module for the type of struct you wish to have returned. This
   should minimally implement a `new/2` function equivalent to the
-  `Bio.Behaviours.Sequence` behaviour.
+  `Bio.Sequential` behaviour. Otherwise the base `Bio.Sequence` is used.
   - `:parse_header` - A callable for parsing the header values of the FASTA
-  file.
+  file. Otherwise identity is used and the header is returned as is.
   """
   @spec read(filename :: Path.t(), opts :: [read_opts]) :: {:ok, any()} | {:error, File.posix()}
   def read(filename, opts \\ []) do
@@ -73,18 +94,21 @@ defmodule Bio.IO.Fasta do
   @doc """
   Write a FASTA file using sequence data.
 
-  The data type that this function accepts is varied. Help with whatever your
-  workflow requires, the `List` types are:
+  The data type that this function accepts is varied, and may be one of a number
+  of `List`s. Examples of which types are handled:
 
   List:
   ``` elixir
+    # a list of header/sequence tuples
     [{header(), sequence()}, ...]
+    # a list of header/sequence implicitly paired
     [header(), sequence(), header(), sequence(), ...]
+    # a list of struct()
     [%Bio.Sequence._{}, ...]
   ```
 
   Where `%Bio.Sequence._{}` indicates any struct of the `Bio.Sequence` module or
-  child modules implementing the `Bio.Behaviours.Sequence` behaviour.
+  modules implementing the `Bio.Sequential` behaviour.
 
   It also supports data in a `Map` format:
 
@@ -173,12 +197,5 @@ defmodule Bio.IO.Fasta do
 
   defp to_line(%_{} = datum, acc) do
     acc <> apply(datum.__struct__, :fasta_line, [datum])
-  end
-
-  defmodule Binary do
-    @moduledoc false
-
-    @doc false
-    def new(sequence, label: label), do: {sequence, label}
   end
 end

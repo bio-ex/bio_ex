@@ -1,26 +1,30 @@
 defmodule Bio.Restriction do
   @moduledoc """
-  Functions related to restriction enzyme data.
+  Interaction between `Bio.Sequence` objects and `Bio.Restriction.Enzyme`s.
 
-  The primary function is `digest`. The `digest` function works by recursively
+  The primary function is `digest/2`. The `digest/2` function works by recursively
   breaking down a binary and checking to see if the pattern for a given enzyme
   exists within it.
 
-  > #### Note {: .neutral}
+  > #### Redesign Incoming {: .warning}
+  > Initially I had thought to just get the data and apply it. Having only been
+  > familiar with quite a small sub-set of the possible digestion outcomes. That
+  > said, I did some reading and it seems that having `digest/2` be type specific
+  > to the type and sub-type of the enzyme is the best approach. That means that I
+  > need to re-write the parser for the REBASE data. Which means that there's more
+  > work to be done! When is that ever not true...
+  > Anyway you probably don't want to use this until then.
+
+  > #### Missing Functionality {: .warning}
   > Currently we don't support enzymes that have two cut sites, or
   > enzymes with ambiguous DNA recognition.
 
-  Restriction is also the namespace for `Enzyme`, where functions for accessing
-  all the downloaded restriction enzyme data lives. Inside of
-  `Bio.Restriction.Enzyme` there is a struct defined. Each method named in the
-  lowercase fashion of the restriction enzymes returns an instance of this
-  struct.
 
-  The enzyme HpyUM037X is removed from the set, since it has two conflicting
-  entries in the emboss data. If you can resolve this distinction, please feel
-  free to either contribute a fix, or open an issue that explains how one would
-  be implemented.
-
+  > #### Missing Data {: .warning}
+  > The enzyme HpyUM037X is removed from the set, since it has two conflicting
+  > entries in the emboss data. If you can resolve this distinction, please feel
+  > free to either contribute a fix, or open an issue that explains how one would
+  > be implemented.
   """
 
   @doc """
@@ -41,6 +45,8 @@ defmodule Bio.Restriction do
   such as NmeDI, nor will it work on enzymes whose recognition pattern is
   defined using ambiguous DNA (even simply N).
   """
+  @spec digest(dna :: String.t(), enzyme :: struct()) ::
+          [String.t(), ...]
   def digest(dna, enzyme) do
     _digest("", dna, enzyme)
     |> List.flatten()
