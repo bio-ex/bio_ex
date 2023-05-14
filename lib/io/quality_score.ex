@@ -1,4 +1,4 @@
-defmodule Bio.IO.QualityScore do
+defmodule Bio.QualityScore do
   @moduledoc """
   A struct representing the quality score of a FASTQ file.
 

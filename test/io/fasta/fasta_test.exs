@@ -24,7 +24,8 @@ defmodule BioIOFastaTest.Read do
 
   alias Bio.IO.Fasta, as: Subject
   alias Bio.IO.Fasta
-  alias Bio.Sequence.{DnaStrand, DnaDoubleStrand, AminoAcid, Sequence}
+  alias Bio.Sequence
+  alias Bio.Sequence.{DnaStrand, DnaDoubleStrand, AminoAcid}
 
   doctest Bio.IO.Fasta
 
@@ -43,17 +44,18 @@ defmodule BioIOFastaTest.Read do
   test "allows injecting callable to massage header data" do
     {:ok, content} =
       Subject.read('test/io/fasta/test_1.fasta',
-        type: Subject.Binary,
         parse_header: fn h -> h |> String.replace("header", "face") end
       )
 
-    assert content == [{"ataatatgatagtagatagatagtcctatga", "face1"}]
-  end
-
-  test "reads a file into binary tuple" do
-    {:ok, content} = Subject.read('test/io/fasta/test_1.fasta', type: Subject.Binary)
-
-    assert content == [{"ataatatgatagtagatagatagtcctatga", "header1"}]
+    assert content == [
+             %Bio.Sequence{
+               sequence: "ataatatgatagtagatagatagtcctatga",
+               length: 31,
+               label: "face1",
+               alphabet: nil,
+               valid?: false
+             }
+           ]
   end
 
   test "reads a file into default polymer" do
@@ -114,11 +116,11 @@ defmodule BioIOFastaTest.Read do
 
   test "correctly read multiple sequences" do
     expected = [
-      %Bio.Sequence{sequence: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", length: 31, label: "header1"},
-      %Bio.Sequence{sequence: "ttttttttttttttttttttttttttttttt", length: 31, label: "header2"},
-      %Bio.Sequence{sequence: "ggggggggggggggggggggggggggggggg", length: 31, label: "header3"},
-      %Bio.Sequence{sequence: "ccccccccccccccccccccccccccccccc", length: 31, label: "header4"},
-      %Bio.Sequence{sequence: "atgcatgcatgcatgcatgcatgcatgcatg", length: 31, label: "header5"}
+      Sequence.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", label: "header1"),
+      Sequence.new("ttttttttttttttttttttttttttttttt", label: "header2"),
+      Sequence.new("ggggggggggggggggggggggggggggggg", label: "header3"),
+      Sequence.new("ccccccccccccccccccccccccccccccc", label: "header4"),
+      Sequence.new("atgcatgcatgcatgcatgcatgcatgcatg", label: "header5")
     ]
 
     {:ok, content} = Subject.read('test/io/fasta/test_5.fasta')
@@ -126,27 +128,13 @@ defmodule BioIOFastaTest.Read do
     assert content == expected
   end
 
-  test "correctly read multiple sequences as binary" do
-    expected = [
-      {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "header1"},
-      {"ttttttttttttttttttttttttttttttt", "header2"},
-      {"ggggggggggggggggggggggggggggggg", "header3"},
-      {"ccccccccccccccccccccccccccccccc", "header4"},
-      {"atgcatgcatgcatgcatgcatgcatgcatg", "header5"}
-    ]
-
-    {:ok, content} = Subject.read('test/io/fasta/test_5.fasta', type: Subject.Binary)
-
-    assert content == expected
-  end
-
   test "correctly read multiple sequences dna" do
     expected = [
-      Bio.Sequence.DnaDoubleStrand.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", label: "header1"),
-      Bio.Sequence.DnaDoubleStrand.new("ttttttttttttttttttttttttttttttt", label: "header2"),
-      Bio.Sequence.DnaDoubleStrand.new("ggggggggggggggggggggggggggggggg", label: "header3"),
-      Bio.Sequence.DnaDoubleStrand.new("ccccccccccccccccccccccccccccccc", label: "header4"),
-      Bio.Sequence.DnaDoubleStrand.new("atgcatgcatgcatgcatgcatgcatgcatg", label: "header5")
+      DnaDoubleStrand.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", label: "header1"),
+      DnaDoubleStrand.new("ttttttttttttttttttttttttttttttt", label: "header2"),
+      DnaDoubleStrand.new("ggggggggggggggggggggggggggggggg", label: "header3"),
+      DnaDoubleStrand.new("ccccccccccccccccccccccccccccccc", label: "header4"),
+      DnaDoubleStrand.new("atgcatgcatgcatgcatgcatgcatgcatg", label: "header5")
     ]
 
     {:ok, content} = Subject.read('test/io/fasta/test_5.fasta', type: DnaDoubleStrand)
@@ -156,31 +144,11 @@ defmodule BioIOFastaTest.Read do
 
   test "correctly read multiple sequences amino acid" do
     expected = [
-      %Bio.Sequence.AminoAcid{
-        sequence: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        length: 31,
-        label: "header1"
-      },
-      %Bio.Sequence.AminoAcid{
-        sequence: "ttttttttttttttttttttttttttttttt",
-        length: 31,
-        label: "header2"
-      },
-      %Bio.Sequence.AminoAcid{
-        sequence: "ggggggggggggggggggggggggggggggg",
-        length: 31,
-        label: "header3"
-      },
-      %Bio.Sequence.AminoAcid{
-        sequence: "ccccccccccccccccccccccccccccccc",
-        length: 31,
-        label: "header4"
-      },
-      %Bio.Sequence.AminoAcid{
-        sequence: "atgcatgcatgcatgcatgcatgcatgcatg",
-        length: 31,
-        label: "header5"
-      }
+      AminoAcid.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", label: "header1"),
+      AminoAcid.new("ttttttttttttttttttttttttttttttt", label: "header2"),
+      AminoAcid.new("ggggggggggggggggggggggggggggggg", label: "header3"),
+      AminoAcid.new("ccccccccccccccccccccccccccccccc", label: "header4"),
+      AminoAcid.new("atgcatgcatgcatgcatgcatgcatgcatg", label: "header5")
     ]
 
     {:ok, content} = Subject.read('test/io/fasta/test_5.fasta', type: AminoAcid)

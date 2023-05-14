@@ -1,6 +1,8 @@
-defmodule Bio.SimpleSequence do
+defmodule Bio.BaseSequence do
   @moduledoc """
-  Calling `use Bio.SimpleSequence` will generate a simple struct in the calling
+  Implementations of the basic sequence functionality.
+
+  Calling `use Bio.BaseSequence` will generate a simple struct in the calling
   module, as well as the implementation for the `Enumerable` protocol.
 
   Because the `Enum` module makes certain assumptions about the data that it is
@@ -26,13 +28,17 @@ defmodule Bio.SimpleSequence do
   defmacro __using__(_) do
     quote do
       using_module = __MODULE__
-      @behaviour Bio.Behaviours.Sequence
+      @behaviour Bio.Sequential
 
-      defstruct sequence: "", length: 0, label: ""
+      defstruct sequence: "", length: 0, label: nil, alphabet: nil, valid?: false
 
-      @impl Bio.Behaviours.Sequence
+      @impl Bio.Sequential
       def new(seq, opts \\ []) when is_binary(seq) do
-        [label: &String.slice(&1, 0, 0), length: &String.length(&1)]
+        [
+          label: fn _ -> nil end,
+          length: &String.length(&1),
+          alphabet: fn _ -> nil end
+        ]
         |> Enum.map(fn {key, default} ->
           {key, Keyword.get(opts, key) || default.(seq)}
         end)
@@ -41,7 +47,7 @@ defmodule Bio.SimpleSequence do
         |> then(&struct!(__MODULE__, &1))
       end
 
-      @impl Bio.Behaviours.Sequence
+      @impl Bio.Sequential
       def fasta_line(%__MODULE__{sequence: seq, label: label}) when is_binary(seq) do
         ">#{label}\n#{seq}\n"
       end

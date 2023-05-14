@@ -70,10 +70,9 @@ defmodule Bio.MixProject do
           Bio.IO.SnapGene
         ],
         "General Polymers": [
-          Bio.SimpleSequence,
-          Bio.Sequence.Polymer,
+          Bio.BaseSequence,
+          Bio.Polymer,
           Bio.Sequence,
-          Bio.Sequence.Alphabets,
           Bio.Sequence.MonomerName
         ],
         DNA: [
@@ -91,18 +90,26 @@ defmodule Bio.MixProject do
         "Amino Acid": [
           Bio.Sequence.AminoAcid
         ],
+        Alphabets: [
+          Bio.Sequence.Alphabets,
+          Bio.Sequence.Alphabets.AminoAcid,
+          Bio.Sequence.Alphabets.Dna,
+          Bio.Sequence.Alphabets.Rna
+        ],
         Restriction: [
           Bio.Restriction,
           Bio.Restriction.Enzyme
         ],
         Behaviours: [
-          Bio.Behaviours.Sequence,
-          Bio.Behaviours.Converter
+          Bio.Sequential,
+          Bio.Convertible
         ],
         Utilities: [
           Bio.Enum,
-          Bio.Protocols.Convertible,
-          Bio.Sequence.Mapping
+          Bio.Polymeric
+        ],
+        Internal: [
+          Bio.AcidHelper
         ]
       ]
     ]

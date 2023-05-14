@@ -61,27 +61,27 @@ defmodule Bio.Enum do
 
   def chunk_every(enumerable, count),
     do:
-      Stream.chunk_every(enumerable, count)
-      |> Stream.map(&Enum.join/1)
-      |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      Enum.chunk_every(enumerable, count)
+      |> Enum.map(&Enum.join/1)
+      |> Enum.map(&new(&1, enumerable))
 
   def chunk_every(enumerable, count, step),
     do:
-      Stream.chunk_every(enumerable, count, step)
-      |> Stream.map(&Enum.join/1)
-      |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      Enum.chunk_every(enumerable, count, step)
+      |> Enum.map(&Enum.join/1)
+      |> Enum.map(&new(&1, enumerable))
 
   def chunk_every(enumerable, count, step, options),
     do:
-      Stream.chunk_every(enumerable, count, step, options)
-      |> Stream.map(&Enum.join/1)
-      |> Enum.map(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      Enum.chunk_every(enumerable, count, step, options)
+      |> Enum.map(&Enum.join/1)
+      |> Enum.map(&new(&1, enumerable))
 
   def chunk_while(enumerable, acc, chunk_fun, after_fun),
     do:
       Enum.chunk_while(enumerable, acc, chunk_fun, after_fun)
       |> Enum.map(&Enum.join/1)
-      |> Enum.map(&apply(enumerable.__struct__, :new, [&1, label: enumerable.label]))
+      |> Enum.map(&new(&1, enumerable))
 
   # TODO: figure out the semantics for concatenation with non-sequence
   # enumerables
@@ -145,7 +145,7 @@ defmodule Bio.Enum do
     do:
       Enum.map(enumerable, func)
       |> Enum.join()
-      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      |> new(enumerable)
 
   # def map_every(), do: {}
   #
@@ -189,14 +189,14 @@ defmodule Bio.Enum do
     do:
       Enum.reverse(enumerable)
       |> Enum.join()
-      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      |> new(enumerable)
 
   # TODO: what type is tail?
   def reverse(enumerable, tail),
     do:
       Enum.reverse(enumerable, tail)
       |> Enum.join()
-      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      |> new(enumerable)
 
   # def reverse_slice(), do: {}
   #
@@ -209,13 +209,13 @@ defmodule Bio.Enum do
     do:
       Enum.slice(enumerable, index_range)
       |> List.to_string()
-      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      |> new(enumerable)
 
   def slice(enumerable, start_index, amount),
     do:
       Enum.slice(enumerable, start_index, amount)
       |> List.to_string()
-      |> then(&apply(enumerable.__struct__, :new, [&1, [label: enumerable.label]]))
+      |> new(enumerable)
 
   # def slide(), do: {}
   #
@@ -248,10 +248,7 @@ defmodule Bio.Enum do
   # def uniq_by(), do: {}
   #
   # def unzip(), do: {}
-  #
-  # def with_index(a), do: {a}
-  # def with_index(a, b), do: {a, b}
-  #
+
   # def zip(a), do: {a}
   # def zip(a, b), do: {a, b}
   #
@@ -260,4 +257,13 @@ defmodule Bio.Enum do
   #
   # def zip_with(a), do: {a}
   # def zip_with(a, b), do: {a, b}
+  defp new(seq, enumerable) do
+    data =
+      enumerable
+      |> Map.from_struct()
+      |> Map.drop([:sequence, :length])
+      |> Map.to_list()
+
+    apply(enumerable.__struct__, :new, [seq, data])
+  end
 end

@@ -1,7 +1,11 @@
-defmodule Bio.Sequence.Polymer do
+defmodule Bio.Polymer do
   @moduledoc """
-  Deals with conversions between polymers that define a
-  `Bio.Protocols.Convertible` interface.
+  Deals with conversions between polymers.
+
+  The sequences that this will work with must define an implementation for the
+  `Bio.Polymeric` protocol. This is then used with the definition of
+  the `to/1` callbacks for the `Bio.Convertible` behaviour. These will
+  be given the kmer enumeration that they define with that function.
 
   This module wraps the logic of accessing a given polymer's defined
   conversions. The primary idea is that I wanted to expose the ability to
@@ -11,14 +15,14 @@ defmodule Bio.Sequence.Polymer do
   To put that in more concrete terms, I wanted this to be viable:
 
       iex>dna = DnaStrand.new("ttagccgt", label: "a label")
-      ...>Polymer.convert(dna, RnaStrand)
+      ...>Bio.Polymer.convert(dna, RnaStrand)
       {:ok, %RnaStrand{sequence: "uuagccgu", length: 8, label: "a label"}}
 
   But, and this is the important part, other conversions are not well defined by
   defaults. For example:
 
       iex>amino = AminoAcid.new("maktg")
-      ...>Polymer.convert(amino, DnaStrand)
+      ...>Bio.Polymer.convert(amino, DnaStrand)
       {:error, :undef_conversion}
 
   The `:undef_conversion` indicates that there is no viable default
@@ -34,10 +38,22 @@ defmodule Bio.Sequence.Polymer do
   converted into a compressed DNA representation, we could do:
 
       iex>defmodule CompressedAminoConversion do
-      ...>  def to(DnaStrand), do: {:ok, &compressed/1}
-      ...>  def to(_), do: {:error, :undef_conversion}
-      ...>  def compressed(amino) do
-      ...>    case amino do
+      ...>  use Bio.Convertible do
+      ...>    def to(DnaStrand), do: {:ok, &compressed/2, 1}
+      ...>  end
+      ...>
+      ...>  def compressed({:ok, knumerable, data}, _) do
+      ...>    data = data
+      ...>           |> Map.drop([ :length ])
+      ...>           |> Map.to_list()
+      ...>    knumerable
+      ...>    |> Enum.map(&to_codon/1)
+      ...>    |> Enum.join("")
+      ...>    |> DnaStrand.new(data)
+      ...>  end
+      ...>
+      ...>  defp to_codon(aa) do
+      ...>    case aa do
       ...>      "a" -> "gcn"
       ...>      "r" -> "cgn"
       ...>      "n" -> "aay"
@@ -62,11 +78,11 @@ defmodule Bio.Sequence.Polymer do
       ...>  end
       ...>end
       ...>amino = AminoAcid.new("maktg", label: "polypeptide-∂")
-      ...>Polymer.convert(amino, DnaStrand, conversion: CompressedAminoConversion)
+      ...>Bio.Polymer.convert(amino, DnaStrand, conversion: CompressedAminoConversion)
       {:ok, %DnaStrand{sequence: "atggcnaaracnggn", length: 15, label: "polypeptide-∂"}}
 
   This is made possible because of the simple implementation of the
-  `Bio.Protocols.Convertible` interface for the `Bio.Sequence.AminoAcid`. If
+  `Bio.Polymeric` interface for the `Bio.Sequence.AminoAcid`. If
   you want to define your own convertible polymer types, you can. It requires
   defining the module and the implementation of `convert/1`. You can read the
   `Bio.Sequence.AminoAcid` source for more clarity on the details.
@@ -81,34 +97,34 @@ defmodule Bio.Sequence.Polymer do
   than I could possibly compile on my own, so I tried to come up with a way to
   alleviate that pressure.
   """
-  alias Bio.Protocols.Convertible
+  alias Bio.Polymeric
 
   @doc """
   Apply a conversion to a given datum.
 
-  The `convert/3` function is at the core of using the `Bio.Sequence.Polymer`
+  The `convert/3` function is at the core of using the `Bio.Polymer`
   module. By passing the function a struct and the module you wish to convert
   to, you are hooking into the underlying implementation of the
-  `Bio.Behaviours.Converter` for that module. This means that both the struct
+  `Bio.Convertible` for that module. This means that both the struct
   you given _as well as the module_ must have this implemented.
 
   # Examples
   Given a struct and module with a known conversion:
 
       iex>dna = DnaStrand.new("ttagccgt", label: "a label")
-      ...>Polymer.convert(dna, RnaStrand)
+      ...>Bio.Polymer.convert(dna, RnaStrand)
       {:ok, %RnaStrand{sequence: "uuagccgu", length: 8, label: "a label"}}
 
   Given a struct and module with unknown conversions:
 
       iex>amino = AminoAcid.new("maktg")
-      ...>Polymer.convert(amino, DnaStrand)
+      ...>Bio.Polymer.convert(amino, DnaStrand)
       {:error, :undef_conversion}
 
-  Given a struct that doesn't implement `Bio.Behaviours.Converter`:
+  Given a struct that doesn't implement `Bio.Sequential`:
 
-      iex>amino = Bio.IO.QualityScore.new("maktg", encoding: :phred_33)
-      ...>Polymer.convert(amino, DnaStrand)
+      iex>amino = Bio.QualityScore.new("maktg", encoding: :phred_33)
+      ...>Bio.Polymer.convert(amino, DnaStrand)
       {:error, :no_converter}
   """
   @spec convert(struct(), module(), keyword()) :: {:ok, struct()} | {:error, :undef_conversion}
@@ -118,8 +134,11 @@ defmodule Bio.Sequence.Polymer do
         conversion_module = apply(data.__struct__, :converter, [])
 
         case apply(conversion_module, :to, [module]) do
-          {:ok, elementwise_converter} ->
-            {:ok, Convertible.convert(data, module, elementwise_converter)}
+          {:ok, kwise_converter, k} ->
+            data
+            |> Polymeric.kmers(k)
+            |> kwise_converter.(module)
+            |> then(&{:ok, &1})
 
           otherwise ->
             otherwise
@@ -127,8 +146,11 @@ defmodule Bio.Sequence.Polymer do
 
       conversion_module ->
         case apply(conversion_module, :to, [module]) do
-          {:ok, elementwise_converter} ->
-            {:ok, Convertible.convert(data, module, elementwise_converter)}
+          {:ok, kwise_converter, k} ->
+            data
+            |> Polymeric.kmers(k)
+            |> kwise_converter.(module)
+            |> then(&{:ok, &1})
 
           otherwise ->
             otherwise
@@ -136,5 +158,31 @@ defmodule Bio.Sequence.Polymer do
     end
   rescue
     UndefinedFunctionError -> {:error, :no_converter}
+  end
+
+  def valid?(%_{} = data, alphabet \\ nil) do
+    case {Map.get(data, :alphabet), alphabet} do
+      {nil, nil} -> false
+      {builtin, nil} -> Polymeric.valid?(data, builtin)
+      {_, given} -> Polymeric.valid?(data, given)
+    end
+  end
+
+  @doc """
+  Validate a given sequence struct according to its `Bio.Polymeric` implementation.
+  """
+  @spec validate(struct(), String.t() | nil) ::
+          {:ok, struct()}
+          | {:error, :no_alpha}
+          | {:error, {atom(), String.t(), integer()}}
+          | {:error, [{atom(), String.t(), integer()}]}
+  def validate(data, alphabet \\ nil)
+
+  def validate(%_{} = data, alphabet) do
+    case {Map.get(data, :alphabet), alphabet} do
+      {nil, nil} -> {:error, :no_alpha}
+      {builtin, nil} -> Polymeric.validate(data, builtin)
+      {_, given} -> Polymeric.validate(data, given)
+    end
   end
 end

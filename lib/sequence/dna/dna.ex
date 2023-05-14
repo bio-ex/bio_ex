@@ -8,7 +8,7 @@ defmodule Bio.Sequence.Dna do
   `Bio.Sequence.DnaStrand` and `Bio.Sequence.DnaDoubleStrand` modules exist.
 
   However, this is the interface for dealing with things like `complement/1` and
-  `reverse_complement/1`.
+  `reverse_complement!/1`.
 
   Additionally, this module handles defining default conversions for the DNA
   sequence types into RNA sequence types (`Bio.Sequence.RnaStrand` and
@@ -30,56 +30,50 @@ defmodule Bio.Sequence.Dna do
   # Example
 
       iex>DnaStrand.new("taTTg")
-      ...>|> Polymer.convert(RnaStrand)
+      ...>|> Bio.Polymer.convert(RnaStrand)
       {:ok, %RnaStrand{sequence: "uaUUg", length: 5}}
 
   This is guaranteed, so you may encode these with intention and assume that
   they are preserved across conversions.
   """
   alias Bio.Sequence.{DnaStrand, RnaStrand, RnaDoubleStrand}
-  alias Bio.Behaviours.Converter
   alias Bio.Enum, as: Bnum
-
-  import Bio.Sequence.Utilities, only: [upper?: 1]
+  alias Bio.Sequence.Alphabets.Dna, as: Alpha
 
   @type complementable :: struct() | String.t()
-
-  @complement %{
-    "a" => "t",
-    "A" => "T",
-    "t" => "a",
-    "T" => "A",
-    "g" => "c",
-    "G" => "C",
-    "c" => "g",
-    "C" => "G"
-  }
+  @type msg :: atom()
 
   defmodule Conversions do
     @moduledoc false
-    use Converter do
-      def to(RnaStrand), do: {:ok, &to_rna/1}
-      def to(RnaDoubleStrand), do: {:ok, &to_rna/1}
+    use Bio.Convertible do
+      def to(RnaStrand), do: {:ok, &to_rna/2, 1}
+      def to(RnaDoubleStrand), do: {:ok, &to_rna/2, 1}
     end
 
-    defp to_rna(base) do
-      case upper?(base) do
-        true ->
-          case base do
-            "A" -> "A"
-            "T" -> "U"
-            "G" -> "G"
-            "C" -> "C"
-          end
+    defp to_rna({:error, err}, _) do
+      {:error, err}
+    end
 
-        false ->
-          case base do
-            "a" -> "a"
-            "t" -> "u"
-            "g" -> "g"
-            "c" -> "c"
-          end
-      end
+    defp to_rna({:ok, knumeration, data}, module) do
+      knumeration
+      |> Enum.map(fn base ->
+        case base do
+          "A" -> "A"
+          "T" -> "U"
+          "G" -> "G"
+          "C" -> "C"
+          "a" -> "a"
+          "t" -> "u"
+          "g" -> "g"
+          "c" -> "c"
+        end
+      end)
+      |> Enum.join()
+      |> new_sequence(data, module)
+    end
+
+    defp new_sequence(seq, data, module) do
+      apply(module, :new, [seq, Map.to_list(data)])
     end
   end
 
@@ -91,23 +85,80 @@ defmodule Bio.Sequence.Dna do
 
   # Examples
       iex>Dna.complement("attgacgt")
-      "taactgca"
+      {:ok, "taactgca"}
 
       iex>DnaStrand.new("attgacgt")
       ...>|> Dna.complement()
-      %DnaStrand{sequence: "taactgca", length: 8}
+      {:ok, %DnaStrand{sequence: "taactgca", length: 8, alphabet: Bio.Sequence.Alphabets.Dna.common()}}
   """
-  @spec complement(sequence :: complementable) :: complementable
-  def complement(%DnaStrand{} = sequence) do
-    sequence
-    |> Bnum.map(&Map.get(@complement, &1))
+  @spec complement(complementable) ::
+          complementable | {:error, [{atom(), String.t(), integer(), String.t()}]}
+  def complement(sequence, opts \\ [])
+
+  def complement(%DnaStrand{alphabet: alpha} = sequence, opts) do
+    alphabet = get_alpha({alpha, Keyword.get(opts, :alphabet)})
+
+    comps =
+      sequence
+      |> Enum.with_index()
+      |> Enum.map(fn {base, index} ->
+        {Alpha.complement(base, alphabet), index}
+      end)
+
+    cond do
+      Enum.any?(comps, fn {{status, _}, _} -> status == :error end) ->
+        {:error,
+         Enum.reduce(comps, [], fn {{status, result}, index}, acc ->
+           case status do
+             :ok ->
+               acc
+
+             :error ->
+               {_, char, alpha} = result
+               List.insert_at(acc, -1, {:mismatch_alpha, char, index, alpha})
+           end
+         end)}
+
+      true ->
+        {:ok,
+         Enum.reduce(comps, "", fn {{_, result}, _}, acc ->
+           acc <> result
+         end)
+         |> DnaStrand.new(alphabet: alphabet)}
+    end
   end
 
-  def complement(sequence) when is_binary(sequence) do
-    sequence
-    |> String.graphemes()
-    |> Enum.map(&Map.get(@complement, &1))
-    |> Enum.join()
+  def complement(sequence, opts) when is_binary(sequence) do
+    alphabet = get_alpha({nil, Keyword.get(opts, :alphabet)})
+
+    comps =
+      sequence
+      |> String.graphemes()
+      |> Enum.with_index()
+      |> Enum.map(fn {base, index} ->
+        {Alpha.complement(base, alphabet), index}
+      end)
+
+    cond do
+      Enum.any?(comps, fn {{status, _}, _} -> status == :error end) ->
+        {:error,
+         Enum.reduce(comps, [], fn {{status, result}, index}, acc ->
+           case status do
+             :ok ->
+               acc
+
+             :error ->
+               {_, char, alpha} = result
+               List.insert_at(acc, -1, {:mismatch_alpha, char, index, alpha})
+           end
+         end)}
+
+      true ->
+        {:ok,
+         Enum.reduce(comps, "", fn {{_, result}, _}, acc ->
+           acc <> result
+         end)}
+    end
   end
 
   @doc """
@@ -118,27 +169,46 @@ defmodule Bio.Sequence.Dna do
   complements.
 
   # Examples
-      iex>Dna.reverse_complement("attgacgt")
+      iex>Dna.reverse_complement!("attgacgt")
       "acgtcaat"
 
       iex>DnaStrand.new("attgacgt")
-      ...>|> Dna.reverse_complement()
+      ...>|> Dna.reverse_complement!()
       %DnaStrand{sequence: "acgtcaat", length: 8}
   """
-  @spec reverse_complement(sequence :: complementable) :: complementable
-  def reverse_complement(sequence)
+  @spec reverse_complement!(sequence :: complementable) :: complementable
+  def reverse_complement!(sequence, opts \\ [])
 
-  def reverse_complement(%DnaStrand{} = sequence) do
+  def reverse_complement!(%DnaStrand{alphabet: alpha} = sequence, opts) do
+    alphabet = get_alpha({alpha, Keyword.get(opts, :alphabet)})
+
     sequence
-    |> Bnum.map(&Map.get(@complement, &1))
+    |> Bnum.map(fn base ->
+      {:ok, complementary} = Alpha.complement(base, alphabet)
+      complementary
+    end)
     |> Bnum.reverse()
   end
 
-  def reverse_complement(sequence) when is_binary(sequence) do
+  def reverse_complement!(sequence, opts) when is_binary(sequence) do
+    alphabet = get_alpha({nil, Keyword.get(opts, :alphabet)})
+
     sequence
     |> String.graphemes()
-    |> Enum.map(&Map.get(@complement, &1))
+    |> Enum.map(fn base ->
+      {:ok, complementary} = Alpha.complement(base, alphabet)
+      complementary
+    end)
     |> Enum.reverse()
     |> Enum.join()
+  end
+
+  defp get_alpha(opts) do
+    case opts do
+      {nil, nil} -> Alpha.common()
+      {nil, opted} -> opted
+      {built, nil} -> built
+      {_built, opted} -> opted
+    end
   end
 end
