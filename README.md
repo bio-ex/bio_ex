@@ -70,7 +70,7 @@ in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:bio_ex, "~> 0.1.0"}
+    {:bio_ex, "~> 0.3.0"}
   ]
 end
 ```
