@@ -1,7 +1,7 @@
 defmodule Bio.Rebase.Emboss do
   @moduledoc false
 
-  @keep_elements [:blunt?, :cut_1, :cut_2, :cut_3, :cut_4, :name, :pattern]
+  @keep_elements [:blunt?, :cut_1, :cut_2, :cut_3, :cut_4, :name, :pattern, :suppliers]
   def parse(patterns_file, information_file, suppliers_file) do
     [
       parse_patterns(patterns_file),
@@ -11,20 +11,27 @@ defmodule Bio.Rebase.Emboss do
     |> convolve()
   end
 
+  def date_term() do
+    date = Date.utc_today()
+
+    month_part =
+      cond do
+        date.month >= 10 -> date.month
+        true -> "0#{date.month}"
+      end
+
+    "#{String.slice("#{date.year}", 3, 99)}#{month_part}"
+  end
+
   defp convolve(data) do
-    [patterns, info, _suppliers] = data
+    [patterns, info, suppliers] = data
 
     # Patterns and info should have the same len, suppliers is just a map that
     # we can use to replace the weird keys with actual values
     patterns
     |> Enum.map(fn pat_map ->
-      info_map =
-        Enum.find(info, fn inf_el ->
-          Map.get(inf_el, :enzyme_name) == Map.get(pat_map, :name)
-        end)
-
-      new = info_map |> Enum.reduce(%{}, fn {key, value}, inner -> Map.put(inner, key, value) end)
-      pat_map |> Enum.reduce(new, fn {key, value}, inner -> Map.put(inner, key, value) end)
+      Enum.find(info, &(Map.get(&1, :enzyme_name) == Map.get(pat_map, :name)))
+      |> Map.merge(pat_map)
     end)
     |> Enum.map(fn full_map ->
       cond do

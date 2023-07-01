@@ -27,8 +27,6 @@ defmodule Mix.Tasks.Bio.Restriction.Download do
     :ok = File.mkdir_p(cache_dir)
 
     host = "ftp.neb.com"
-    date = Date.utc_today()
-    term = "#{String.slice("#{date.year}", 3, 99)}#{date.month}"
 
     :ftp.start()
     {:ok, pid} = :ftp.open(host |> String.to_charlist())
@@ -40,8 +38,8 @@ defmodule Mix.Tasks.Bio.Restriction.Download do
       "pub/rebase/emboss_r.",
       "pub/rebase/bairoch."
     ]
-    |> Enum.map(fn p -> p <> term end)
-    |> Enum.map(fn p -> {p, p |> Path.basename() |> Path.rootname()} end)
+    |> Enum.map(fn p -> p <> Bio.Rebase.Emboss.date_term() end)
+    |> Enum.map(fn p -> {p, Path.basename(p)} end)
     |> Enum.map(fn {path, target_filename} ->
       full_path = "#{cache_dir}/downloads_" <> target_filename
 
