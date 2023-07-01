@@ -54,7 +54,7 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
     |> write_module
   end
 
-  defp write_module(data) do
+  defp write_module(%{enzymes: enzymes, suppliers: %{} = suppliers}) do
     Ansio.info("Writing module...")
 
     File.write(
@@ -75,6 +75,20 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
       characters have been made `_`. By example, "BsmBI" would be `bsmbi` or
       "CviKI-1" would become `cviki_1`.
       \"\"\"
+
+      @suppliers %#{stringify(suppliers)}
+
+      def get_supplier(code) when is_binary(code) do
+        code
+        |> String.upcase()
+        |> String.to_existing_atom()
+        |> get_supplier()
+      end
+
+      def get_supplier(code) when is_atom(code) do
+        @suppliers
+        |> Map.get(code)
+      end
 
       @doc \"\"\"
       Get an enzyme struct by name, where name is either a binary or atom and
@@ -128,8 +142,8 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
       @doc \"\"\"
       The primary struct for interacting with restriction enzymes
       \"\"\"
-      defstruct #{to_source(Enum.at(data, 0))}
-      #{data |> Enum.map(fn enzyme_map -> ~s"""
+      defstruct #{to_source(Enum.at(enzymes, 0))}
+      #{enzymes |> Enum.map(fn enzyme_map -> ~s"""
         @doc false
         def #{Map.get(enzyme_map, :name) |> String.downcase() |> String.replace("-", "_")} do
           %Bio.Restriction.Enzyme#{stringify(enzyme_map)}
@@ -161,7 +175,7 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
         str <> "#{key}: #{stringify(value)},"
       end)
 
-    final <> "}"
+    String.replace_suffix(final, ",", "") <> "}"
   end
 
   def stringify(obj) when is_binary(obj) do
@@ -183,6 +197,10 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
 
   def stringify(obj) when is_number(obj) do
     "#{obj}"
+  end
+
+  def stringify(obj) when is_atom(obj) do
+    ":#{obj}"
   end
 
   # sourcify to default struct values
