@@ -18,7 +18,12 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
   cut_4: number
   name: string
   pattern: string
+  suppliers: [string...]
 
+
+  The value of `suppliers` is a string list of the Supplier Codes. These are
+  related to company names using the emboss_s file, and can be related with the
+  `Bio.Restriction.Suppliers` module.
   """
 
   @shortdoc "Task for populating RE data"
@@ -39,10 +44,12 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
         true -> opts[:cache_dir]
       end
 
+    term = Emboss.date_term()
+
     Emboss.parse(
-      "#{base_dir}/downloads_emboss_e",
-      "#{base_dir}/downloads_emboss_r",
-      "#{base_dir}/downloads_emboss_s"
+      "#{base_dir}/downloads_emboss_e.#{term}",
+      "#{base_dir}/downloads_emboss_r.#{term}",
+      "#{base_dir}/downloads_emboss_s.#{term}"
     )
     |> write_module
   end

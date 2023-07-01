@@ -67,7 +67,15 @@ defmodule Bio.Restriction.Enzyme do
   @doc """
   The primary struct for interacting with restriction enzymes
   """
-  defstruct blunt?: nil, cut_1: 0, cut_2: 0, cut_3: 0, cut_4: 0, name: "", pattern: ""
+  defstruct blunt?: nil,
+            cut_1: 0,
+            cut_2: 0,
+            cut_3: 0,
+            cut_4: 0,
+            name: "",
+            pattern: "",
+            suppliers: []
+
   @doc false
   def aani do
     %Bio.Restriction.Enzyme{
@@ -77,7 +85,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AanI",
-      pattern: "ttataa"
+      pattern: "ttataa",
+      suppliers: ["B"]
     }
   end
 
@@ -90,7 +99,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AarI",
-      pattern: "cacctgc"
+      pattern: "cacctgc",
+      suppliers: ["B"]
     }
   end
 
@@ -103,7 +113,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AasI",
-      pattern: "gacnnnnnngtc"
+      pattern: "gacnnnnnngtc",
+      suppliers: ["B"]
     }
   end
 
@@ -116,7 +127,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AatII",
-      pattern: "gacgtc"
+      pattern: "gacgtc",
+      suppliers: ["B", "I", "K", "M", "N", "V"]
     }
   end
 
@@ -129,7 +141,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Aba6411II",
-      pattern: "crrtaag"
+      pattern: "crrtaag",
+      suppliers: []
     }
   end
 
@@ -142,7 +155,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Aba13301I",
-      pattern: "gcaaac"
+      pattern: "gcaaac",
+      suppliers: []
     }
   end
 
@@ -155,7 +169,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AbaB8342IV",
-      pattern: "cattag"
+      pattern: "cattag",
+      suppliers: []
     }
   end
 
@@ -168,7 +183,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AbaCIII",
-      pattern: "ctatcav"
+      pattern: "ctatcav",
+      suppliers: []
     }
   end
 
@@ -181,7 +197,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AbaPBA3II",
-      pattern: "caygac"
+      pattern: "caygac",
+      suppliers: []
     }
   end
 
@@ -194,7 +211,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AbaSI",
-      pattern: "c"
+      pattern: "c",
+      suppliers: ["N"]
     }
   end
 
@@ -207,7 +225,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AbaUMB2I",
-      pattern: "yccgss"
+      pattern: "yccgss",
+      suppliers: []
     }
   end
 
@@ -220,7 +239,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Abr4036II",
-      pattern: "grtygacc"
+      pattern: "grtygacc",
+      suppliers: []
     }
   end
 
@@ -233,7 +253,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AbsI",
-      pattern: "cctcgagg"
+      pattern: "cctcgagg",
+      suppliers: ["I"]
     }
   end
 
@@ -246,7 +267,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccI",
-      pattern: "gtmkac"
+      pattern: "gtmkac",
+      suppliers: ["B", "J", "K", "M", "N", "Q", "X"]
     }
   end
 
@@ -259,7 +281,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccII",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: ["J", "K"]
     }
   end
 
@@ -272,7 +295,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccIII",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["J", "K"]
     }
   end
 
@@ -285,7 +309,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccIX",
-      pattern: "gacrac"
+      pattern: "gacrac",
+      suppliers: []
     }
   end
 
@@ -298,7 +323,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccX",
-      pattern: "ggarca"
+      pattern: "ggarca",
+      suppliers: []
     }
   end
 
@@ -311,7 +337,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Acc16I",
-      pattern: "tgcgca"
+      pattern: "tgcgca",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -324,7 +351,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Acc36I",
-      pattern: "acctgc"
+      pattern: "acctgc",
+      suppliers: ["I"]
     }
   end
 
@@ -337,7 +365,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Acc65I",
-      pattern: "ggtacc"
+      pattern: "ggtacc",
+      suppliers: ["B", "I", "N", "V"]
     }
   end
 
@@ -350,7 +379,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Acc65V",
-      pattern: "gacgca"
+      pattern: "gacgca",
+      suppliers: []
     }
   end
 
@@ -363,7 +393,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccB1I",
-      pattern: "ggyrcc"
+      pattern: "ggyrcc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -376,7 +407,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccB7I",
-      pattern: "ccannnnntgg"
+      pattern: "ccannnnntgg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -389,7 +421,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AccBSI",
-      pattern: "ccgctc"
+      pattern: "ccgctc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -402,7 +435,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AceIII",
-      pattern: "cagctc"
+      pattern: "cagctc",
+      suppliers: []
     }
   end
 
@@ -415,7 +449,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AchA6III",
-      pattern: "agccag"
+      pattern: "agccag",
+      suppliers: []
     }
   end
 
@@ -428,7 +463,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AciI",
-      pattern: "ccgc"
+      pattern: "ccgc",
+      suppliers: ["N"]
     }
   end
 
@@ -441,7 +477,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AclI",
-      pattern: "aacgtt"
+      pattern: "aacgtt",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -454,7 +491,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AclWI",
-      pattern: "ggatc"
+      pattern: "ggatc",
+      suppliers: ["I"]
     }
   end
 
@@ -467,7 +505,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AcoI",
-      pattern: "yggccr"
+      pattern: "yggccr",
+      suppliers: ["I"]
     }
   end
 
@@ -480,7 +519,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Aco12261II",
-      pattern: "ccrgag"
+      pattern: "ccrgag",
+      suppliers: []
     }
   end
 
@@ -493,7 +533,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AcoY31II",
-      pattern: "tagcrab"
+      pattern: "tagcrab",
+      suppliers: []
     }
   end
 
@@ -506,7 +547,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AcsI",
-      pattern: "raatty"
+      pattern: "raatty",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -519,7 +561,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AcuI",
-      pattern: "ctgaag"
+      pattern: "ctgaag",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -532,7 +575,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AcvI",
-      pattern: "cacgtg"
+      pattern: "cacgtg",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -545,7 +589,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AcyI",
-      pattern: "grcgyc"
+      pattern: "grcgyc",
+      suppliers: ["J"]
     }
   end
 
@@ -558,7 +603,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AdeI",
-      pattern: "cacnnngtg"
+      pattern: "cacnnngtg",
+      suppliers: ["B"]
     }
   end
 
@@ -571,7 +617,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Adh6U21I",
-      pattern: "gaancag"
+      pattern: "gaancag",
+      suppliers: []
     }
   end
 
@@ -584,7 +631,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AfaI",
-      pattern: "gtac"
+      pattern: "gtac",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -597,7 +645,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AfeI",
-      pattern: "agcgct"
+      pattern: "agcgct",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -610,7 +659,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AfiI",
-      pattern: "ccnnnnnnngg"
+      pattern: "ccnnnnnnngg",
+      suppliers: ["V"]
     }
   end
 
@@ -623,7 +673,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AflII",
-      pattern: "cttaag"
+      pattern: "cttaag",
+      suppliers: ["J", "K", "N"]
     }
   end
 
@@ -636,7 +687,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AflIII",
-      pattern: "acrygt"
+      pattern: "acrygt",
+      suppliers: ["M", "N", "S"]
     }
   end
 
@@ -649,7 +701,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AgeI",
-      pattern: "accggt"
+      pattern: "accggt",
+      suppliers: ["J", "N", "R"]
     }
   end
 
@@ -662,7 +715,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AgsI",
-      pattern: "ttsaa"
+      pattern: "ttsaa",
+      suppliers: ["I"]
     }
   end
 
@@ -675,7 +729,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AhaIII",
-      pattern: "tttaaa"
+      pattern: "tttaaa",
+      suppliers: []
     }
   end
 
@@ -688,7 +743,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AhdI",
-      pattern: "gacnnnnngtc"
+      pattern: "gacnnnnngtc",
+      suppliers: ["N"]
     }
   end
 
@@ -701,7 +757,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AhlI",
-      pattern: "actagt"
+      pattern: "actagt",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -714,7 +771,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AhyRBAHI",
-      pattern: "gcyygac"
+      pattern: "gcyygac",
+      suppliers: []
     }
   end
 
@@ -727,7 +785,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AhyYL17I",
-      pattern: "yaamgag"
+      pattern: "yaamgag",
+      suppliers: []
     }
   end
 
@@ -740,7 +799,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AjiI",
-      pattern: "cacgtc"
+      pattern: "cacgtc",
+      suppliers: ["B"]
     }
   end
 
@@ -753,7 +813,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AjnI",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["I"]
     }
   end
 
@@ -766,7 +827,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 20,
       name: "AjuI",
-      pattern: "gaannnnnnnttgg"
+      pattern: "gaannnnnnnttgg",
+      suppliers: ["B"]
     }
   end
 
@@ -779,7 +841,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AleI",
-      pattern: "cacnnnngtg"
+      pattern: "cacnnnngtg",
+      suppliers: ["N"]
     }
   end
 
@@ -792,7 +855,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 22,
       name: "AlfI",
-      pattern: "gcannnnnntgc"
+      pattern: "gcannnnnntgc",
+      suppliers: []
     }
   end
 
@@ -805,7 +869,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 20,
       name: "AloI",
-      pattern: "gaacnnnnnntcc"
+      pattern: "gaacnnnnnntcc",
+      suppliers: ["B"]
     }
   end
 
@@ -818,7 +883,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AluI",
-      pattern: "agct"
+      pattern: "agct",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X", "Y"]
     }
   end
 
@@ -831,7 +897,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AluBI",
-      pattern: "agct"
+      pattern: "agct",
+      suppliers: ["I"]
     }
   end
 
@@ -844,7 +911,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AlwI",
-      pattern: "ggatc"
+      pattern: "ggatc",
+      suppliers: ["N"]
     }
   end
 
@@ -857,7 +925,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Alw21I",
-      pattern: "gwgcwc"
+      pattern: "gwgcwc",
+      suppliers: ["B"]
     }
   end
 
@@ -870,7 +939,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Alw26I",
-      pattern: "gtctc"
+      pattern: "gtctc",
+      suppliers: ["B"]
     }
   end
 
@@ -883,7 +953,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Alw44I",
-      pattern: "gtgcac"
+      pattern: "gtgcac",
+      suppliers: ["B", "J"]
     }
   end
 
@@ -896,7 +967,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AlwFI",
-      pattern: "gaaaynnnnnrtg"
+      pattern: "gaaaynnnnnrtg",
+      suppliers: []
     }
   end
 
@@ -909,7 +981,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AlwNI",
-      pattern: "cagnnnctg"
+      pattern: "cagnnnctg",
+      suppliers: ["N"]
     }
   end
 
@@ -922,7 +995,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ama87I",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -935,7 +1009,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AmaCSI",
-      pattern: "gctcca"
+      pattern: "gctcca",
+      suppliers: []
     }
   end
 
@@ -948,7 +1023,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Aod1I",
-      pattern: "gatcnac"
+      pattern: "gatcnac",
+      suppliers: []
     }
   end
 
@@ -961,7 +1037,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Aor13HI",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["K"]
     }
   end
 
@@ -974,7 +1051,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Aor51HI",
-      pattern: "agcgct"
+      pattern: "agcgct",
+      suppliers: ["K"]
     }
   end
 
@@ -987,7 +1065,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AoxI",
-      pattern: "ggcc"
+      pattern: "ggcc",
+      suppliers: ["I"]
     }
   end
 
@@ -1000,7 +1079,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ApaI",
-      pattern: "gggccc"
+      pattern: "gggccc",
+      suppliers: ["B", "I", "J", "K", "M", "N", "Q", "R", "V", "X"]
     }
   end
 
@@ -1013,7 +1093,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ApaBI",
-      pattern: "gcannnnntgc"
+      pattern: "gcannnnntgc",
+      suppliers: []
     }
   end
 
@@ -1026,7 +1107,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ApaLI",
-      pattern: "gtgcac"
+      pattern: "gtgcac",
+      suppliers: ["C", "K", "N"]
     }
   end
 
@@ -1039,7 +1121,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ApeKI",
-      pattern: "gcwgc"
+      pattern: "gcwgc",
+      suppliers: ["N"]
     }
   end
 
@@ -1052,7 +1135,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ApoI",
-      pattern: "raatty"
+      pattern: "raatty",
+      suppliers: ["N"]
     }
   end
 
@@ -1065,7 +1149,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ApyPI",
-      pattern: "atcgac"
+      pattern: "atcgac",
+      suppliers: []
     }
   end
 
@@ -1078,7 +1163,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AquII",
-      pattern: "gccgnac"
+      pattern: "gccgnac",
+      suppliers: []
     }
   end
 
@@ -1091,7 +1177,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AquIII",
-      pattern: "gaggag"
+      pattern: "gaggag",
+      suppliers: []
     }
   end
 
@@ -1104,7 +1191,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AquIV",
-      pattern: "grggaag"
+      pattern: "grggaag",
+      suppliers: []
     }
   end
 
@@ -1117,7 +1205,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 19,
       name: "ArsI",
-      pattern: "gacnnnnnnttyg"
+      pattern: "gacnnnnnnttyg",
+      suppliers: ["I"]
     }
   end
 
@@ -1130,7 +1219,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AscI",
-      pattern: "ggcgcgcc"
+      pattern: "ggcgcgcc",
+      suppliers: ["N"]
     }
   end
 
@@ -1143,7 +1233,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AseI",
-      pattern: "attaat"
+      pattern: "attaat",
+      suppliers: ["J", "N"]
     }
   end
 
@@ -1156,7 +1247,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asi256I",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: []
     }
   end
 
@@ -1169,7 +1261,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsiGI",
-      pattern: "accggt"
+      pattern: "accggt",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1182,7 +1275,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsiSI",
-      pattern: "gcgatcgc"
+      pattern: "gcgatcgc",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -1195,7 +1289,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asl11923II",
-      pattern: "gggabcc"
+      pattern: "gggabcc",
+      suppliers: []
     }
   end
 
@@ -1208,7 +1303,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asp103I",
-      pattern: "cgraggc"
+      pattern: "cgraggc",
+      suppliers: []
     }
   end
 
@@ -1221,7 +1317,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asp337I",
-      pattern: "carabgg"
+      pattern: "carabgg",
+      suppliers: []
     }
   end
 
@@ -1234,7 +1331,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asp700I",
-      pattern: "gaannnnttc"
+      pattern: "gaannnnttc",
+      suppliers: ["M"]
     }
   end
 
@@ -1247,7 +1345,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asp718I",
-      pattern: "ggtacc"
+      pattern: "ggtacc",
+      suppliers: ["M", "S"]
     }
   end
 
@@ -1260,7 +1359,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspA2I",
-      pattern: "cctagg"
+      pattern: "cctagg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1273,7 +1373,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspAMDIV",
-      pattern: "acccac"
+      pattern: "acccac",
+      suppliers: []
     }
   end
 
@@ -1286,7 +1387,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspBHI",
-      pattern: "yscns"
+      pattern: "yscns",
+      suppliers: []
     }
   end
 
@@ -1299,7 +1401,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspDUT2V",
-      pattern: "gngcaac"
+      pattern: "gngcaac",
+      suppliers: []
     }
   end
 
@@ -1312,7 +1415,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspJHL3II",
-      pattern: "cgcccag"
+      pattern: "cgcccag",
+      suppliers: []
     }
   end
 
@@ -1325,7 +1429,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspLEI",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1338,7 +1443,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspNIH4III",
-      pattern: "aagaacb"
+      pattern: "aagaacb",
+      suppliers: []
     }
   end
 
@@ -1351,7 +1457,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspS9I",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1364,7 +1471,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AspSLV7III",
-      pattern: "gtctca"
+      pattern: "gtctca",
+      suppliers: []
     }
   end
 
@@ -1377,7 +1485,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asp114pII",
-      pattern: "agcabcc"
+      pattern: "agcabcc",
+      suppliers: []
     }
   end
 
@@ -1390,7 +1499,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsuI",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: []
     }
   end
 
@@ -1403,7 +1513,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsuII",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["C"]
     }
   end
 
@@ -1416,7 +1527,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Asu14238IV",
-      pattern: "cgtrac"
+      pattern: "cgtrac",
+      suppliers: []
     }
   end
 
@@ -1429,7 +1541,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsuC2I",
-      pattern: "ccsgg"
+      pattern: "ccsgg",
+      suppliers: ["I"]
     }
   end
 
@@ -1442,7 +1555,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsuHPI",
-      pattern: "ggtga"
+      pattern: "ggtga",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1455,7 +1569,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AsuNHI",
-      pattern: "gctagc"
+      pattern: "gctagc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1468,7 +1583,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AteTI",
-      pattern: "gggrag"
+      pattern: "gggrag",
+      suppliers: []
     }
   end
 
@@ -1481,7 +1597,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AvaI",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: ["J", "N", "Q", "X"]
     }
   end
 
@@ -1494,7 +1611,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AvaII",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: ["J", "N", "X"]
     }
   end
 
@@ -1507,7 +1625,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AvaIII",
-      pattern: "atgcat"
+      pattern: "atgcat",
+      suppliers: []
     }
   end
 
@@ -1520,7 +1639,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Avi249I",
-      pattern: "ctgca"
+      pattern: "ctgca",
+      suppliers: []
     }
   end
 
@@ -1533,7 +1653,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AvrII",
-      pattern: "cctagg"
+      pattern: "cctagg",
+      suppliers: ["N"]
     }
   end
 
@@ -1546,7 +1667,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Awo1030IV",
-      pattern: "gccrag"
+      pattern: "gccrag",
+      suppliers: []
     }
   end
 
@@ -1559,7 +1681,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "AxyI",
-      pattern: "cctnagg"
+      pattern: "cctnagg",
+      suppliers: ["J"]
     }
   end
 
@@ -1572,7 +1695,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 23,
       cut_4: 18,
       name: "BaeI",
-      pattern: "acnnnngtayc"
+      pattern: "acnnnngtayc",
+      suppliers: ["N"]
     }
   end
 
@@ -1585,7 +1709,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BaeGI",
-      pattern: "gkgcmc"
+      pattern: "gkgcmc",
+      suppliers: ["N"]
     }
   end
 
@@ -1598,7 +1723,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bag18758I",
-      pattern: "cccgag"
+      pattern: "cccgag",
+      suppliers: []
     }
   end
 
@@ -1611,7 +1737,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BalI",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: ["B", "J", "K", "Q", "X"]
     }
   end
 
@@ -1624,7 +1751,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BamHI",
-      pattern: "ggatcc"
+      pattern: "ggatcc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X", "Y"]
     }
   end
 
@@ -1637,7 +1765,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BanI",
-      pattern: "ggyrcc"
+      pattern: "ggyrcc",
+      suppliers: ["N"]
     }
   end
 
@@ -1650,7 +1779,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BanII",
-      pattern: "grgcyc"
+      pattern: "grgcyc",
+      suppliers: ["K", "N", "X"]
     }
   end
 
@@ -1663,7 +1793,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BanLI",
-      pattern: "rtcagg"
+      pattern: "rtcagg",
+      suppliers: []
     }
   end
 
@@ -1676,7 +1807,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 20,
       name: "BarI",
-      pattern: "gaagnnnnnntac"
+      pattern: "gaagnnnnnntac",
+      suppliers: ["I"]
     }
   end
 
@@ -1689,7 +1821,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BauI",
-      pattern: "cacgag"
+      pattern: "cacgag",
+      suppliers: ["B"]
     }
   end
 
@@ -1702,7 +1835,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bau1417V",
-      pattern: "gttcag"
+      pattern: "gttcag",
+      suppliers: []
     }
   end
 
@@ -1715,7 +1849,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bbr52II",
-      pattern: "ggcgag"
+      pattern: "ggcgag",
+      suppliers: []
     }
   end
 
@@ -1728,7 +1863,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bbr57III",
-      pattern: "gtraayg"
+      pattern: "gtraayg",
+      suppliers: []
     }
   end
 
@@ -1741,7 +1877,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bbr7017II",
-      pattern: "cgggag"
+      pattern: "cgggag",
+      suppliers: []
     }
   end
 
@@ -1754,7 +1891,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bbr7017III",
-      pattern: "ggrcag"
+      pattern: "ggrcag",
+      suppliers: []
     }
   end
 
@@ -1767,7 +1905,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbrPI",
-      pattern: "cacgtg"
+      pattern: "cacgtg",
+      suppliers: ["M"]
     }
   end
 
@@ -1780,7 +1919,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbsI",
-      pattern: "gaagac"
+      pattern: "gaagac",
+      suppliers: ["N"]
     }
   end
 
@@ -1793,7 +1933,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbuB31I",
-      pattern: "gnaayg"
+      pattern: "gnaayg",
+      suppliers: []
     }
   end
 
@@ -1806,7 +1947,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbuB31II",
-      pattern: "cgrka"
+      pattern: "cgrka",
+      suppliers: []
     }
   end
 
@@ -1819,7 +1961,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbvI",
-      pattern: "gcagc"
+      pattern: "gcagc",
+      suppliers: ["N"]
     }
   end
 
@@ -1832,7 +1975,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbvII",
-      pattern: "gaagac"
+      pattern: "gaagac",
+      suppliers: []
     }
   end
 
@@ -1845,7 +1989,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bbv12I",
-      pattern: "gwgcwc"
+      pattern: "gwgcwc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -1858,7 +2003,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BbvCI",
-      pattern: "cctcagc"
+      pattern: "cctcagc",
+      suppliers: ["N"]
     }
   end
 
@@ -1871,7 +2017,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BccI",
-      pattern: "ccatc"
+      pattern: "ccatc",
+      suppliers: ["N"]
     }
   end
 
@@ -1884,7 +2031,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bce83I",
-      pattern: "cttgag"
+      pattern: "cttgag",
+      suppliers: []
     }
   end
 
@@ -1897,7 +2045,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bce3081I",
-      pattern: "taggag"
+      pattern: "taggag",
+      suppliers: []
     }
   end
 
@@ -1910,7 +2059,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bce10661III",
-      pattern: "tatcnag"
+      pattern: "tatcnag",
+      suppliers: []
     }
   end
 
@@ -1923,7 +2073,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BceAI",
-      pattern: "acggc"
+      pattern: "acggc",
+      suppliers: ["N"]
     }
   end
 
@@ -1936,7 +2087,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 14,
       cut_4: 16,
       name: "BceSIV",
-      pattern: "gcagc"
+      pattern: "gcagc",
+      suppliers: []
     }
   end
 
@@ -1949,7 +2101,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BcefI",
-      pattern: "acggc"
+      pattern: "acggc",
+      suppliers: []
     }
   end
 
@@ -1962,7 +2115,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 22,
       name: "BcgI",
-      pattern: "cgannnnnntgc"
+      pattern: "cgannnnnntgc",
+      suppliers: ["N"]
     }
   end
 
@@ -1975,7 +2129,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BciT130I",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["K"]
     }
   end
 
@@ -1988,7 +2143,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BciVI",
-      pattern: "gtatcc"
+      pattern: "gtatcc",
+      suppliers: ["N"]
     }
   end
 
@@ -2001,7 +2157,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BclI",
-      pattern: "tgatca"
+      pattern: "tgatca",
+      suppliers: ["B", "C", "J", "M", "N", "O", "R", "S"]
     }
   end
 
@@ -2014,7 +2171,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BcnI",
-      pattern: "ccsgg"
+      pattern: "ccsgg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -2027,7 +2185,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bco11035III",
-      pattern: "gaagcy"
+      pattern: "gaagcy",
+      suppliers: []
     }
   end
 
@@ -2040,7 +2199,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BcoDI",
-      pattern: "gtctc"
+      pattern: "gtctc",
+      suppliers: ["N"]
     }
   end
 
@@ -2053,7 +2213,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BcuI",
-      pattern: "actagt"
+      pattern: "actagt",
+      suppliers: ["B"]
     }
   end
 
@@ -2066,7 +2227,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 22,
       name: "BdaI",
-      pattern: "tgannnnnntca"
+      pattern: "tgannnnnntca",
+      suppliers: []
     }
   end
 
@@ -2079,7 +2241,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BetI",
-      pattern: "wccggw"
+      pattern: "wccggw",
+      suppliers: []
     }
   end
 
@@ -2092,7 +2255,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfaI",
-      pattern: "ctag"
+      pattern: "ctag",
+      suppliers: ["N"]
     }
   end
 
@@ -2105,7 +2269,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfaSII",
-      pattern: "ganggag"
+      pattern: "ganggag",
+      suppliers: []
     }
   end
 
@@ -2118,7 +2283,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfiI",
-      pattern: "actggg"
+      pattern: "actggg",
+      suppliers: []
     }
   end
 
@@ -2131,7 +2297,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfmI",
-      pattern: "ctryag"
+      pattern: "ctryag",
+      suppliers: ["B"]
     }
   end
 
@@ -2144,7 +2311,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfoI",
-      pattern: "rgcgcy"
+      pattern: "rgcgcy",
+      suppliers: ["B"]
     }
   end
 
@@ -2157,7 +2325,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfrI",
-      pattern: "cttaag"
+      pattern: "cttaag",
+      suppliers: ["M", "S"]
     }
   end
 
@@ -2170,7 +2339,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfuI",
-      pattern: "gtatcc"
+      pattern: "gtatcc",
+      suppliers: ["B"]
     }
   end
 
@@ -2183,7 +2353,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BfuAI",
-      pattern: "acctgc"
+      pattern: "acctgc",
+      suppliers: ["N"]
     }
   end
 
@@ -2196,7 +2367,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bga514I",
-      pattern: "gtraag"
+      pattern: "gtraag",
+      suppliers: []
     }
   end
 
@@ -2209,7 +2381,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BglI",
-      pattern: "gccnnnnnggc"
+      pattern: "gccnnnnnggc",
+      suppliers: ["B", "C", "I", "J", "K", "N", "O", "Q", "R", "V", "X"]
     }
   end
 
@@ -2222,7 +2395,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BglII",
-      pattern: "agatct"
+      pattern: "agatct",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X"]
     }
   end
 
@@ -2235,7 +2409,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bhe175II",
-      pattern: "gcccna"
+      pattern: "gcccna",
+      suppliers: []
     }
   end
 
@@ -2248,7 +2423,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BinI",
-      pattern: "ggatc"
+      pattern: "ggatc",
+      suppliers: []
     }
   end
 
@@ -2261,7 +2437,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BisI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["I"]
     }
   end
 
@@ -2274,7 +2451,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BkrAM31DI",
-      pattern: "rttaaatm"
+      pattern: "rttaaatm",
+      suppliers: []
     }
   end
 
@@ -2287,7 +2465,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ble402II",
-      pattern: "gragcag"
+      pattern: "gragcag",
+      suppliers: []
     }
   end
 
@@ -2300,7 +2479,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BlnI",
-      pattern: "cctagg"
+      pattern: "cctagg",
+      suppliers: ["K", "M", "S"]
     }
   end
 
@@ -2313,7 +2493,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BloAII",
-      pattern: "gaggac"
+      pattern: "gaggac",
+      suppliers: []
     }
   end
 
@@ -2326,7 +2507,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BlpI",
-      pattern: "gctnagc"
+      pattern: "gctnagc",
+      suppliers: ["N"]
     }
   end
 
@@ -2339,7 +2521,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BlsI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["I"]
     }
   end
 
@@ -2352,7 +2535,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmcAI",
-      pattern: "agtact"
+      pattern: "agtact",
+      suppliers: ["V"]
     }
   end
 
@@ -2365,7 +2549,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bme18I",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2378,7 +2563,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bme1390I",
-      pattern: "ccngg"
+      pattern: "ccngg",
+      suppliers: ["B"]
     }
   end
 
@@ -2391,7 +2577,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmeDI",
-      pattern: "c"
+      pattern: "c",
+      suppliers: []
     }
   end
 
@@ -2404,7 +2591,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmeRI",
-      pattern: "gacnnnnngtc"
+      pattern: "gacnnnnngtc",
+      suppliers: ["V"]
     }
   end
 
@@ -2417,7 +2605,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmeT110I",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -2430,7 +2619,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmgI",
-      pattern: "gkgccc"
+      pattern: "gkgccc",
+      suppliers: []
     }
   end
 
@@ -2443,7 +2633,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmgBI",
-      pattern: "cacgtc"
+      pattern: "cacgtc",
+      suppliers: ["N"]
     }
   end
 
@@ -2456,7 +2647,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmgT120I",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: ["K"]
     }
   end
 
@@ -2469,7 +2661,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmiI",
-      pattern: "ggnncc"
+      pattern: "ggnncc",
+      suppliers: ["V"]
     }
   end
 
@@ -2482,7 +2675,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmrI",
-      pattern: "actggg"
+      pattern: "actggg",
+      suppliers: ["N"]
     }
   end
 
@@ -2495,7 +2689,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmrFI",
-      pattern: "ccngg"
+      pattern: "ccngg",
+      suppliers: ["V"]
     }
   end
 
@@ -2508,7 +2703,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmsI",
-      pattern: "gcatc"
+      pattern: "gcatc",
+      suppliers: ["B"]
     }
   end
 
@@ -2521,7 +2717,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmtI",
-      pattern: "gctagc"
+      pattern: "gctagc",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -2534,7 +2731,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BmuI",
-      pattern: "actggg"
+      pattern: "actggg",
+      suppliers: ["I"]
     }
   end
 
@@ -2547,7 +2745,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BoxI",
-      pattern: "gacnnnngtc"
+      pattern: "gacnnnngtc",
+      suppliers: ["B"]
     }
   end
 
@@ -2560,7 +2759,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BpiI",
-      pattern: "gaagac"
+      pattern: "gaagac",
+      suppliers: ["B"]
     }
   end
 
@@ -2573,7 +2773,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 19,
       name: "BplI",
-      pattern: "gagnnnnnctc"
+      pattern: "gagnnnnnctc",
+      suppliers: ["B"]
     }
   end
 
@@ -2586,7 +2787,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BpmI",
-      pattern: "ctggag"
+      pattern: "ctggag",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -2599,7 +2801,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bps6700III",
-      pattern: "taccnag"
+      pattern: "taccnag",
+      suppliers: []
     }
   end
 
@@ -2612,7 +2815,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bpu10I",
-      pattern: "cctnagc"
+      pattern: "cctnagc",
+      suppliers: ["B", "I", "N", "V"]
     }
   end
 
@@ -2625,7 +2829,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bpu14I",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2638,7 +2843,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bpu1102I",
-      pattern: "gctnagc"
+      pattern: "gctnagc",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -2651,7 +2857,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BpuEI",
-      pattern: "cttgag"
+      pattern: "cttgag",
+      suppliers: ["N"]
     }
   end
 
@@ -2664,7 +2871,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BpuMI",
-      pattern: "ccsgg"
+      pattern: "ccsgg",
+      suppliers: ["V"]
     }
   end
 
@@ -2677,7 +2885,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsaI",
-      pattern: "ggtctc"
+      pattern: "ggtctc",
+      suppliers: ["N"]
     }
   end
 
@@ -2690,7 +2899,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsa29I",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["I"]
     }
   end
 
@@ -2703,7 +2913,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsaAI",
-      pattern: "yacgtr"
+      pattern: "yacgtr",
+      suppliers: ["N"]
     }
   end
 
@@ -2716,7 +2927,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsaBI",
-      pattern: "gatnnnnatc"
+      pattern: "gatnnnnatc",
+      suppliers: ["N"]
     }
   end
 
@@ -2729,7 +2941,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsaHI",
-      pattern: "grcgyc"
+      pattern: "grcgyc",
+      suppliers: ["N"]
     }
   end
 
@@ -2742,7 +2955,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsaJI",
-      pattern: "ccnngg"
+      pattern: "ccnngg",
+      suppliers: ["N"]
     }
   end
 
@@ -2755,7 +2969,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsaWI",
-      pattern: "wccggw"
+      pattern: "wccggw",
+      suppliers: ["N"]
     }
   end
 
@@ -2768,7 +2983,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 21,
       cut_4: 18,
       name: "BsaXI",
-      pattern: "acnnnnnctcc"
+      pattern: "acnnnnnctcc",
+      suppliers: ["N"]
     }
   end
 
@@ -2781,7 +2997,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsbI",
-      pattern: "caacac"
+      pattern: "caacac",
+      suppliers: []
     }
   end
 
@@ -2794,7 +3011,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsc4I",
-      pattern: "ccnnnnnnngg"
+      pattern: "ccnnnnnnngg",
+      suppliers: ["I"]
     }
   end
 
@@ -2807,7 +3025,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BscAI",
-      pattern: "gcatc"
+      pattern: "gcatc",
+      suppliers: []
     }
   end
 
@@ -2820,7 +3039,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BscGI",
-      pattern: "cccgt"
+      pattern: "cccgt",
+      suppliers: []
     }
   end
 
@@ -2833,7 +3053,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BscXI",
-      pattern: "gcaggc"
+      pattern: "gcaggc",
+      suppliers: []
     }
   end
 
@@ -2846,7 +3067,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bse1I",
-      pattern: "actgg"
+      pattern: "actgg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2859,7 +3081,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bse8I",
-      pattern: "gatnnnnatc"
+      pattern: "gatnnnnatc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2872,7 +3095,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bse21I",
-      pattern: "cctnagg"
+      pattern: "cctnagg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2885,7 +3109,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bse118I",
-      pattern: "rccggy"
+      pattern: "rccggy",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2898,7 +3123,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseAI",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["C"]
     }
   end
 
@@ -2911,7 +3137,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseBI",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["C"]
     }
   end
 
@@ -2924,7 +3151,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseCI",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["C"]
     }
   end
 
@@ -2937,7 +3165,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseDI",
-      pattern: "ccnngg"
+      pattern: "ccnngg",
+      suppliers: ["B"]
     }
   end
 
@@ -2950,7 +3179,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bse3DI",
-      pattern: "gcaatg"
+      pattern: "gcaatg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -2963,7 +3193,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseGI",
-      pattern: "ggatg"
+      pattern: "ggatg",
+      suppliers: ["B"]
     }
   end
 
@@ -2976,7 +3207,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseJI",
-      pattern: "gatnnnnatc"
+      pattern: "gatnnnnatc",
+      suppliers: ["B"]
     }
   end
 
@@ -2989,7 +3221,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseLI",
-      pattern: "ccnnnnnnngg"
+      pattern: "ccnnnnnnngg",
+      suppliers: ["B"]
     }
   end
 
@@ -3002,7 +3235,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseMI",
-      pattern: "gcaatg"
+      pattern: "gcaatg",
+      suppliers: ["B"]
     }
   end
 
@@ -3015,7 +3249,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseMII",
-      pattern: "ctcag"
+      pattern: "ctcag",
+      suppliers: ["B"]
     }
   end
 
@@ -3028,7 +3263,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseNI",
-      pattern: "actgg"
+      pattern: "actgg",
+      suppliers: ["B"]
     }
   end
 
@@ -3041,7 +3277,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsePI",
-      pattern: "gcgcgc"
+      pattern: "gcgcgc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -3054,7 +3291,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseRI",
-      pattern: "gaggag"
+      pattern: "gaggag",
+      suppliers: ["N"]
     }
   end
 
@@ -3067,7 +3305,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseSI",
-      pattern: "gkgcmc"
+      pattern: "gkgcmc",
+      suppliers: ["B"]
     }
   end
 
@@ -3080,7 +3319,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseXI",
-      pattern: "gcagc"
+      pattern: "gcagc",
+      suppliers: ["B"]
     }
   end
 
@@ -3093,7 +3333,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseX3I",
-      pattern: "cggccg"
+      pattern: "cggccg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -3106,7 +3347,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BseYI",
-      pattern: "cccagc"
+      pattern: "cccagc",
+      suppliers: ["N"]
     }
   end
 
@@ -3119,7 +3361,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsgI",
-      pattern: "gtgcag"
+      pattern: "gtgcag",
+      suppliers: ["N"]
     }
   end
 
@@ -3132,7 +3375,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsh1236I",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: ["B"]
     }
   end
 
@@ -3145,7 +3389,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsh1285I",
-      pattern: "cgrycg"
+      pattern: "cgrycg",
+      suppliers: ["B"]
     }
   end
 
@@ -3158,7 +3403,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BshFI",
-      pattern: "ggcc"
+      pattern: "ggcc",
+      suppliers: ["C"]
     }
   end
 
@@ -3171,7 +3417,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BshNI",
-      pattern: "ggyrcc"
+      pattern: "ggyrcc",
+      suppliers: ["B"]
     }
   end
 
@@ -3184,7 +3431,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BshTI",
-      pattern: "accggt"
+      pattern: "accggt",
+      suppliers: ["B"]
     }
   end
 
@@ -3197,7 +3445,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BshVI",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["V"]
     }
   end
 
@@ -3210,7 +3459,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiI",
-      pattern: "cacgag"
+      pattern: "cacgag",
+      suppliers: []
     }
   end
 
@@ -3223,7 +3473,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiEI",
-      pattern: "cgrycg"
+      pattern: "cgrycg",
+      suppliers: ["N"]
     }
   end
 
@@ -3236,7 +3487,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiHKAI",
-      pattern: "gwgcwc"
+      pattern: "gwgcwc",
+      suppliers: ["N"]
     }
   end
 
@@ -3249,7 +3501,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiHKCI",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -3262,7 +3515,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiSI",
-      pattern: "ccgg"
+      pattern: "ccgg",
+      suppliers: ["C", "Y"]
     }
   end
 
@@ -3275,7 +3529,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiWI",
-      pattern: "cgtacg"
+      pattern: "cgtacg",
+      suppliers: ["N"]
     }
   end
 
@@ -3288,7 +3543,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsiYI",
-      pattern: "ccnnnnnnngg"
+      pattern: "ccnnnnnnngg",
+      suppliers: []
     }
   end
 
@@ -3301,7 +3557,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BslI",
-      pattern: "ccnnnnnnngg"
+      pattern: "ccnnnnnnngg",
+      suppliers: ["N"]
     }
   end
 
@@ -3314,7 +3571,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BslFI",
-      pattern: "gggac"
+      pattern: "gggac",
+      suppliers: ["I"]
     }
   end
 
@@ -3327,7 +3585,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsmI",
-      pattern: "gaatgc"
+      pattern: "gaatgc",
+      suppliers: ["J", "M", "N", "S"]
     }
   end
 
@@ -3340,7 +3599,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsmAI",
-      pattern: "gtctc"
+      pattern: "gtctc",
+      suppliers: ["N"]
     }
   end
 
@@ -3353,7 +3613,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsmBI",
-      pattern: "cgtctc"
+      pattern: "cgtctc",
+      suppliers: ["N"]
     }
   end
 
@@ -3366,7 +3627,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsmFI",
-      pattern: "gggac"
+      pattern: "gggac",
+      suppliers: ["N"]
     }
   end
 
@@ -3379,7 +3641,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsnI",
-      pattern: "ggcc"
+      pattern: "ggcc",
+      suppliers: ["V"]
     }
   end
 
@@ -3392,7 +3655,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bso31I",
-      pattern: "ggtctc"
+      pattern: "ggtctc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -3405,7 +3669,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsoBI",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: ["N"]
     }
   end
 
@@ -3418,7 +3683,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp13I",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -3431,7 +3697,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp19I",
-      pattern: "ccatgg"
+      pattern: "ccatgg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -3444,7 +3711,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 19,
       name: "Bsp24I",
-      pattern: "gacnnnnnntgg"
+      pattern: "gacnnnnnntgg",
+      suppliers: []
     }
   end
 
@@ -3457,7 +3725,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp68I",
-      pattern: "tcgcga"
+      pattern: "tcgcga",
+      suppliers: ["B"]
     }
   end
 
@@ -3470,7 +3739,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp119I",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["B"]
     }
   end
 
@@ -3483,7 +3753,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp120I",
-      pattern: "gggccc"
+      pattern: "gggccc",
+      suppliers: ["B"]
     }
   end
 
@@ -3496,7 +3767,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp143I",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["B"]
     }
   end
 
@@ -3509,7 +3781,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp460III",
-      pattern: "cgcgcag"
+      pattern: "cgcgcag",
+      suppliers: []
     }
   end
 
@@ -3522,7 +3795,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp1286I",
-      pattern: "gdgchc"
+      pattern: "gdgchc",
+      suppliers: ["J", "K", "N"]
     }
   end
 
@@ -3535,7 +3809,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp1407I",
-      pattern: "tgtaca"
+      pattern: "tgtaca",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -3548,7 +3823,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp1720I",
-      pattern: "gctnagc"
+      pattern: "gctnagc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -3561,7 +3837,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsp3004IV",
-      pattern: "ccgcat"
+      pattern: "ccgcat",
+      suppliers: []
     }
   end
 
@@ -3574,7 +3851,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspACI",
-      pattern: "ccgc"
+      pattern: "ccgc",
+      suppliers: ["I"]
     }
   end
 
@@ -3587,7 +3865,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspANI",
-      pattern: "ggcc"
+      pattern: "ggcc",
+      suppliers: ["X"]
     }
   end
 
@@ -3600,7 +3879,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspCNI",
-      pattern: "ctcag"
+      pattern: "ctcag",
+      suppliers: ["N"]
     }
   end
 
@@ -3613,7 +3893,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspDI",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["N"]
     }
   end
 
@@ -3626,7 +3907,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspD6I",
-      pattern: "gagtc"
+      pattern: "gagtc",
+      suppliers: []
     }
   end
 
@@ -3639,7 +3921,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspEI",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["N"]
     }
   end
 
@@ -3652,7 +3935,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspFNI",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: ["I"]
     }
   end
 
@@ -3665,7 +3949,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspGI",
-      pattern: "ctggac"
+      pattern: "ctggac",
+      suppliers: []
     }
   end
 
@@ -3678,7 +3963,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspHI",
-      pattern: "tcatga"
+      pattern: "tcatga",
+      suppliers: ["N"]
     }
   end
 
@@ -3691,7 +3977,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspLI",
-      pattern: "ggnncc"
+      pattern: "ggnncc",
+      suppliers: ["B"]
     }
   end
 
@@ -3704,7 +3991,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspLU11I",
-      pattern: "acatgt"
+      pattern: "acatgt",
+      suppliers: []
     }
   end
 
@@ -3717,7 +4005,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspMI",
-      pattern: "acctgc"
+      pattern: "acctgc",
+      suppliers: ["N"]
     }
   end
 
@@ -3730,7 +4019,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspMII",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: []
     }
   end
 
@@ -3743,7 +4033,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspMAI",
-      pattern: "ctgcag"
+      pattern: "ctgcag",
+      suppliers: ["X"]
     }
   end
 
@@ -3756,7 +4047,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspNCI",
-      pattern: "ccaga"
+      pattern: "ccaga",
+      suppliers: []
     }
   end
 
@@ -3769,7 +4061,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspOI",
-      pattern: "gctagc"
+      pattern: "gctagc",
+      suppliers: ["B"]
     }
   end
 
@@ -3782,7 +4075,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspPI",
-      pattern: "ggatc"
+      pattern: "ggatc",
+      suppliers: ["B"]
     }
   end
 
@@ -3795,7 +4089,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspQI",
-      pattern: "gctcttc"
+      pattern: "gctcttc",
+      suppliers: ["N"]
     }
   end
 
@@ -3808,7 +4103,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspTI",
-      pattern: "cttaag"
+      pattern: "cttaag",
+      suppliers: ["B"]
     }
   end
 
@@ -3821,7 +4117,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspT104I",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["K"]
     }
   end
 
@@ -3834,7 +4131,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspT107I",
-      pattern: "ggyrcc"
+      pattern: "ggyrcc",
+      suppliers: ["K"]
     }
   end
 
@@ -3847,7 +4145,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BspTNI",
-      pattern: "ggtctc"
+      pattern: "ggtctc",
+      suppliers: ["X"]
     }
   end
 
@@ -3860,7 +4159,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsrI",
-      pattern: "actgg"
+      pattern: "actgg",
+      suppliers: ["N"]
     }
   end
 
@@ -3873,7 +4173,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsrBI",
-      pattern: "ccgctc"
+      pattern: "ccgctc",
+      suppliers: ["N"]
     }
   end
 
@@ -3886,7 +4187,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsrDI",
-      pattern: "gcaatg"
+      pattern: "gcaatg",
+      suppliers: ["N"]
     }
   end
 
@@ -3899,7 +4201,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsrFI",
-      pattern: "rccggy"
+      pattern: "rccggy",
+      suppliers: ["N"]
     }
   end
 
@@ -3912,7 +4215,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsrGI",
-      pattern: "tgtaca"
+      pattern: "tgtaca",
+      suppliers: ["N"]
     }
   end
 
@@ -3925,7 +4229,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssAI",
-      pattern: "rccggy"
+      pattern: "rccggy",
+      suppliers: ["C"]
     }
   end
 
@@ -3938,7 +4243,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssECI",
-      pattern: "ccnngg"
+      pattern: "ccnngg",
+      suppliers: ["I"]
     }
   end
 
@@ -3951,7 +4257,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssHII",
-      pattern: "gcgcgc"
+      pattern: "gcgcgc",
+      suppliers: ["J", "K", "M", "N", "Q", "X"]
     }
   end
 
@@ -3964,7 +4271,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssMI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["V"]
     }
   end
 
@@ -3977,7 +4285,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssNI",
-      pattern: "grcgyc"
+      pattern: "grcgyc",
+      suppliers: ["V"]
     }
   end
 
@@ -3990,7 +4299,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssNAI",
-      pattern: "gtatac"
+      pattern: "gtatac",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4003,7 +4313,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssSI",
-      pattern: "cacgag"
+      pattern: "cacgag",
+      suppliers: ["N"]
     }
   end
 
@@ -4016,7 +4327,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BssT1I",
-      pattern: "ccwwgg"
+      pattern: "ccwwgg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4029,7 +4341,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bst6I",
-      pattern: "ctcttc"
+      pattern: "ctcttc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4042,7 +4355,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bst1107I",
-      pattern: "gtatac"
+      pattern: "gtatac",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -4055,7 +4369,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstACI",
-      pattern: "grcgyc"
+      pattern: "grcgyc",
+      suppliers: ["I"]
     }
   end
 
@@ -4068,7 +4383,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstAFI",
-      pattern: "cttaag"
+      pattern: "cttaag",
+      suppliers: ["I"]
     }
   end
 
@@ -4081,7 +4397,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstAPI",
-      pattern: "gcannnnntgc"
+      pattern: "gcannnnntgc",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -4094,7 +4411,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstAUI",
-      pattern: "tgtaca"
+      pattern: "tgtaca",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4107,7 +4425,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstBI",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["N"]
     }
   end
 
@@ -4120,7 +4439,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bst2BI",
-      pattern: "cacgag"
+      pattern: "cacgag",
+      suppliers: ["I"]
     }
   end
 
@@ -4133,7 +4453,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstBAI",
-      pattern: "yacgtr"
+      pattern: "yacgtr",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4146,7 +4467,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bst4CI",
-      pattern: "acngt"
+      pattern: "acngt",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4159,7 +4481,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstC8I",
-      pattern: "gcnngc"
+      pattern: "gcnngc",
+      suppliers: ["I"]
     }
   end
 
@@ -4172,7 +4495,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstDEI",
-      pattern: "ctnag"
+      pattern: "ctnag",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4185,7 +4509,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstDSI",
-      pattern: "ccrygg"
+      pattern: "ccrygg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4198,7 +4523,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstEII",
-      pattern: "ggtnacc"
+      pattern: "ggtnacc",
+      suppliers: ["C", "J", "N"]
     }
   end
 
@@ -4211,7 +4537,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstENI",
-      pattern: "cctnnnnnagg"
+      pattern: "cctnnnnnagg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4224,7 +4551,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstF5I",
-      pattern: "ggatg"
+      pattern: "ggatg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4237,7 +4565,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstFNI",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4250,7 +4579,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstH2I",
-      pattern: "rgcgcy"
+      pattern: "rgcgcy",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4263,7 +4593,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstHHI",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4276,7 +4607,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstKTI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["I"]
     }
   end
 
@@ -4289,7 +4621,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstMAI",
-      pattern: "gtctc"
+      pattern: "gtctc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4302,7 +4635,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstMBI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4315,7 +4649,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstMCI",
-      pattern: "cgrycg"
+      pattern: "cgrycg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4328,7 +4663,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstMWI",
-      pattern: "gcnnnnnnngc"
+      pattern: "gcnnnnnnngc",
+      suppliers: ["I"]
     }
   end
 
@@ -4341,7 +4677,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstNI",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["N"]
     }
   end
 
@@ -4354,7 +4691,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstNSI",
-      pattern: "rcatgy"
+      pattern: "rcatgy",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4367,7 +4705,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstPI",
-      pattern: "ggtnacc"
+      pattern: "ggtnacc",
+      suppliers: ["K"]
     }
   end
 
@@ -4380,7 +4719,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstPAI",
-      pattern: "gacnnnngtc"
+      pattern: "gacnnnngtc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4393,7 +4733,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstSCI",
-      pattern: "ccngg"
+      pattern: "ccngg",
+      suppliers: ["I"]
     }
   end
 
@@ -4406,7 +4747,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstSFI",
-      pattern: "ctryag"
+      pattern: "ctryag",
+      suppliers: ["I"]
     }
   end
 
@@ -4419,7 +4761,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstSLI",
-      pattern: "gkgcmc"
+      pattern: "gkgcmc",
+      suppliers: ["I"]
     }
   end
 
@@ -4432,7 +4775,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstSNI",
-      pattern: "tacgta"
+      pattern: "tacgta",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4445,7 +4789,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstUI",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: ["N"]
     }
   end
 
@@ -4458,7 +4803,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bst2UI",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4471,7 +4817,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstV1I",
-      pattern: "gcagc"
+      pattern: "gcagc",
+      suppliers: ["I"]
     }
   end
 
@@ -4484,7 +4831,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstV2I",
-      pattern: "gaagac"
+      pattern: "gaagac",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4497,7 +4845,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstXI",
-      pattern: "ccannnnnntgg"
+      pattern: "ccannnnnntgg",
+      suppliers: ["B", "I", "J", "K", "M", "N", "Q", "V", "X", "Y"]
     }
   end
 
@@ -4510,7 +4859,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstX2I",
-      pattern: "rgatcy"
+      pattern: "rgatcy",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4523,7 +4873,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstYI",
-      pattern: "rgatcy"
+      pattern: "rgatcy",
+      suppliers: ["N"]
     }
   end
 
@@ -4536,7 +4887,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstZI",
-      pattern: "cggccg"
+      pattern: "cggccg",
+      suppliers: ["R"]
     }
   end
 
@@ -4549,7 +4901,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BstZ17I",
-      pattern: "gtatac"
+      pattern: "gtatac",
+      suppliers: ["N"]
     }
   end
 
@@ -4562,7 +4915,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsuI",
-      pattern: "gtatcc"
+      pattern: "gtatcc",
+      suppliers: ["I"]
     }
   end
 
@@ -4575,7 +4929,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsu15I",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["B"]
     }
   end
 
@@ -4588,7 +4943,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bsu36I",
-      pattern: "cctnagg"
+      pattern: "cctnagg",
+      suppliers: ["N"]
     }
   end
 
@@ -4601,7 +4957,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsuRI",
-      pattern: "ggcc"
+      pattern: "ggcc",
+      suppliers: ["B", "I"]
     }
   end
 
@@ -4614,7 +4971,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BsuTUI",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["X"]
     }
   end
 
@@ -4627,7 +4985,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtgI",
-      pattern: "ccrygg"
+      pattern: "ccrygg",
+      suppliers: ["N"]
     }
   end
 
@@ -4640,7 +4999,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtgZI",
-      pattern: "gcgatg"
+      pattern: "gcgatg",
+      suppliers: ["N"]
     }
   end
 
@@ -4653,7 +5013,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BthCI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: []
     }
   end
 
@@ -4666,7 +5027,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtrI",
-      pattern: "cacgtc"
+      pattern: "cacgtc",
+      suppliers: ["I"]
     }
   end
 
@@ -4679,7 +5041,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtsI",
-      pattern: "gcagtg"
+      pattern: "gcagtg",
+      suppliers: ["N"]
     }
   end
 
@@ -4692,7 +5055,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtsIMutI",
-      pattern: "cagtg"
+      pattern: "cagtg",
+      suppliers: ["N"]
     }
   end
 
@@ -4705,7 +5069,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtsCI",
-      pattern: "ggatg"
+      pattern: "ggatg",
+      suppliers: ["N"]
     }
   end
 
@@ -4718,7 +5083,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BtuMI",
-      pattern: "tcgcga"
+      pattern: "tcgcga",
+      suppliers: ["V"]
     }
   end
 
@@ -4731,7 +5097,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "BveI",
-      pattern: "acctgc"
+      pattern: "acctgc",
+      suppliers: ["B"]
     }
   end
 
@@ -4744,7 +5111,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Bve1B23I",
-      pattern: "gacnnnnntgg"
+      pattern: "gacnnnnntgg",
+      suppliers: []
     }
   end
 
@@ -4757,7 +5125,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cac8I",
-      pattern: "gcnngc"
+      pattern: "gcnngc",
+      suppliers: ["N"]
     }
   end
 
@@ -4770,7 +5139,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CaiI",
-      pattern: "cagnnnctg"
+      pattern: "cagnnnctg",
+      suppliers: ["B"]
     }
   end
 
@@ -4783,7 +5153,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cal14237I",
-      pattern: "ggttag"
+      pattern: "ggttag",
+      suppliers: []
     }
   end
 
@@ -4796,7 +5167,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CalB3II",
-      pattern: "grttrag"
+      pattern: "grttrag",
+      suppliers: []
     }
   end
 
@@ -4809,7 +5181,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CauII",
-      pattern: "ccsgg"
+      pattern: "ccsgg",
+      suppliers: []
     }
   end
 
@@ -4822,7 +5195,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cau10061II",
-      pattern: "gttaat"
+      pattern: "gttaat",
+      suppliers: []
     }
   end
 
@@ -4835,7 +5209,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cba13II",
-      pattern: "aggaat"
+      pattern: "aggaat",
+      suppliers: []
     }
   end
 
@@ -4848,7 +5223,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cba16038I",
-      pattern: "cctnaync"
+      pattern: "cctnaync",
+      suppliers: []
     }
   end
 
@@ -4861,7 +5237,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cbo67071IV",
-      pattern: "gcrgaag"
+      pattern: "gcrgaag",
+      suppliers: []
     }
   end
 
@@ -4874,7 +5251,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CchII",
-      pattern: "ggarga"
+      pattern: "ggarga",
+      suppliers: []
     }
   end
 
@@ -4887,7 +5265,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CchIII",
-      pattern: "cccaag"
+      pattern: "cccaag",
+      suppliers: []
     }
   end
 
@@ -4900,7 +5279,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cch467III",
-      pattern: "gngaaay"
+      pattern: "gngaaay",
+      suppliers: []
     }
   end
 
@@ -4913,7 +5293,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CciI",
-      pattern: "tcatga"
+      pattern: "tcatga",
+      suppliers: ["I"]
     }
   end
 
@@ -4926,7 +5307,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CciNI",
-      pattern: "gcggccgc"
+      pattern: "gcggccgc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -4939,7 +5321,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cco11366VI",
-      pattern: "gaagaa"
+      pattern: "gaagaa",
+      suppliers: []
     }
   end
 
@@ -4952,7 +5335,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cco11437V",
-      pattern: "caynnnnnrtag"
+      pattern: "caynnnnnrtag",
+      suppliers: []
     }
   end
 
@@ -4965,7 +5349,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cco14983V",
-      pattern: "gggtda"
+      pattern: "gggtda",
+      suppliers: []
     }
   end
 
@@ -4978,7 +5363,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cco14983VI",
-      pattern: "gcyga"
+      pattern: "gcyga",
+      suppliers: []
     }
   end
 
@@ -4991,7 +5377,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CcrNAIII",
-      pattern: "cgaccag"
+      pattern: "cgaccag",
+      suppliers: []
     }
   end
 
@@ -5004,7 +5391,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CdiI",
-      pattern: "catcg"
+      pattern: "catcg",
+      suppliers: []
     }
   end
 
@@ -5017,7 +5405,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cdi11397I",
-      pattern: "gcgcag"
+      pattern: "gcgcag",
+      suppliers: []
     }
   end
 
@@ -5030,7 +5419,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cdi13746V",
-      pattern: "rgaaagr"
+      pattern: "rgaaagr",
+      suppliers: []
     }
   end
 
@@ -5043,7 +5433,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cdi13750III",
-      pattern: "ccgatcc"
+      pattern: "ccgatcc",
+      suppliers: []
     }
   end
 
@@ -5056,7 +5447,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CdpI",
-      pattern: "gcggag"
+      pattern: "gcggag",
+      suppliers: []
     }
   end
 
@@ -5069,7 +5461,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cdu23823II",
-      pattern: "gtgaag"
+      pattern: "gtgaag",
+      suppliers: []
     }
   end
 
@@ -5082,7 +5475,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cfa8380I",
-      pattern: "grggay"
+      pattern: "grggay",
+      suppliers: []
     }
   end
 
@@ -5095,7 +5489,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CfoI",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["M", "R", "S"]
     }
   end
 
@@ -5108,7 +5503,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CfrI",
-      pattern: "yggccr"
+      pattern: "yggccr",
+      suppliers: []
     }
   end
 
@@ -5121,7 +5517,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cfr9I",
-      pattern: "cccggg"
+      pattern: "cccggg",
+      suppliers: ["B"]
     }
   end
 
@@ -5134,7 +5531,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cfr10I",
-      pattern: "rccggy"
+      pattern: "rccggy",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -5147,7 +5545,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cfr13I",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: ["B"]
     }
   end
 
@@ -5160,7 +5559,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cfr42I",
-      pattern: "ccgcgg"
+      pattern: "ccgcgg",
+      suppliers: ["B"]
     }
   end
 
@@ -5173,7 +5573,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CfrMH13II",
-      pattern: "agcancc"
+      pattern: "agcancc",
+      suppliers: []
     }
   end
 
@@ -5186,7 +5587,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CfrMH16VI",
-      pattern: "ctaaag"
+      pattern: "ctaaag",
+      suppliers: []
     }
   end
 
@@ -5199,7 +5601,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cfupf3II",
-      pattern: "garcag"
+      pattern: "garcag",
+      suppliers: []
     }
   end
 
@@ -5212,7 +5615,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cgl13032I",
-      pattern: "ggcgca"
+      pattern: "ggcgca",
+      suppliers: []
     }
   end
 
@@ -5225,7 +5629,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cgl13032II",
-      pattern: "acgabgg"
+      pattern: "acgabgg",
+      suppliers: []
     }
   end
 
@@ -5238,7 +5643,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ChaI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: []
     }
   end
 
@@ -5251,7 +5657,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cin11811I",
-      pattern: "tgkmca"
+      pattern: "tgkmca",
+      suppliers: []
     }
   end
 
@@ -5264,7 +5671,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 26,
       cut_4: 20,
       name: "CjeI",
-      pattern: "ccannnnnngt"
+      pattern: "ccannnnnngt",
+      suppliers: []
     }
   end
 
@@ -5277,7 +5685,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cje265V",
-      pattern: "gkaagc"
+      pattern: "gkaagc",
+      suppliers: []
     }
   end
 
@@ -5290,7 +5699,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cje54107III",
-      pattern: "gkaayc"
+      pattern: "gkaayc",
+      suppliers: []
     }
   end
 
@@ -5303,7 +5713,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjeFIII",
-      pattern: "gcaagg"
+      pattern: "gcaagg",
+      suppliers: []
     }
   end
 
@@ -5316,7 +5727,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjeFV",
-      pattern: "ggrca"
+      pattern: "ggrca",
+      suppliers: []
     }
   end
 
@@ -5329,7 +5741,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjeNII",
-      pattern: "gagnnnnngt"
+      pattern: "gagnnnnngt",
+      suppliers: []
     }
   end
 
@@ -5342,7 +5755,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjeNIII",
-      pattern: "gkaayg"
+      pattern: "gkaayg",
+      suppliers: []
     }
   end
 
@@ -5355,7 +5769,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjeNV",
-      pattern: "ccyga"
+      pattern: "ccyga",
+      suppliers: []
     }
   end
 
@@ -5368,7 +5783,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 26,
       cut_4: 20,
       name: "CjePI",
-      pattern: "ccannnnnnntc"
+      pattern: "ccannnnnnntc",
+      suppliers: []
     }
   end
 
@@ -5381,7 +5797,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjeP659IV",
-      pattern: "cacnnnnnnngaa"
+      pattern: "cacnnnnnnngaa",
+      suppliers: []
     }
   end
 
@@ -5394,7 +5811,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjuI",
-      pattern: "caynnnnnrtg"
+      pattern: "caynnnnnrtg",
+      suppliers: []
     }
   end
 
@@ -5407,7 +5825,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CjuII",
-      pattern: "caynnnnnctc"
+      pattern: "caynnnnnctc",
+      suppliers: []
     }
   end
 
@@ -5420,7 +5839,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cko11077IV",
-      pattern: "tgacag"
+      pattern: "tgacag",
+      suppliers: []
     }
   end
 
@@ -5433,7 +5853,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ClaI",
-      pattern: "atcgat"
+      pattern: "atcgat",
+      suppliers: ["B", "K", "M", "N", "Q", "R", "S", "X"]
     }
   end
 
@@ -5446,7 +5867,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cla11845III",
-      pattern: "gcgaa"
+      pattern: "gcgaa",
+      suppliers: []
     }
   end
 
@@ -5459,7 +5881,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cly7489II",
-      pattern: "aaaagrg"
+      pattern: "aaaagrg",
+      suppliers: []
     }
   end
 
@@ -5472,7 +5895,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cpe2837III",
-      pattern: "grnacayt"
+      pattern: "grnacayt",
+      suppliers: []
     }
   end
 
@@ -5485,7 +5909,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cpe10578V",
-      pattern: "gangagy"
+      pattern: "gangagy",
+      suppliers: []
     }
   end
 
@@ -5498,7 +5923,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cpe13170II",
-      pattern: "gttgnag"
+      pattern: "gttgnag",
+      suppliers: []
     }
   end
 
@@ -5511,7 +5937,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CpoI",
-      pattern: "cggwccg"
+      pattern: "cggwccg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -5524,7 +5951,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Cre7908I",
-      pattern: "gcggga"
+      pattern: "gcggga",
+      suppliers: []
     }
   end
 
@@ -5537,7 +5965,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Csa9238II",
-      pattern: "caaantc"
+      pattern: "caaantc",
+      suppliers: []
     }
   end
 
@@ -5550,7 +5979,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CseI",
-      pattern: "gacgc"
+      pattern: "gacgc",
+      suppliers: ["B"]
     }
   end
 
@@ -5563,7 +5993,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CsiI",
-      pattern: "accwggt"
+      pattern: "accwggt",
+      suppliers: ["B"]
     }
   end
 
@@ -5576,7 +6007,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CspI",
-      pattern: "cggwccg"
+      pattern: "cggwccg",
+      suppliers: ["R"]
     }
   end
 
@@ -5589,7 +6021,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Csp6I",
-      pattern: "gtac"
+      pattern: "gtac",
+      suppliers: ["B"]
     }
   end
 
@@ -5602,7 +6035,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Csp2014I",
-      pattern: "ggaggc"
+      pattern: "ggaggc",
+      suppliers: []
     }
   end
 
@@ -5615,7 +6049,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CspAI",
-      pattern: "accggt"
+      pattern: "accggt",
+      suppliers: ["C"]
     }
   end
 
@@ -5628,7 +6063,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CspBP25III",
-      pattern: "ccannnnnrtga"
+      pattern: "ccannnnnrtga",
+      suppliers: []
     }
   end
 
@@ -5641,7 +6077,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 22,
       name: "CspCI",
-      pattern: "caannnnngtgg"
+      pattern: "caannnnngtgg",
+      suppliers: ["N"]
     }
   end
 
@@ -5654,7 +6091,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CspL61I",
-      pattern: "tygayct"
+      pattern: "tygayct",
+      suppliers: []
     }
   end
 
@@ -5667,7 +6105,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CspX1II",
-      pattern: "acccca"
+      pattern: "acccca",
+      suppliers: []
     }
   end
 
@@ -5680,7 +6119,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CstMI",
-      pattern: "aaggag"
+      pattern: "aaggag",
+      suppliers: []
     }
   end
 
@@ -5693,7 +6133,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CviAII",
-      pattern: "catg"
+      pattern: "catg",
+      suppliers: ["N"]
     }
   end
 
@@ -5706,7 +6147,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CviJI",
-      pattern: "rgcy"
+      pattern: "rgcy",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -5719,7 +6161,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CviKI-1",
-      pattern: "rgcy"
+      pattern: "rgcy",
+      suppliers: ["N"]
     }
   end
 
@@ -5732,7 +6175,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CviQI",
-      pattern: "gtac"
+      pattern: "gtac",
+      suppliers: ["N"]
     }
   end
 
@@ -5745,7 +6189,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "CviRI",
-      pattern: "tgca"
+      pattern: "tgca",
+      suppliers: []
     }
   end
 
@@ -5758,7 +6203,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DdeI",
-      pattern: "ctnag"
+      pattern: "ctnag",
+      suppliers: ["K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -5771,7 +6217,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Dde51507I",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: []
     }
   end
 
@@ -5784,7 +6231,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DinI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["V"]
     }
   end
 
@@ -5797,7 +6245,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Dpi3069I",
-      pattern: "gacag"
+      pattern: "gacag",
+      suppliers: []
     }
   end
 
@@ -5810,7 +6259,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Dpi3084I",
-      pattern: "cgrag"
+      pattern: "cgrag",
+      suppliers: []
     }
   end
 
@@ -5823,7 +6273,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Dpi3090II",
-      pattern: "aagrag"
+      pattern: "aagrag",
+      suppliers: []
     }
   end
 
@@ -5836,7 +6287,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DpnI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["B", "E", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -5849,7 +6301,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DpnII",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["N"]
     }
   end
 
@@ -5862,7 +6315,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DraI",
-      pattern: "tttaaa"
+      pattern: "tttaaa",
+      suppliers: ["B", "I", "J", "K", "M", "N", "Q", "S", "V", "X"]
     }
   end
 
@@ -5875,7 +6329,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DraII",
-      pattern: "rggnccy"
+      pattern: "rggnccy",
+      suppliers: []
     }
   end
 
@@ -5888,7 +6343,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DraIII",
-      pattern: "cacnnngtg"
+      pattern: "cacnnngtg",
+      suppliers: ["I", "M", "N", "V"]
     }
   end
 
@@ -5901,7 +6357,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DraRI",
-      pattern: "caagnac"
+      pattern: "caagnac",
+      suppliers: []
     }
   end
 
@@ -5914,7 +6371,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DrdI",
-      pattern: "gacnnnnnngtc"
+      pattern: "gacnnnnnngtc",
+      suppliers: ["N"]
     }
   end
 
@@ -5927,7 +6385,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DrdII",
-      pattern: "gaacca"
+      pattern: "gaacca",
+      suppliers: []
     }
   end
 
@@ -5940,7 +6399,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DrdIV",
-      pattern: "tacgac"
+      pattern: "tacgac",
+      suppliers: []
     }
   end
 
@@ -5953,7 +6413,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DrdV",
-      pattern: "catgnac"
+      pattern: "catgnac",
+      suppliers: []
     }
   end
 
@@ -5966,7 +6427,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DrdVI",
-      pattern: "gcagcc"
+      pattern: "gcagcc",
+      suppliers: []
     }
   end
 
@@ -5979,7 +6441,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DrdVIII",
-      pattern: "argagc"
+      pattern: "argagc",
+      suppliers: []
     }
   end
 
@@ -5992,7 +6455,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DriI",
-      pattern: "gacnnnnngtc"
+      pattern: "gacnnnnngtc",
+      suppliers: ["I"]
     }
   end
 
@@ -6005,7 +6469,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DsaI",
-      pattern: "ccrygg"
+      pattern: "ccrygg",
+      suppliers: []
     }
   end
 
@@ -6018,7 +6483,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DseDI",
-      pattern: "gacnnnnnngtc"
+      pattern: "gacnnnnnngtc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -6031,7 +6497,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DspS02II",
-      pattern: "tgccgac"
+      pattern: "tgccgac",
+      suppliers: []
     }
   end
 
@@ -6044,7 +6511,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "DvuIII",
-      pattern: "cacncac"
+      pattern: "cacncac",
+      suppliers: []
     }
   end
 
@@ -6057,7 +6525,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EaeI",
-      pattern: "yggccr"
+      pattern: "yggccr",
+      suppliers: ["K", "N"]
     }
   end
 
@@ -6070,7 +6539,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EagI",
-      pattern: "cggccg"
+      pattern: "cggccg",
+      suppliers: ["N"]
     }
   end
 
@@ -6083,7 +6553,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eam1104I",
-      pattern: "ctcttc"
+      pattern: "ctcttc",
+      suppliers: ["B"]
     }
   end
 
@@ -6096,7 +6567,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eam1105I",
-      pattern: "gacnnnnngtc"
+      pattern: "gacnnnnngtc",
+      suppliers: ["B"]
     }
   end
 
@@ -6109,7 +6581,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EarI",
-      pattern: "ctcttc"
+      pattern: "ctcttc",
+      suppliers: ["N"]
     }
   end
 
@@ -6122,7 +6595,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EciI",
-      pattern: "ggcgga"
+      pattern: "ggcgga",
+      suppliers: ["N"]
     }
   end
 
@@ -6135,7 +6609,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ecl136II",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: ["B"]
     }
   end
 
@@ -6148,7 +6623,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ecl234I",
-      pattern: "cggnaag"
+      pattern: "cggnaag",
+      suppliers: []
     }
   end
 
@@ -6161,7 +6637,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ecl35734I",
-      pattern: "gaaaytc"
+      pattern: "gaaaytc",
+      suppliers: []
     }
   end
 
@@ -6174,7 +6651,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EclXI",
-      pattern: "cggccg"
+      pattern: "cggccg",
+      suppliers: ["S"]
     }
   end
 
@@ -6187,7 +6665,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco24I",
-      pattern: "grgcyc"
+      pattern: "grgcyc",
+      suppliers: ["B"]
     }
   end
 
@@ -6200,7 +6679,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco31I",
-      pattern: "ggtctc"
+      pattern: "ggtctc",
+      suppliers: ["B"]
     }
   end
 
@@ -6213,7 +6693,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco32I",
-      pattern: "gatatc"
+      pattern: "gatatc",
+      suppliers: ["B"]
     }
   end
 
@@ -6226,7 +6707,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco47I",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: ["B"]
     }
   end
 
@@ -6239,7 +6721,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco47III",
-      pattern: "agcgct"
+      pattern: "agcgct",
+      suppliers: ["B", "M", "S"]
     }
   end
 
@@ -6252,7 +6735,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco52I",
-      pattern: "cggccg"
+      pattern: "cggccg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -6265,7 +6749,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco57I",
-      pattern: "ctgaag"
+      pattern: "ctgaag",
+      suppliers: ["B"]
     }
   end
 
@@ -6278,7 +6763,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco72I",
-      pattern: "cacgtg"
+      pattern: "cacgtg",
+      suppliers: ["B"]
     }
   end
 
@@ -6291,7 +6777,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco81I",
-      pattern: "cctnagg"
+      pattern: "cctnagg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -6304,7 +6791,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco88I",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: ["B"]
     }
   end
 
@@ -6317,7 +6805,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco91I",
-      pattern: "ggtnacc"
+      pattern: "ggtnacc",
+      suppliers: ["B"]
     }
   end
 
@@ -6330,7 +6819,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco105I",
-      pattern: "tacgta"
+      pattern: "tacgta",
+      suppliers: ["B"]
     }
   end
 
@@ -6343,7 +6833,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco130I",
-      pattern: "ccwwgg"
+      pattern: "ccwwgg",
+      suppliers: ["B"]
     }
   end
 
@@ -6356,7 +6847,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco147I",
-      pattern: "aggcct"
+      pattern: "aggcct",
+      suppliers: ["B"]
     }
   end
 
@@ -6369,7 +6861,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco4174I",
-      pattern: "gcacag"
+      pattern: "gcacag",
+      suppliers: []
     }
   end
 
@@ -6382,7 +6875,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco4465II",
-      pattern: "gaaabcc"
+      pattern: "gaaabcc",
+      suppliers: []
     }
   end
 
@@ -6395,7 +6889,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco8164I",
-      pattern: "gcckag"
+      pattern: "gcckag",
+      suppliers: []
     }
   end
 
@@ -6408,7 +6903,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco9009II",
-      pattern: "gaaantc"
+      pattern: "gaaantc",
+      suppliers: []
     }
   end
 
@@ -6421,7 +6917,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco9020I",
-      pattern: "cgaabtt"
+      pattern: "cgaabtt",
+      suppliers: []
     }
   end
 
@@ -6434,7 +6931,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco9035I",
-      pattern: "gggantt"
+      pattern: "gggantt",
+      suppliers: []
     }
   end
 
@@ -6447,7 +6945,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco9699II",
-      pattern: "tagarc"
+      pattern: "tagarc",
+      suppliers: []
     }
   end
 
@@ -6460,7 +6959,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco43896II",
-      pattern: "crarcag"
+      pattern: "crarcag",
+      suppliers: []
     }
   end
 
@@ -6473,7 +6973,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoBLMcrX",
-      pattern: "rcsrc"
+      pattern: "rcsrc",
+      suppliers: []
     }
   end
 
@@ -6486,7 +6987,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoE1140I",
-      pattern: "accyac"
+      pattern: "accyac",
+      suppliers: []
     }
   end
 
@@ -6499,7 +7001,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoHI",
-      pattern: "ccsgg"
+      pattern: "ccsgg",
+      suppliers: []
     }
   end
 
@@ -6512,7 +7015,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoHSI",
-      pattern: "ggtaag"
+      pattern: "ggtaag",
+      suppliers: []
     }
   end
 
@@ -6525,7 +7029,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoICRI",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -6538,7 +7043,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco57MI",
-      pattern: "ctgrag"
+      pattern: "ctgrag",
+      suppliers: []
     }
   end
 
@@ -6551,7 +7057,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoMVII",
-      pattern: "cancatc"
+      pattern: "cancatc",
+      suppliers: []
     }
   end
 
@@ -6564,7 +7071,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoNI",
-      pattern: "cctnnnnnagg"
+      pattern: "cctnnnnnagg",
+      suppliers: ["N"]
     }
   end
 
@@ -6577,7 +7085,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoNIH6II",
-      pattern: "atgaag"
+      pattern: "atgaag",
+      suppliers: []
     }
   end
 
@@ -6590,7 +7099,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoO65I",
-      pattern: "ggtnacc"
+      pattern: "ggtnacc",
+      suppliers: ["K"]
     }
   end
 
@@ -6603,7 +7113,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoO109I",
-      pattern: "rggnccy"
+      pattern: "rggnccy",
+      suppliers: ["B", "J", "K", "N"]
+    }
+  end
+
+  @doc false
+  def ecoo157si do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 15,
+      cut_2: 13,
+      cut_3: 0,
+      cut_4: 0,
+      name: "EcoO157SI",
+      pattern: "c",
+      suppliers: []
     }
   end
 
@@ -6616,7 +7141,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoRI",
-      pattern: "gaattc"
+      pattern: "gaattc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X", "Y"]
     }
   end
 
@@ -6629,7 +7155,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoRII",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["B", "J"]
     }
   end
 
@@ -6642,7 +7169,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoRV",
-      pattern: "gatatc"
+      pattern: "gatatc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X"]
     }
   end
 
@@ -6655,7 +7183,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoT14I",
-      pattern: "ccwwgg"
+      pattern: "ccwwgg",
+      suppliers: ["K"]
     }
   end
 
@@ -6668,7 +7197,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoT22I",
-      pattern: "atgcat"
+      pattern: "atgcat",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -6681,7 +7211,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EcoT38I",
-      pattern: "grgcyc"
+      pattern: "grgcyc",
+      suppliers: ["J"]
     }
   end
 
@@ -6694,7 +7225,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eco53kI",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: ["N"]
     }
   end
 
@@ -6707,7 +7239,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EgeI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["I"]
     }
   end
 
@@ -6720,7 +7253,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EheI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["B"]
     }
   end
 
@@ -6733,7 +7267,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ehi46392I",
-      pattern: "cccnnag"
+      pattern: "cccnnag",
+      suppliers: []
     }
   end
 
@@ -6746,7 +7281,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Eli8509II",
-      pattern: "ccggag"
+      pattern: "ccggag",
+      suppliers: []
     }
   end
 
@@ -6759,7 +7295,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ErhI",
-      pattern: "ccwwgg"
+      pattern: "ccwwgg",
+      suppliers: ["I"]
     }
   end
 
@@ -6772,7 +7309,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ErhG4T10I",
-      pattern: "cgannnnnntc"
+      pattern: "cgannnnnntc",
+      suppliers: []
     }
   end
 
@@ -6785,7 +7323,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EsaBC3I",
-      pattern: "tcga"
+      pattern: "tcga",
+      suppliers: []
     }
   end
 
@@ -6798,7 +7337,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EsaSSI",
-      pattern: "gaccac"
+      pattern: "gaccac",
+      suppliers: []
     }
   end
 
@@ -6811,7 +7351,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "EspI",
-      pattern: "gctnagc"
+      pattern: "gctnagc",
+      suppliers: []
     }
   end
 
@@ -6824,7 +7365,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Esp3I",
-      pattern: "cgtctc"
+      pattern: "cgtctc",
+      suppliers: ["B", "N"]
     }
   end
 
@@ -6837,7 +7379,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Esp3007I",
-      pattern: "cagaag"
+      pattern: "cagaag",
+      suppliers: []
     }
   end
 
@@ -6850,7 +7393,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FaeI",
-      pattern: "catg"
+      pattern: "catg",
+      suppliers: ["I"]
     }
   end
 
@@ -6863,7 +7407,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FaiI",
-      pattern: "yatr"
+      pattern: "yatr",
+      suppliers: ["I"]
     }
   end
 
@@ -6876,7 +7421,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 19,
       name: "FalI",
-      pattern: "aagnnnnnctt"
+      pattern: "aagnnnnnctt",
+      suppliers: ["I"]
     }
   end
 
@@ -6889,7 +7435,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FaqI",
-      pattern: "gggac"
+      pattern: "gggac",
+      suppliers: ["B"]
     }
   end
 
@@ -6902,7 +7449,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FatI",
-      pattern: "catg"
+      pattern: "catg",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -6915,7 +7463,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FauI",
-      pattern: "cccgc"
+      pattern: "cccgc",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -6928,7 +7477,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FauNDI",
-      pattern: "catatg"
+      pattern: "catatg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -6941,7 +7491,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FbaI",
-      pattern: "tgatca"
+      pattern: "tgatca",
+      suppliers: ["K"]
     }
   end
 
@@ -6954,7 +7505,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fba202Z8II",
-      pattern: "agaagg"
+      pattern: "agaagg",
+      suppliers: []
     }
   end
 
@@ -6967,7 +7519,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FblI",
-      pattern: "gtmkac"
+      pattern: "gtmkac",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -6980,7 +7533,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fco1691IV",
-      pattern: "gcvgag"
+      pattern: "gcvgag",
+      suppliers: []
     }
   end
 
@@ -6993,7 +7547,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FinI",
-      pattern: "gggac"
+      pattern: "gggac",
+      suppliers: []
     }
   end
 
@@ -7006,7 +7561,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FmuI",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: []
     }
   end
 
@@ -7019,7 +7575,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fna13121I",
-      pattern: "ttgayc"
+      pattern: "ttgayc",
+      suppliers: []
     }
   end
 
@@ -7032,7 +7589,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fnu11326II",
-      pattern: "gagnnnnrtay"
+      pattern: "gagnnnnrtay",
+      suppliers: []
     }
   end
 
@@ -7045,7 +7603,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fnu11326IV",
-      pattern: "cttaatt"
+      pattern: "cttaatt",
+      suppliers: []
     }
   end
 
@@ -7058,7 +7617,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FnuDII",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: []
     }
   end
 
@@ -7071,7 +7631,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fnu4HI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["N"]
     }
   end
 
@@ -7084,7 +7645,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FokI",
-      pattern: "ggatg"
+      pattern: "ggatg",
+      suppliers: ["B", "I", "J", "K", "M", "N", "V", "X", "Y"]
     }
   end
 
@@ -7097,7 +7659,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FriOI",
-      pattern: "grgcyc"
+      pattern: "grgcyc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -7110,7 +7673,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FseI",
-      pattern: "ggccggcc"
+      pattern: "ggccggcc",
+      suppliers: ["N"]
     }
   end
 
@@ -7123,7 +7687,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FspI",
-      pattern: "tgcgca"
+      pattern: "tgcgca",
+      suppliers: ["J", "N"]
     }
   end
 
@@ -7136,7 +7701,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FspAI",
-      pattern: "rtgcgcay"
+      pattern: "rtgcgcay",
+      suppliers: ["B"]
     }
   end
 
@@ -7149,7 +7715,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FspBI",
-      pattern: "ctag"
+      pattern: "ctag",
+      suppliers: ["B"]
     }
   end
 
@@ -7162,7 +7729,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FspEI",
-      pattern: "cc"
+      pattern: "cc",
+      suppliers: ["N"]
     }
   end
 
@@ -7175,7 +7743,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Fsp4HI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["I"]
     }
   end
 
@@ -7188,7 +7757,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FspPK15I",
-      pattern: "gargaag"
+      pattern: "gargaag",
+      suppliers: []
     }
   end
 
@@ -7201,7 +7771,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "FtnUV",
-      pattern: "gaaaca"
+      pattern: "gaaaca",
+      suppliers: []
     }
   end
 
@@ -7214,7 +7785,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "GauT27I",
-      pattern: "cgcgcagg"
+      pattern: "cgcgcagg",
+      suppliers: []
     }
   end
 
@@ -7227,7 +7799,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Gba708II",
-      pattern: "atgcac"
+      pattern: "atgcac",
+      suppliers: []
     }
   end
 
@@ -7240,7 +7813,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "GdiII",
-      pattern: "cggccr"
+      pattern: "cggccr",
+      suppliers: []
     }
   end
 
@@ -7253,7 +7827,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "GlaI",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["I"]
     }
   end
 
@@ -7266,7 +7841,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "GluI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["I"]
     }
   end
 
@@ -7279,7 +7855,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Gru56503II",
-      pattern: "carabgc"
+      pattern: "carabgc",
+      suppliers: []
     }
   end
 
@@ -7292,7 +7869,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "GsaI",
-      pattern: "cccagc"
+      pattern: "cccagc",
+      suppliers: ["I"]
     }
   end
 
@@ -7305,7 +7883,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "GsuI",
-      pattern: "ctggag"
+      pattern: "ctggag",
+      suppliers: ["B"]
+    }
+  end
+
+  @doc false
+  def gsupi do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "GsuPI",
+      pattern: "gtacag",
+      suppliers: []
     }
   end
 
@@ -7318,7 +7911,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HaeI",
-      pattern: "wggccw"
+      pattern: "wggccw",
+      suppliers: []
     }
   end
 
@@ -7331,7 +7925,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HaeII",
-      pattern: "rgcgcy"
+      pattern: "rgcgcy",
+      suppliers: ["J", "K", "N"]
     }
   end
 
@@ -7344,7 +7939,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HaeIII",
-      pattern: "ggcc"
+      pattern: "ggcc",
+      suppliers: ["B", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -7357,7 +7953,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 20,
       name: "HaeIV",
-      pattern: "gaynnnnnrtc"
+      pattern: "gaynnnnnrtc",
+      suppliers: []
     }
   end
 
@@ -7370,7 +7967,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HapII",
-      pattern: "ccgg"
+      pattern: "ccgg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -7383,7 +7981,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HauII",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: []
     }
   end
 
@@ -7396,7 +7995,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HbaII",
-      pattern: "gcccag"
+      pattern: "gcccag",
+      suppliers: []
     }
   end
 
@@ -7409,7 +8009,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hca13221V",
-      pattern: "cacnnnnnrtay"
+      pattern: "cacnnnnnrtay",
+      suppliers: []
     }
   end
 
@@ -7422,7 +8023,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HdeNY26I",
-      pattern: "cgannnnnntcc"
+      pattern: "cgannnnnntcc",
+      suppliers: []
     }
   end
 
@@ -7435,7 +8037,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HdeZA17I",
-      pattern: "gcannnnnntcc"
+      pattern: "gcannnnnntcc",
+      suppliers: []
     }
   end
 
@@ -7448,7 +8051,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HgaI",
-      pattern: "gacgc"
+      pattern: "gacgc",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -7461,7 +8065,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HgiAI",
-      pattern: "gwgcwc"
+      pattern: "gwgcwc",
+      suppliers: []
     }
   end
 
@@ -7474,7 +8079,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HgiCI",
-      pattern: "ggyrcc"
+      pattern: "ggyrcc",
+      suppliers: []
     }
   end
 
@@ -7487,7 +8093,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HgiEII",
-      pattern: "accnnnnnnggt"
+      pattern: "accnnnnnnggt",
+      suppliers: []
     }
   end
 
@@ -7500,7 +8107,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HgiJII",
-      pattern: "grgcyc"
+      pattern: "grgcyc",
+      suppliers: []
     }
   end
 
@@ -7513,7 +8121,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HhaI",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["B", "J", "K", "N", "Q", "R", "X"]
     }
   end
 
@@ -7526,7 +8135,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hin1I",
-      pattern: "grcgyc"
+      pattern: "grcgyc",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -7539,7 +8149,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hin1II",
-      pattern: "catg"
+      pattern: "catg",
+      suppliers: ["B"]
     }
   end
 
@@ -7552,7 +8163,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 19,
       name: "Hin4I",
-      pattern: "gaynnnnnvtc"
+      pattern: "gaynnnnnvtc",
+      suppliers: []
     }
   end
 
@@ -7565,7 +8177,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hin4II",
-      pattern: "ccttc"
+      pattern: "ccttc",
+      suppliers: []
     }
   end
 
@@ -7578,7 +8191,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hin6I",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["B"]
     }
   end
 
@@ -7591,7 +8205,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HinP1I",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["N"]
     }
   end
 
@@ -7604,7 +8219,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HincII",
-      pattern: "gtyrac"
+      pattern: "gtyrac",
+      suppliers: ["B", "J", "K", "N", "O", "Q", "X"]
     }
   end
 
@@ -7617,7 +8233,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HindII",
-      pattern: "gtyrac"
+      pattern: "gtyrac",
+      suppliers: ["I", "M", "S", "V"]
     }
   end
 
@@ -7630,7 +8247,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HindIII",
-      pattern: "aagctt"
+      pattern: "aagctt",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X", "Y"]
     }
   end
 
@@ -7643,7 +8261,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HinfI",
-      pattern: "gantc"
+      pattern: "gantc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "V", "X", "Y"]
     }
   end
 
@@ -7656,7 +8275,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpaI",
-      pattern: "gttaac"
+      pattern: "gttaac",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "Q", "S", "V", "X"]
     }
   end
 
@@ -7669,7 +8289,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpaII",
-      pattern: "ccgg"
+      pattern: "ccgg",
+      suppliers: ["B", "I", "N", "Q", "R", "V", "X"]
     }
   end
 
@@ -7682,7 +8303,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HphI",
-      pattern: "ggtga"
+      pattern: "ggtga",
+      suppliers: ["B", "N"]
     }
   end
 
@@ -7695,7 +8317,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy8I",
-      pattern: "gtnnac"
+      pattern: "gtnnac",
+      suppliers: ["B"]
     }
   end
 
@@ -7708,7 +8331,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy99I",
-      pattern: "cgwcg"
+      pattern: "cgwcg",
+      suppliers: ["N"]
     }
   end
 
@@ -7721,7 +8345,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy99XIII",
-      pattern: "gccta"
+      pattern: "gccta",
+      suppliers: []
     }
   end
 
@@ -7734,7 +8359,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy99XIV",
-      pattern: "ggwtaa"
+      pattern: "ggwtaa",
+      suppliers: []
     }
   end
 
@@ -7747,7 +8373,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy99XIV-mut1",
-      pattern: "ggwcna"
+      pattern: "ggwcna",
+      suppliers: []
     }
   end
 
@@ -7760,7 +8387,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy99XXII",
-      pattern: "cyannnnnntga"
+      pattern: "cyannnnnntga",
+      suppliers: []
     }
   end
 
@@ -7773,7 +8401,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy166II",
-      pattern: "gtnnac"
+      pattern: "gtnnac",
+      suppliers: ["N"]
     }
   end
 
@@ -7786,7 +8415,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy178III",
-      pattern: "tcnnga"
+      pattern: "tcnnga",
+      suppliers: []
     }
   end
 
@@ -7799,7 +8429,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy188I",
-      pattern: "tcnga"
+      pattern: "tcnga",
+      suppliers: ["N"]
     }
   end
 
@@ -7812,7 +8443,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy188III",
-      pattern: "tcnnga"
+      pattern: "tcnnga",
+      suppliers: ["N"]
     }
   end
 
@@ -7825,7 +8457,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hpy300XI",
-      pattern: "cctyna"
+      pattern: "cctyna",
+      suppliers: []
     }
   end
 
@@ -7838,7 +8471,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyAV",
-      pattern: "ccttc"
+      pattern: "ccttc",
+      suppliers: ["N"]
     }
   end
 
@@ -7851,7 +8485,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyAXIV",
-      pattern: "gcgta"
+      pattern: "gcgta",
+      suppliers: []
     }
   end
 
@@ -7864,7 +8499,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyAXVI-mut1",
-      pattern: "crttaa"
+      pattern: "crttaa",
+      suppliers: []
     }
   end
 
@@ -7877,7 +8513,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyAXVI-mut2",
-      pattern: "crtcna"
+      pattern: "crtcna",
+      suppliers: []
     }
   end
 
@@ -7890,7 +8527,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyAXVIII",
-      pattern: "ggannag"
+      pattern: "ggannag",
+      suppliers: []
     }
   end
 
@@ -7903,7 +8541,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyAS001VI",
-      pattern: "cyannnnnnttc"
+      pattern: "cyannnnnnttc",
+      suppliers: []
     }
   end
 
@@ -7916,7 +8555,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyCH4III",
-      pattern: "acngt"
+      pattern: "acngt",
+      suppliers: ["N"]
     }
   end
 
@@ -7929,7 +8569,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyCH4IV",
-      pattern: "acgt"
+      pattern: "acgt",
+      suppliers: ["N"]
     }
   end
 
@@ -7942,7 +8583,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyCH4V",
-      pattern: "tgca"
+      pattern: "tgca",
+      suppliers: ["N"]
     }
   end
 
@@ -7955,7 +8597,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyF3I",
-      pattern: "ctnag"
+      pattern: "ctnag",
+      suppliers: ["B"]
     }
   end
 
@@ -7968,7 +8611,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyF10VI",
-      pattern: "gcnnnnnnngc"
+      pattern: "gcnnnnnnngc",
+      suppliers: ["B"]
+    }
+  end
+
+  @doc false
+  def hpyg272xv do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "HpyG272XV",
+      pattern: "gaaaag",
+      suppliers: []
     }
   end
 
@@ -7981,7 +8639,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyLIM6XII",
-      pattern: "cyannnnnntcc"
+      pattern: "cyannnnnntcc",
+      suppliers: []
     }
   end
 
@@ -7994,7 +8653,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyPU007XIX",
-      pattern: "cyannnnnntgy"
+      pattern: "cyannnnnntgy",
+      suppliers: []
     }
   end
 
@@ -8007,7 +8667,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpySE526I",
-      pattern: "acgt"
+      pattern: "acgt",
+      suppliers: ["I"]
     }
   end
 
@@ -8020,7 +8681,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyUM032XIII",
-      pattern: "cyannnnnnntrg"
+      pattern: "cyannnnnnntrg",
+      suppliers: []
     }
   end
 
@@ -8033,7 +8695,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyUM032XIII-mut1",
-      pattern: "cyannnnnnnttc"
+      pattern: "cyannnnnnnttc",
+      suppliers: []
     }
   end
 
@@ -8046,7 +8709,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HpyUM032XIV",
-      pattern: "gaaag"
+      pattern: "gaaag",
+      suppliers: []
     }
   end
 
@@ -8059,7 +8723,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 19,
       name: "HsoII",
-      pattern: "caynnnnnrtg"
+      pattern: "caynnnnnrtg",
+      suppliers: []
     }
   end
 
@@ -8072,7 +8737,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hso63250IV",
-      pattern: "aacnnnnngtt"
+      pattern: "aacnnnnngtt",
+      suppliers: []
     }
   end
 
@@ -8085,7 +8751,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hso63373III",
-      pattern: "cgannnnnrtay"
+      pattern: "cgannnnnrtay",
+      suppliers: []
     }
   end
 
@@ -8098,7 +8765,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hsp92I",
-      pattern: "grcgyc"
+      pattern: "grcgyc",
+      suppliers: ["R"]
     }
   end
 
@@ -8111,7 +8779,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Hsp92II",
-      pattern: "catg"
+      pattern: "catg",
+      suppliers: ["R"]
     }
   end
 
@@ -8124,7 +8793,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HspAI",
-      pattern: "gcgc"
+      pattern: "gcgc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -8137,7 +8807,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "HspMHR1II",
-      pattern: "gagcagc"
+      pattern: "gagcagc",
+      suppliers: []
     }
   end
 
@@ -8150,7 +8821,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Jma19592I",
-      pattern: "gtatnac"
+      pattern: "gtatnac",
+      suppliers: []
     }
   end
 
@@ -8163,7 +8835,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Jma19592II",
-      pattern: "grgcrac"
+      pattern: "grgcrac",
+      suppliers: []
     }
   end
 
@@ -8176,7 +8849,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Jsp2502II",
-      pattern: "grngaat"
+      pattern: "grngaat",
+      suppliers: []
     }
   end
 
@@ -8189,7 +8863,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KasI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["N"]
     }
   end
 
@@ -8202,7 +8877,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kas9737III",
-      pattern: "cccrag"
+      pattern: "cccrag",
+      suppliers: []
     }
   end
 
@@ -8215,7 +8891,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KflI",
-      pattern: "gggwccc"
+      pattern: "gggwccc",
+      suppliers: ["B"]
     }
   end
 
@@ -8228,7 +8905,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kor51II",
-      pattern: "rtcgag"
+      pattern: "rtcgag",
+      suppliers: []
     }
   end
 
@@ -8241,7 +8919,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KpnI",
-      pattern: "ggtacc"
+      pattern: "ggtacc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X", "Y"]
     }
   end
 
@@ -8254,7 +8933,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kpn2I",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["B"]
     }
   end
 
@@ -8267,7 +8947,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kpn156V",
-      pattern: "crtgatt"
+      pattern: "crtgatt",
+      suppliers: []
     }
   end
 
@@ -8280,7 +8961,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kpn327I",
-      pattern: "gacatc"
+      pattern: "gacatc",
+      suppliers: []
     }
   end
 
@@ -8293,7 +8975,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kpn9178I",
-      pattern: "gngcgag"
+      pattern: "gngcgag",
+      suppliers: []
     }
   end
 
@@ -8306,7 +8989,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kpn9644II",
-      pattern: "gracrac"
+      pattern: "gracrac",
+      suppliers: []
     }
   end
 
@@ -8319,7 +9003,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KpnNH25III",
-      pattern: "ctrgag"
+      pattern: "ctrgag",
+      suppliers: []
     }
   end
 
@@ -8332,7 +9017,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KpnNIH30III",
-      pattern: "gttcnac"
+      pattern: "gttcnac",
+      suppliers: []
     }
   end
 
@@ -8345,7 +9031,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KpnNIH50I",
-      pattern: "gcyaag"
+      pattern: "gcyaag",
+      suppliers: []
     }
   end
 
@@ -8358,7 +9045,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KroI",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: ["I"]
     }
   end
 
@@ -8371,7 +9059,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kro7512II",
-      pattern: "arcagkc"
+      pattern: "arcagkc",
+      suppliers: []
     }
   end
 
@@ -8384,7 +9073,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KroNI",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: ["I"]
     }
   end
 
@@ -8397,7 +9087,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KspI",
-      pattern: "ccgcgg"
+      pattern: "ccgcgg",
+      suppliers: ["M", "S"]
     }
   end
 
@@ -8410,7 +9101,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ksp22I",
-      pattern: "tgatca"
+      pattern: "tgatca",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -8423,7 +9115,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ksp632I",
-      pattern: "ctcttc"
+      pattern: "ctcttc",
+      suppliers: []
     }
   end
 
@@ -8436,7 +9129,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "KspAI",
-      pattern: "gttaac"
+      pattern: "gttaac",
+      suppliers: ["B"]
     }
   end
 
@@ -8449,7 +9143,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Kzo9I",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["I"]
     }
   end
 
@@ -8462,7 +9157,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lba2029III",
-      pattern: "cyaaang"
+      pattern: "cyaaang",
+      suppliers: []
     }
   end
 
@@ -8475,7 +9171,36 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lbr124II",
-      pattern: "catcnac"
+      pattern: "catcnac",
+      suppliers: []
+    }
+  end
+
+  @doc false
+  def lcr047i do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "Lcr047I",
+      pattern: "ctcca",
+      suppliers: []
+    }
+  end
+
+  @doc false
+  def lcr047ii do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "Lcr047II",
+      pattern: "agaag",
+      suppliers: []
     }
   end
 
@@ -8488,7 +9213,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lde4408II",
-      pattern: "acaaag"
+      pattern: "acaaag",
+      suppliers: []
     }
   end
 
@@ -8501,33 +9227,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LguI",
-      pattern: "gctcttc"
-    }
-  end
-
-  @doc false
-  def lla047i do
-    %Bio.Restriction.Enzyme{
-      blunt?: false,
-      cut_1: 0,
-      cut_2: 0,
-      cut_3: 0,
-      cut_4: 0,
-      name: "Lla047I",
-      pattern: "ctcca"
-    }
-  end
-
-  @doc false
-  def lla047ii do
-    %Bio.Restriction.Enzyme{
-      blunt?: false,
-      cut_1: 0,
-      cut_2: 0,
-      cut_3: 0,
-      cut_4: 0,
-      name: "Lla047II",
-      pattern: "agaag"
+      pattern: "gctcttc",
+      suppliers: ["B"]
     }
   end
 
@@ -8540,7 +9241,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LlaG50I",
-      pattern: "ccgtka"
+      pattern: "ccgtka",
+      suppliers: []
     }
   end
 
@@ -8553,7 +9255,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lme32I",
-      pattern: "ctycaa"
+      pattern: "ctycaa",
+      suppliers: []
     }
   end
 
@@ -8566,7 +9269,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LmnI",
-      pattern: "gctcc"
+      pattern: "gctcc",
+      suppliers: ["I"]
     }
   end
 
@@ -8579,7 +9283,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lmo370I",
-      pattern: "agcgccg"
+      pattern: "agcgccg",
+      suppliers: []
     }
   end
 
@@ -8592,7 +9297,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lmo911II",
-      pattern: "tagrag"
+      pattern: "tagrag",
+      suppliers: []
     }
   end
 
@@ -8605,7 +9311,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lpl1004II",
-      pattern: "aggrag"
+      pattern: "aggrag",
+      suppliers: []
     }
   end
 
@@ -8618,7 +9325,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LpnI",
-      pattern: "rgcgcy"
+      pattern: "rgcgcy",
+      suppliers: []
     }
   end
 
@@ -8631,7 +9339,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lpn11417II",
-      pattern: "acgaat"
+      pattern: "acgaat",
+      suppliers: []
     }
   end
 
@@ -8644,7 +9353,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lpn12272I",
-      pattern: "gcncaac"
+      pattern: "gcncaac",
+      suppliers: []
     }
   end
 
@@ -8657,7 +9367,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LpnPI",
-      pattern: "ccdg"
+      pattern: "ccdg",
+      suppliers: ["N"]
     }
   end
 
@@ -8670,7 +9381,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lra68I",
-      pattern: "gttcnag"
+      pattern: "gttcnag",
+      suppliers: []
     }
   end
 
@@ -8683,7 +9395,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LsaDS4I",
-      pattern: "tggaat"
+      pattern: "tggaat",
+      suppliers: []
     }
   end
 
@@ -8696,7 +9409,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lsp48III",
-      pattern: "agcacc"
+      pattern: "agcacc",
+      suppliers: []
     }
   end
 
@@ -8709,7 +9423,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lsp1109I",
-      pattern: "gcagc"
+      pattern: "gcagc",
+      suppliers: ["B"]
     }
   end
 
@@ -8722,7 +9437,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Lsp6406VI",
-      pattern: "cragcac"
+      pattern: "cragcac",
+      suppliers: []
     }
   end
 
@@ -8735,7 +9451,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "LweI",
-      pattern: "gcatc"
+      pattern: "gcatc",
+      suppliers: ["B"]
     }
   end
 
@@ -8748,7 +9465,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MabI",
-      pattern: "accwggt"
+      pattern: "accwggt",
+      suppliers: ["I"]
     }
   end
 
@@ -8761,7 +9479,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MaeI",
-      pattern: "ctag"
+      pattern: "ctag",
+      suppliers: ["M"]
     }
   end
 
@@ -8774,7 +9493,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MaeII",
-      pattern: "acgt"
+      pattern: "acgt",
+      suppliers: ["M"]
     }
   end
 
@@ -8787,7 +9507,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MaeIII",
-      pattern: "gtnac"
+      pattern: "gtnac",
+      suppliers: ["M", "S"]
     }
   end
 
@@ -8800,7 +9521,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MalI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["I"]
     }
   end
 
@@ -8813,7 +9535,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MaqI",
-      pattern: "crttgac"
+      pattern: "crttgac",
+      suppliers: []
     }
   end
 
@@ -8826,7 +9549,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MauBI",
-      pattern: "cgcgcgcg"
+      pattern: "cgcgcgcg",
+      suppliers: ["B"]
     }
   end
 
@@ -8839,7 +9563,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mba11I",
-      pattern: "aggcga"
+      pattern: "aggcga",
+      suppliers: []
     }
   end
 
@@ -8852,7 +9577,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MbiI",
-      pattern: "ccgctc"
+      pattern: "ccgctc",
+      suppliers: ["B"]
     }
   end
 
@@ -8865,7 +9591,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MboI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["B", "C", "K", "N", "Q", "R", "X", "Y"]
     }
   end
 
@@ -8878,7 +9605,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MboII",
-      pattern: "gaaga"
+      pattern: "gaaga",
+      suppliers: ["B", "I", "J", "K", "N", "Q", "V", "X"]
     }
   end
 
@@ -8891,7 +9619,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "McaTI",
-      pattern: "gcgcgc"
+      pattern: "gcgcgc",
+      suppliers: []
     }
   end
 
@@ -8904,7 +9633,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mch946II",
-      pattern: "wcgatct"
+      pattern: "wcgatct",
+      suppliers: []
     }
   end
 
@@ -8917,7 +9647,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mch10819I",
-      pattern: "cycagcg"
+      pattern: "cycagcg",
+      suppliers: []
     }
   end
 
@@ -8930,7 +9661,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "McrI",
-      pattern: "cgrycg"
+      pattern: "cgrycg",
+      suppliers: []
     }
   end
 
@@ -8943,7 +9675,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MfeI",
-      pattern: "caattg"
+      pattern: "caattg",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -8956,7 +9689,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MflI",
-      pattern: "rgatcy"
+      pattern: "rgatcy",
+      suppliers: ["K"]
     }
   end
 
@@ -8969,7 +9703,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MhlI",
-      pattern: "gdgchc"
+      pattern: "gdgchc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -8982,7 +9717,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MjaIV",
-      pattern: "gtnnac"
+      pattern: "gtnnac",
+      suppliers: []
     }
   end
 
@@ -8995,7 +9731,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MkaDII",
-      pattern: "gagaygt"
+      pattern: "gagaygt",
+      suppliers: []
     }
   end
 
@@ -9008,7 +9745,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mla10359I",
-      pattern: "cgannnnnntca"
+      pattern: "cgannnnnntca",
+      suppliers: []
     }
   end
 
@@ -9021,7 +9759,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MlsI",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: ["B"]
     }
   end
 
@@ -9034,7 +9773,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MluI",
-      pattern: "acgcgt"
+      pattern: "acgcgt",
+      suppliers: ["B", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V"]
     }
   end
 
@@ -9047,7 +9787,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mlu211III",
-      pattern: "agccca"
+      pattern: "agccca",
+      suppliers: []
     }
   end
 
@@ -9060,7 +9801,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MluCI",
-      pattern: "aatt"
+      pattern: "aatt",
+      suppliers: ["N"]
     }
   end
 
@@ -9073,7 +9815,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MluNI",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: ["M"]
     }
   end
 
@@ -9086,7 +9829,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MlyI",
-      pattern: "gagtc"
+      pattern: "gagtc",
+      suppliers: ["N"]
     }
   end
 
@@ -9099,7 +9843,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mly113I",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["I"]
     }
   end
 
@@ -9112,7 +9857,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MmeI",
-      pattern: "tccrac"
+      pattern: "tccrac",
+      suppliers: ["N", "X"]
     }
   end
 
@@ -9125,7 +9871,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MnlI",
-      pattern: "cctc"
+      pattern: "cctc",
+      suppliers: ["B", "I", "N", "Q", "V", "X"]
     }
   end
 
@@ -9138,7 +9885,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mox20I",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: ["I"]
     }
   end
 
@@ -9151,7 +9899,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mph1103I",
-      pattern: "atgcat"
+      pattern: "atgcat",
+      suppliers: ["B"]
     }
   end
 
@@ -9164,7 +9913,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MreI",
-      pattern: "cgccggcg"
+      pattern: "cgccggcg",
+      suppliers: ["B"]
     }
   end
 
@@ -9177,7 +9927,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MroI",
-      pattern: "tccgga"
+      pattern: "tccgga",
+      suppliers: ["M", "O"]
     }
   end
 
@@ -9190,7 +9941,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MroNI",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -9203,7 +9955,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MroXI",
-      pattern: "gaannnnttc"
+      pattern: "gaannnnttc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -9216,7 +9969,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MscI",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: ["N", "O"]
     }
   end
 
@@ -9229,7 +9983,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MseI",
-      pattern: "ttaa"
+      pattern: "ttaa",
+      suppliers: ["N"]
     }
   end
 
@@ -9242,7 +9997,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MslI",
-      pattern: "caynnnnrtg"
+      pattern: "caynnnnrtg",
+      suppliers: ["N"]
     }
   end
 
@@ -9255,7 +10011,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspI",
-      pattern: "ccgg"
+      pattern: "ccgg",
+      suppliers: ["B", "I", "J", "K", "N", "Q", "R", "V", "X"]
     }
   end
 
@@ -9268,7 +10025,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Msp20I",
-      pattern: "tggcca"
+      pattern: "tggcca",
+      suppliers: ["V"]
     }
   end
 
@@ -9281,7 +10039,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspA1I",
-      pattern: "cmgckg"
+      pattern: "cmgckg",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -9294,7 +10053,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspCI",
-      pattern: "cttaag"
+      pattern: "cttaag",
+      suppliers: ["C"]
     }
   end
 
@@ -9307,7 +10067,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspF392I",
-      pattern: "cccaatv"
+      pattern: "cccaatv",
+      suppliers: []
     }
   end
 
@@ -9320,7 +10081,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspGI",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: []
     }
   end
 
@@ -9333,7 +10095,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspI7II",
-      pattern: "acgrag"
+      pattern: "acgrag",
+      suppliers: []
     }
   end
 
@@ -9346,7 +10109,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspI7IV",
-      pattern: "gcmgaag"
+      pattern: "gcmgaag",
+      suppliers: []
     }
   end
 
@@ -9359,7 +10123,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspJI",
-      pattern: "cnnr"
+      pattern: "cnnr",
+      suppliers: ["N"]
     }
   end
 
@@ -9372,7 +10137,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspR9I",
-      pattern: "ccngg"
+      pattern: "ccngg",
+      suppliers: ["I"]
     }
   end
 
@@ -9385,7 +10151,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MspSC27II",
-      pattern: "ccgcgac"
+      pattern: "ccgcgac",
+      suppliers: []
     }
   end
 
@@ -9398,7 +10165,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MssI",
-      pattern: "gtttaaac"
+      pattern: "gtttaaac",
+      suppliers: ["B"]
     }
   end
 
@@ -9411,7 +10179,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MstI",
-      pattern: "tgcgca"
+      pattern: "tgcgca",
+      suppliers: []
     }
   end
 
@@ -9424,7 +10193,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MteI",
-      pattern: "gcgcngcgc"
+      pattern: "gcgcngcgc",
+      suppliers: ["I"]
     }
   end
 
@@ -9437,7 +10207,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MtuHN878II",
-      pattern: "cacgcag"
+      pattern: "cacgcag",
+      suppliers: []
     }
   end
 
@@ -9450,7 +10221,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MunI",
-      pattern: "caattg"
+      pattern: "caattg",
+      suppliers: ["B", "K", "M", "S"]
     }
   end
 
@@ -9463,7 +10235,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MvaI",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["B", "M"]
     }
   end
 
@@ -9476,7 +10249,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Mva1269I",
-      pattern: "gaatgc"
+      pattern: "gaatgc",
+      suppliers: ["B"]
     }
   end
 
@@ -9489,7 +10263,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MvnI",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: ["M"]
     }
   end
 
@@ -9502,7 +10277,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "MwoI",
-      pattern: "gcnnnnnnngc"
+      pattern: "gcnnnnnnngc",
+      suppliers: ["N"]
     }
   end
 
@@ -9515,7 +10291,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NaeI",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: ["C", "K", "N"]
     }
   end
 
@@ -9528,7 +10305,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Nal45188II",
-      pattern: "accagc"
+      pattern: "accagc",
+      suppliers: []
     }
   end
 
@@ -9541,7 +10319,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Nan12227I",
-      pattern: "ccannnnnntcy"
+      pattern: "ccannnnnntcy",
+      suppliers: []
     }
   end
 
@@ -9554,7 +10333,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NarI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["J", "M", "N", "Q", "X"]
     }
   end
 
@@ -9567,7 +10347,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Nbr128II",
-      pattern: "accgac"
+      pattern: "accgac",
+      suppliers: []
     }
   end
 
@@ -9580,7 +10361,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NciI",
-      pattern: "ccsgg"
+      pattern: "ccsgg",
+      suppliers: ["J", "N"]
     }
   end
 
@@ -9593,7 +10375,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NcoI",
-      pattern: "ccatgg"
+      pattern: "ccatgg",
+      suppliers: ["B", "C", "J", "K", "M", "N", "O", "Q", "R", "S", "X", "Y"]
     }
   end
 
@@ -9606,7 +10389,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NdeI",
-      pattern: "catatg"
+      pattern: "catatg",
+      suppliers: ["B", "J", "K", "M", "N", "Q", "R", "S", "X"]
     }
   end
 
@@ -9619,7 +10403,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NdeII",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["J", "M"]
     }
   end
 
@@ -9632,7 +10417,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NgoAVII",
-      pattern: "gccgc"
+      pattern: "gccgc",
+      suppliers: []
     }
   end
 
@@ -9645,7 +10431,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 22,
       name: "NgoAVIII",
-      pattern: "gacnnnnntga"
+      pattern: "gacnnnnntga",
+      suppliers: []
     }
   end
 
@@ -9658,7 +10445,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NgoMIV",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: ["N"]
     }
   end
 
@@ -9671,7 +10459,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NhaXI",
-      pattern: "caagrag"
+      pattern: "caagrag",
+      suppliers: []
     }
   end
 
@@ -9684,7 +10473,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NheI",
-      pattern: "gctagc"
+      pattern: "gctagc",
+      suppliers: ["B", "C", "J", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -9697,7 +10487,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NhoI",
-      pattern: "gcwgc"
+      pattern: "gcwgc",
+      suppliers: []
     }
   end
 
@@ -9710,7 +10501,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NlaIII",
-      pattern: "catg"
+      pattern: "catg",
+      suppliers: ["N"]
     }
   end
 
@@ -9723,7 +10515,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NlaIV",
-      pattern: "ggnncc"
+      pattern: "ggnncc",
+      suppliers: ["N"]
     }
   end
 
@@ -9736,7 +10529,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NlaCI",
-      pattern: "catcac"
+      pattern: "catcac",
+      suppliers: []
     }
   end
 
@@ -9749,7 +10543,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Nli3877I",
-      pattern: "cycgrg"
+      pattern: "cycgrg",
+      suppliers: []
     }
   end
 
@@ -9762,7 +10557,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NmeAIII",
-      pattern: "gccgag"
+      pattern: "gccgag",
+      suppliers: ["N"]
     }
   end
 
@@ -9775,7 +10571,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NmeA6CIII",
-      pattern: "gccgac"
+      pattern: "gccgac",
+      suppliers: []
     }
   end
 
@@ -9788,7 +10585,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 13,
       cut_4: 18,
       name: "NmeDI",
-      pattern: "rccggy"
+      pattern: "rccggy",
+      suppliers: []
     }
   end
 
@@ -9801,7 +10599,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NmuCI",
-      pattern: "gtsac"
+      pattern: "gtsac",
+      suppliers: ["B"]
     }
   end
 
@@ -9814,7 +10613,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NotI",
-      pattern: "gcggccgc"
+      pattern: "gcggccgc",
+      suppliers: ["B", "C", "J", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -9827,7 +10627,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NpeUS61II",
-      pattern: "gatcgac"
+      pattern: "gatcgac",
+      suppliers: []
     }
   end
 
@@ -9840,7 +10641,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NruI",
-      pattern: "tcgcga"
+      pattern: "tcgcga",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "Q", "S", "X"]
     }
   end
 
@@ -9853,7 +10655,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NsbI",
-      pattern: "tgcgca"
+      pattern: "tgcgca",
+      suppliers: ["B"]
     }
   end
 
@@ -9866,7 +10669,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NsiI",
-      pattern: "atgcat"
+      pattern: "atgcat",
+      suppliers: ["J", "M", "N", "Q", "S", "X"]
     }
   end
 
@@ -9879,7 +10683,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NspI",
-      pattern: "rcatgy"
+      pattern: "rcatgy",
+      suppliers: ["N"]
     }
   end
 
@@ -9892,7 +10697,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NspV",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["J"]
     }
   end
 
@@ -9905,7 +10711,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NspBII",
-      pattern: "cmgckg"
+      pattern: "cmgckg",
+      suppliers: []
     }
   end
 
@@ -9918,7 +10725,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "NspES21II",
-      pattern: "crttcag"
+      pattern: "crttcag",
+      suppliers: []
     }
   end
 
@@ -9931,7 +10739,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ObaBS10I",
-      pattern: "acgag"
+      pattern: "acgag",
+      suppliers: []
     }
   end
 
@@ -9944,7 +10753,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "OgrI",
-      pattern: "caacnac"
+      pattern: "caacnac",
+      suppliers: []
     }
   end
 
@@ -9957,7 +10767,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "OliI",
-      pattern: "cacnnnngtg"
+      pattern: "cacnnnngtg",
+      suppliers: ["B"]
     }
   end
 
@@ -9970,7 +10781,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "OspHL35III",
-      pattern: "yaggag"
+      pattern: "yaggag",
+      suppliers: []
     }
   end
 
@@ -9983,7 +10795,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PabI",
-      pattern: "gtac"
+      pattern: "gtac",
+      suppliers: []
     }
   end
 
@@ -9996,7 +10809,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PacI",
-      pattern: "ttaattaa"
+      pattern: "ttaattaa",
+      suppliers: ["B", "N", "O"]
     }
   end
 
@@ -10009,7 +10823,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PacIII",
-      pattern: "gtaatc"
+      pattern: "gtaatc",
+      suppliers: []
     }
   end
 
@@ -10022,7 +10837,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pac19842II",
-      pattern: "ccttga"
+      pattern: "ccttga",
+      suppliers: []
     }
   end
 
@@ -10035,7 +10851,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PaeI",
-      pattern: "gcatgc"
+      pattern: "gcatgc",
+      suppliers: ["B"]
     }
   end
 
@@ -10048,7 +10865,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pae8506I",
-      pattern: "catcgar"
+      pattern: "catcgar",
+      suppliers: []
     }
   end
 
@@ -10061,7 +10879,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pae10662III",
-      pattern: "tgacgag"
+      pattern: "tgacgag",
+      suppliers: []
     }
   end
 
@@ -10074,7 +10893,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PaePA99III",
-      pattern: "aagayc"
+      pattern: "aagayc",
+      suppliers: []
     }
   end
 
@@ -10087,7 +10907,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PaeR7I",
-      pattern: "ctcgag"
+      pattern: "ctcgag",
+      suppliers: ["N"]
     }
   end
 
@@ -10100,7 +10921,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PagI",
-      pattern: "tcatga"
+      pattern: "tcatga",
+      suppliers: ["B"]
     }
   end
 
@@ -10113,7 +10935,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pal408I",
-      pattern: "ccrtgag"
+      pattern: "ccrtgag",
+      suppliers: []
     }
   end
 
@@ -10126,7 +10949,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PalAI",
-      pattern: "ggcgcgcc"
+      pattern: "ggcgcgcc",
+      suppliers: ["I"]
     }
   end
 
@@ -10139,7 +10963,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PaqCI",
-      pattern: "cacctgc"
+      pattern: "cacctgc",
+      suppliers: ["N"]
     }
   end
 
@@ -10152,7 +10977,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PasI",
-      pattern: "cccwggg"
+      pattern: "cccwggg",
+      suppliers: ["B"]
     }
   end
 
@@ -10165,7 +10991,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PauI",
-      pattern: "gcgcgc"
+      pattern: "gcgcgc",
+      suppliers: ["B"]
     }
   end
 
@@ -10178,7 +11005,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pba2294I",
-      pattern: "gtaag"
+      pattern: "gtaag",
+      suppliers: []
     }
   end
 
@@ -10191,7 +11019,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pbu13063II",
-      pattern: "gtatyc"
+      pattern: "gtatyc",
+      suppliers: []
     }
   end
 
@@ -10204,7 +11033,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PcaII",
-      pattern: "gacgag"
+      pattern: "gacgag",
+      suppliers: []
     }
   end
 
@@ -10217,7 +11047,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PceI",
-      pattern: "aggcct"
+      pattern: "aggcct",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -10230,7 +11061,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PciI",
-      pattern: "acatgt"
+      pattern: "acatgt",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -10243,7 +11075,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PciSI",
-      pattern: "gctcttc"
+      pattern: "gctcttc",
+      suppliers: ["I"]
     }
   end
 
@@ -10256,7 +11089,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pcr308II",
-      pattern: "ccaaag"
+      pattern: "ccaaag",
+      suppliers: []
     }
   end
 
@@ -10269,7 +11103,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PcsI",
-      pattern: "wcgnnnnnnncgw"
+      pattern: "wcgnnnnnnncgw",
+      suppliers: ["I"]
     }
   end
 
@@ -10282,7 +11117,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PctI",
-      pattern: "gaatgc"
+      pattern: "gaatgc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -10295,7 +11131,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PdiI",
-      pattern: "gccggc"
+      pattern: "gccggc",
+      suppliers: ["B"]
     }
   end
 
@@ -10308,7 +11145,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pdi8503III",
-      pattern: "ccggnag"
+      pattern: "ccggnag",
+      suppliers: []
     }
   end
 
@@ -10321,7 +11159,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PdmI",
-      pattern: "gaannnnttc"
+      pattern: "gaannnnttc",
+      suppliers: ["B"]
     }
   end
 
@@ -10334,7 +11173,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pdu1735I",
-      pattern: "caccac"
+      pattern: "caccac",
+      suppliers: []
     }
   end
 
@@ -10347,7 +11187,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PenI",
-      pattern: "gcagt"
+      pattern: "gcagt",
+      suppliers: []
     }
   end
 
@@ -10360,7 +11201,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PfeI",
-      pattern: "gawtc"
+      pattern: "gawtc",
+      suppliers: ["B"]
     }
   end
 
@@ -10373,7 +11215,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pfl23II",
-      pattern: "cgtacg"
+      pattern: "cgtacg",
+      suppliers: ["B"]
     }
   end
 
@@ -10386,7 +11229,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pfl1108I",
-      pattern: "tcgtag"
+      pattern: "tcgtag",
+      suppliers: []
     }
   end
 
@@ -10399,7 +11243,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pfl3756II",
-      pattern: "ccctnag"
+      pattern: "ccctnag",
+      suppliers: []
     }
   end
 
@@ -10412,7 +11257,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pfl8569I",
-      pattern: "gcnngc"
+      pattern: "gcnngc",
+      suppliers: []
     }
   end
 
@@ -10425,7 +11271,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pfl10783II",
-      pattern: "gcgtcag"
+      pattern: "gcgtcag",
+      suppliers: []
     }
   end
 
@@ -10438,7 +11285,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PflFI",
-      pattern: "gacnnngtc"
+      pattern: "gacnnngtc",
+      suppliers: ["N"]
     }
   end
 
@@ -10451,7 +11299,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PflMI",
-      pattern: "ccannnnntgg"
+      pattern: "ccannnnntgg",
+      suppliers: ["N"]
     }
   end
 
@@ -10464,7 +11313,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PflPt14I",
-      pattern: "rgcccac"
+      pattern: "rgcccac",
+      suppliers: []
     }
   end
 
@@ -10477,7 +11327,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PfoI",
-      pattern: "tccngga"
+      pattern: "tccngga",
+      suppliers: ["B"]
     }
   end
 
@@ -10490,7 +11341,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PfrJS12IV",
-      pattern: "tanaag"
+      pattern: "tanaag",
+      suppliers: []
     }
   end
 
@@ -10503,7 +11355,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PfrJS12V",
-      pattern: "ggcggag"
+      pattern: "ggcggag",
+      suppliers: []
     }
   end
 
@@ -10516,7 +11369,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PfrJS15III",
-      pattern: "cttcnac"
+      pattern: "cttcnac",
+      suppliers: []
+    }
+  end
+
+  @doc false
+  def pgap73iii do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "PgaP73III",
+      pattern: "ttcgag",
+      suppliers: []
     }
   end
 
@@ -10529,7 +11397,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PinAI",
-      pattern: "accggt"
+      pattern: "accggt",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -10542,7 +11411,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pin17FIII",
-      pattern: "ggygab"
+      pattern: "ggygab",
+      suppliers: []
     }
   end
 
@@ -10555,7 +11425,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PinP23II",
-      pattern: "ctrkcag"
+      pattern: "ctrkcag",
+      suppliers: []
     }
   end
 
@@ -10568,7 +11439,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PinP59III",
-      pattern: "gaagnag"
+      pattern: "gaagnag",
+      suppliers: []
     }
   end
 
@@ -10581,7 +11453,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PkrI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["I"]
     }
   end
 
@@ -10594,7 +11467,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PlaDI",
-      pattern: "catcag"
+      pattern: "catcag",
+      suppliers: []
     }
   end
 
@@ -10607,7 +11481,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PleI",
-      pattern: "gagtc"
+      pattern: "gagtc",
+      suppliers: ["N"]
     }
   end
 
@@ -10620,7 +11495,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ple19I",
-      pattern: "cgatcg"
+      pattern: "cgatcg",
+      suppliers: ["I"]
     }
   end
 
@@ -10633,7 +11509,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PliMI",
-      pattern: "cgccgac"
+      pattern: "cgccgac",
+      suppliers: []
     }
   end
 
@@ -10646,7 +11523,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PluTI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["N"]
     }
   end
 
@@ -10659,7 +11537,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PmaCI",
-      pattern: "cacgtg"
+      pattern: "cacgtg",
+      suppliers: ["K"]
     }
   end
 
@@ -10672,7 +11551,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PmeI",
-      pattern: "gtttaaac"
+      pattern: "gtttaaac",
+      suppliers: ["N"]
     }
   end
 
@@ -10685,7 +11565,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pme10899I",
-      pattern: "gacagg"
+      pattern: "gacagg",
+      suppliers: []
     }
   end
 
@@ -10698,7 +11579,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PmlI",
-      pattern: "cacgtg"
+      pattern: "cacgtg",
+      suppliers: ["N"]
     }
   end
 
@@ -10711,7 +11593,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 20,
       name: "PpiI",
-      pattern: "gaacnnnnnctc"
+      pattern: "gaacnnnnnctc",
+      suppliers: []
     }
   end
 
@@ -10724,7 +11607,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PpiP13II",
-      pattern: "cgcrgac"
+      pattern: "cgcrgac",
+      suppliers: []
     }
   end
 
@@ -10737,7 +11621,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PpsI",
-      pattern: "gagtc"
+      pattern: "gagtc",
+      suppliers: ["I"]
     }
   end
 
@@ -10750,7 +11635,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ppu10I",
-      pattern: "atgcat"
+      pattern: "atgcat",
+      suppliers: []
     }
   end
 
@@ -10763,7 +11649,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ppu21I",
-      pattern: "yacgtr"
+      pattern: "yacgtr",
+      suppliers: ["B"]
     }
   end
 
@@ -10776,7 +11663,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PpuMI",
-      pattern: "rggwccy"
+      pattern: "rggwccy",
+      suppliers: ["N"]
     }
   end
 
@@ -10789,7 +11677,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pru8113I",
-      pattern: "cagangc"
+      pattern: "cagangc",
+      suppliers: []
     }
   end
 
@@ -10802,7 +11691,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PscI",
-      pattern: "acatgt"
+      pattern: "acatgt",
+      suppliers: ["B"]
     }
   end
 
@@ -10815,7 +11705,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pse18267I",
-      pattern: "rccgaag"
+      pattern: "rccgaag",
+      suppliers: []
     }
   end
 
@@ -10828,7 +11719,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PshAI",
-      pattern: "gacnnnngtc"
+      pattern: "gacnnnngtc",
+      suppliers: ["K", "N"]
     }
   end
 
@@ -10841,7 +11733,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PshBI",
-      pattern: "attaat"
+      pattern: "attaat",
+      suppliers: ["K"]
     }
   end
 
@@ -10854,7 +11747,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PsiI",
-      pattern: "ttataa"
+      pattern: "ttataa",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -10867,7 +11761,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Psp03I",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: []
     }
   end
 
@@ -10880,7 +11775,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Psp5II",
-      pattern: "rggwccy"
+      pattern: "rggwccy",
+      suppliers: ["B"]
     }
   end
 
@@ -10893,7 +11789,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Psp6I",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["I"]
     }
   end
 
@@ -10906,7 +11803,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Psp0357II",
-      pattern: "gcgaag"
+      pattern: "gcgaag",
+      suppliers: []
     }
   end
 
@@ -10919,7 +11817,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Psp1406I",
-      pattern: "aacgtt"
+      pattern: "aacgtt",
+      suppliers: ["B", "K"]
+    }
+  end
+
+  @doc false
+  def pspat13iii do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "PspAT13III",
+      pattern: "ccganag",
+      suppliers: []
     }
   end
 
@@ -10932,7 +11845,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Psp124BI",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -10945,7 +11859,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspCI",
-      pattern: "cacgtg"
+      pattern: "cacgtg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -10958,7 +11873,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspD7DII",
-      pattern: "ccgcgag"
+      pattern: "ccgcgag",
+      suppliers: []
     }
   end
 
@@ -10971,7 +11887,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspEI",
-      pattern: "ggtnacc"
+      pattern: "ggtnacc",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -10984,7 +11901,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspFI",
-      pattern: "cccagc"
+      pattern: "cccagc",
+      suppliers: ["B"]
     }
   end
 
@@ -10997,7 +11915,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspGI",
-      pattern: "ccwgg"
+      pattern: "ccwgg",
+      suppliers: ["N"]
     }
   end
 
@@ -11010,7 +11929,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspLI",
-      pattern: "cgtacg"
+      pattern: "cgtacg",
+      suppliers: ["I"]
+    }
+  end
+
+  @doc false
+  def pspmr102ii do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "PspMR102II",
+      pattern: "caagaac",
+      suppliers: []
     }
   end
 
@@ -11023,7 +11957,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspN4I",
-      pattern: "ggnncc"
+      pattern: "ggnncc",
+      suppliers: ["I"]
     }
   end
 
@@ -11036,7 +11971,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspOMI",
-      pattern: "gggccc"
+      pattern: "gggccc",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -11049,7 +11985,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspOMII",
-      pattern: "cgcccar"
+      pattern: "cgcccar",
+      suppliers: []
     }
   end
 
@@ -11062,7 +11999,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspPI",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: ["C"]
     }
   end
 
@@ -11075,7 +12013,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspPPI",
-      pattern: "rggwccy"
+      pattern: "rggwccy",
+      suppliers: ["I"]
     }
   end
 
@@ -11088,7 +12027,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspPRI",
-      pattern: "ccycag"
+      pattern: "ccycag",
+      suppliers: []
     }
   end
 
@@ -11101,7 +12041,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspR84I",
-      pattern: "tacycac"
+      pattern: "tacycac",
+      suppliers: []
     }
   end
 
@@ -11114,7 +12055,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PspXI",
-      pattern: "vctcgagb"
+      pattern: "vctcgagb",
+      suppliers: ["I", "N"]
     }
   end
 
@@ -11127,7 +12069,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 25,
       cut_4: 20,
       name: "PsrI",
-      pattern: "gaacnnnnnntac"
+      pattern: "gaacnnnnnntac",
+      suppliers: ["I"]
     }
   end
 
@@ -11140,7 +12083,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PssI",
-      pattern: "rggnccy"
+      pattern: "rggnccy",
+      suppliers: []
     }
   end
 
@@ -11153,7 +12097,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PstI",
-      pattern: "ctgcag"
+      pattern: "ctgcag",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X"]
     }
   end
 
@@ -11166,7 +12111,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pst145I",
-      pattern: "ctamrag"
+      pattern: "ctamrag",
+      suppliers: []
     }
   end
 
@@ -11179,7 +12125,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pst273I",
-      pattern: "gatcgag"
+      pattern: "gatcgag",
+      suppliers: []
     }
   end
 
@@ -11192,7 +12139,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Pst14472I",
-      pattern: "cnyacac"
+      pattern: "cnyacac",
+      suppliers: []
     }
   end
 
@@ -11205,7 +12153,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PstNI",
-      pattern: "cagnnnctg"
+      pattern: "cagnnnctg",
+      suppliers: ["I"]
     }
   end
 
@@ -11218,7 +12167,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PsuI",
-      pattern: "rgatcy"
+      pattern: "rgatcy",
+      suppliers: ["B"]
     }
   end
 
@@ -11231,7 +12181,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PsuGI",
-      pattern: "bbcgd"
+      pattern: "bbcgd",
+      suppliers: []
     }
   end
 
@@ -11244,7 +12195,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PsyI",
-      pattern: "gacnnngtc"
+      pattern: "gacnnngtc",
+      suppliers: ["B"]
     }
   end
 
@@ -11257,7 +12209,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PteI",
-      pattern: "gcgcgc"
+      pattern: "gcgcgc",
+      suppliers: ["B"]
     }
   end
 
@@ -11270,7 +12223,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PvuI",
-      pattern: "cgatcg"
+      pattern: "cgatcg",
+      suppliers: ["B", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -11283,7 +12237,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "PvuII",
-      pattern: "cagctg"
+      pattern: "cagctg",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "S", "V", "X"]
     }
   end
 
@@ -11296,7 +12251,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ran11014IV",
-      pattern: "gaaagag"
+      pattern: "gaaagag",
+      suppliers: []
     }
   end
 
@@ -11309,7 +12265,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rba2021I",
-      pattern: "cacgagh"
+      pattern: "cacgagh",
+      suppliers: []
     }
   end
 
@@ -11322,7 +12279,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RceI",
-      pattern: "catcgac"
+      pattern: "catcgac",
+      suppliers: []
     }
   end
 
@@ -11335,7 +12293,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RdeGBI",
-      pattern: "ccgcag"
+      pattern: "ccgcag",
+      suppliers: []
     }
   end
 
@@ -11348,7 +12307,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RdeGBII",
-      pattern: "acccag"
+      pattern: "acccag",
+      suppliers: []
     }
   end
 
@@ -11361,7 +12321,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 17,
       cut_4: 15,
       name: "RdeGBIII",
-      pattern: "tgryca"
+      pattern: "tgryca",
+      suppliers: []
     }
   end
 
@@ -11374,7 +12335,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rer8036II",
-      pattern: "ccgakgg"
+      pattern: "ccgakgg",
+      suppliers: []
     }
   end
 
@@ -11387,7 +12349,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RflFIII",
-      pattern: "cgccag"
+      pattern: "cgccag",
+      suppliers: []
     }
   end
 
@@ -11400,7 +12363,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RgaI",
-      pattern: "gcgatcgc"
+      pattern: "gcgatcgc",
+      suppliers: ["I"]
     }
   end
 
@@ -11413,7 +12377,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rgo13296IV",
-      pattern: "graagcg"
+      pattern: "graagcg",
+      suppliers: []
     }
   end
 
@@ -11426,7 +12391,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rho5650I",
-      pattern: "aacgag"
+      pattern: "aacgag",
+      suppliers: []
     }
   end
 
@@ -11439,7 +12405,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RigI",
-      pattern: "ggccggcc"
+      pattern: "ggccggcc",
+      suppliers: ["I"]
     }
   end
 
@@ -11452,7 +12419,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rkr11038I",
-      pattern: "ggannnnnrtga"
+      pattern: "ggannnnnrtga",
+      suppliers: []
     }
   end
 
@@ -11465,7 +12433,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RlaI",
-      pattern: "vcw"
+      pattern: "vcw",
+      suppliers: []
     }
   end
 
@@ -11478,7 +12447,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RlaII",
-      pattern: "acacag"
+      pattern: "acacag",
+      suppliers: []
     }
   end
 
@@ -11491,7 +12461,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RleAI",
-      pattern: "cccaca"
+      pattern: "cccaca",
+      suppliers: []
     }
   end
 
@@ -11504,7 +12475,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rmu369III",
-      pattern: "ggcyac"
+      pattern: "ggcyac",
+      suppliers: []
     }
   end
 
@@ -11517,7 +12489,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RpaI",
-      pattern: "gtyggag"
+      pattern: "gtyggag",
+      suppliers: []
     }
   end
 
@@ -11530,7 +12503,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RpaBI",
-      pattern: "cccgcag"
+      pattern: "cccgcag",
+      suppliers: []
     }
   end
 
@@ -11543,7 +12517,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RpaB5I",
-      pattern: "cgrggac"
+      pattern: "cgrggac",
+      suppliers: []
     }
   end
 
@@ -11556,7 +12531,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RpaTI",
-      pattern: "grtggag"
+      pattern: "grtggag",
+      suppliers: []
     }
   end
 
@@ -11569,7 +12545,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RruI",
-      pattern: "tcgcga"
+      pattern: "tcgcga",
+      suppliers: ["B"]
     }
   end
 
@@ -11582,7 +12559,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RsaI",
-      pattern: "gtac"
+      pattern: "gtac",
+      suppliers: ["B", "C", "I", "J", "M", "N", "Q", "R", "V", "X", "Y"]
     }
   end
 
@@ -11595,7 +12573,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RsaNI",
-      pattern: "gtac"
+      pattern: "gtac",
+      suppliers: ["I"]
     }
   end
 
@@ -11608,7 +12587,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RseI",
-      pattern: "caynnnnrtg"
+      pattern: "caynnnnrtg",
+      suppliers: ["B"]
     }
   end
 
@@ -11621,7 +12601,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rsp008IV",
-      pattern: "acgcag"
+      pattern: "acgcag",
+      suppliers: []
     }
   end
 
@@ -11634,7 +12615,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rsp008V",
-      pattern: "gcccat"
+      pattern: "gcccat",
+      suppliers: []
     }
   end
 
@@ -11647,7 +12629,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rsp531II",
-      pattern: "cacacg"
+      pattern: "cacacg",
+      suppliers: []
     }
   end
 
@@ -11660,7 +12643,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RspPBTS2III",
-      pattern: "cttcgag"
+      pattern: "cttcgag",
+      suppliers: []
     }
   end
 
@@ -11673,7 +12657,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "RsrII",
-      pattern: "cggwccg"
+      pattern: "cggwccg",
+      suppliers: ["N", "Q", "X"]
     }
   end
 
@@ -11686,7 +12671,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rsr2I",
-      pattern: "cggwccg"
+      pattern: "cggwccg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -11699,7 +12685,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Rtr1953I",
-      pattern: "tgannnnnntga"
+      pattern: "tgannnnnntga",
+      suppliers: []
     }
   end
 
@@ -11712,7 +12699,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SacI",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: ["B", "J", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -11725,7 +12713,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SacII",
-      pattern: "ccgcgg"
+      pattern: "ccgcgg",
+      suppliers: ["B", "J", "K", "N", "O", "Q", "R", "X"]
     }
   end
 
@@ -11738,7 +12727,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Saf8902III",
-      pattern: "caatnag"
+      pattern: "caatnag",
+      suppliers: []
     }
   end
 
@@ -11751,7 +12741,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sag901I",
-      pattern: "gcaaat"
+      pattern: "gcaaat",
+      suppliers: []
     }
   end
 
@@ -11764,7 +12755,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SalI",
-      pattern: "gtcgac"
+      pattern: "gtcgac",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "V", "X"]
     }
   end
 
@@ -11777,7 +12769,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SanDI",
-      pattern: "gggwccc"
+      pattern: "gggwccc",
+      suppliers: []
     }
   end
 
@@ -11790,7 +12783,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SapI",
-      pattern: "gctcttc"
+      pattern: "gctcttc",
+      suppliers: ["N"]
     }
   end
 
@@ -11803,7 +12797,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SaqAI",
-      pattern: "ttaa"
+      pattern: "ttaa",
+      suppliers: ["B"]
     }
   end
 
@@ -11816,7 +12811,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SatI",
-      pattern: "gcngc"
+      pattern: "gcngc",
+      suppliers: ["B"]
     }
   end
 
@@ -11829,7 +12825,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SauI",
-      pattern: "cctnagg"
+      pattern: "cctnagg",
+      suppliers: []
     }
   end
 
@@ -11842,7 +12839,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sau96I",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: ["J", "N"]
     }
   end
 
@@ -11855,7 +12853,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sau1803III",
-      pattern: "cgannnnnntac"
+      pattern: "cgannnnnntac",
+      suppliers: []
     }
   end
 
@@ -11868,7 +12867,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sau5656II",
-      pattern: "gttgca"
+      pattern: "gttgca",
+      suppliers: []
     }
   end
 
@@ -11881,7 +12881,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sau64037IV",
-      pattern: "gtannnnnntgg"
+      pattern: "gtannnnnntgg",
+      suppliers: []
     }
   end
 
@@ -11894,7 +12895,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sau3AI",
-      pattern: "gatc"
+      pattern: "gatc",
+      suppliers: ["C", "J", "K", "M", "N", "X"]
     }
   end
 
@@ -11907,7 +12909,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SauMJ015III",
-      pattern: "garcnag"
+      pattern: "garcnag",
+      suppliers: []
     }
   end
 
@@ -11920,7 +12923,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sba460II",
-      pattern: "ggngayg"
+      pattern: "ggngayg",
+      suppliers: []
     }
   end
 
@@ -11933,7 +12937,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SbfI",
-      pattern: "cctgcagg"
+      pattern: "cctgcagg",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -11946,7 +12951,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sbo46I",
-      pattern: "tgaac"
+      pattern: "tgaac",
+      suppliers: []
     }
   end
 
@@ -11959,7 +12965,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ScaI",
-      pattern: "agtact"
+      pattern: "agtact",
+      suppliers: ["B", "C", "J", "K", "M", "N", "O", "Q", "R", "X"]
     }
   end
 
@@ -11972,7 +12979,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SchI",
-      pattern: "gagtc"
+      pattern: "gagtc",
+      suppliers: ["B"]
     }
   end
 
@@ -11985,7 +12993,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SciI",
-      pattern: "ctcgag"
+      pattern: "ctcgag",
+      suppliers: []
     }
   end
 
@@ -11998,7 +13007,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ScoDS2II",
-      pattern: "gctaat"
+      pattern: "gctaat",
+      suppliers: []
     }
   end
 
@@ -12011,7 +13021,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ScrFI",
-      pattern: "ccngg"
+      pattern: "ccngg",
+      suppliers: ["J", "N"]
     }
   end
 
@@ -12024,7 +13035,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SdaI",
-      pattern: "cctgcagg"
+      pattern: "cctgcagg",
+      suppliers: ["B"]
     }
   end
 
@@ -12037,7 +13049,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SdeAI",
-      pattern: "cagrag"
+      pattern: "cagrag",
+      suppliers: []
     }
   end
 
@@ -12050,7 +13063,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 23,
       cut_4: 21,
       name: "SdeOSI",
-      pattern: "gacnnnnrtga"
+      pattern: "gacnnnnrtga",
+      suppliers: []
     }
   end
 
@@ -12063,7 +13077,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SduI",
-      pattern: "gdgchc"
+      pattern: "gdgchc",
+      suppliers: ["B"]
     }
   end
 
@@ -12076,7 +13091,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sdy5370I",
-      pattern: "cacnnnnntcy"
+      pattern: "cacnnnnntcy",
+      suppliers: []
     }
   end
 
@@ -12089,7 +13105,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sdy7136I",
-      pattern: "gagnnnnntaa"
+      pattern: "gagnnnnntaa",
+      suppliers: []
     }
   end
 
@@ -12102,7 +13119,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sdy9603I",
-      pattern: "gcannnnnnntga"
+      pattern: "gcannnnnnntga",
+      suppliers: []
     }
   end
 
@@ -12115,7 +13133,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SecI",
-      pattern: "ccnngg"
+      pattern: "ccnngg",
+      suppliers: []
     }
   end
 
@@ -12128,7 +13147,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SelI",
-      pattern: "cgcg"
+      pattern: "cgcg",
+      suppliers: []
     }
   end
 
@@ -12141,7 +13161,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sen5794III",
-      pattern: "acgaacb"
+      pattern: "acgaacb",
+      suppliers: []
     }
   end
 
@@ -12154,7 +13175,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sen6480IV",
-      pattern: "gttcat"
+      pattern: "gttcat",
+      suppliers: []
     }
   end
 
@@ -12167,7 +13189,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sen17963III",
-      pattern: "ccaaac"
+      pattern: "ccaaac",
+      suppliers: []
     }
   end
 
@@ -12180,7 +13203,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SenA1673III",
-      pattern: "gnggcag"
+      pattern: "gnggcag",
+      suppliers: []
     }
   end
 
@@ -12193,7 +13217,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SenSARA26III",
-      pattern: "acrcag"
+      pattern: "acrcag",
+      suppliers: []
     }
   end
 
@@ -12206,7 +13231,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SenTFIV",
-      pattern: "gatcag"
+      pattern: "gatcag",
+      suppliers: []
     }
   end
 
@@ -12219,7 +13245,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sep11964I",
-      pattern: "cgycat"
+      pattern: "cgycat",
+      suppliers: []
+    }
+  end
+
+  @doc false
+  def seq11824i do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "Seq11824I",
+      pattern: "ctannnnnctc",
+      suppliers: []
     }
   end
 
@@ -12232,7 +13273,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SetI",
-      pattern: "asst"
+      pattern: "asst",
+      suppliers: ["I"]
     }
   end
 
@@ -12245,7 +13287,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SexAI",
-      pattern: "accwggt"
+      pattern: "accwggt",
+      suppliers: ["M", "N"]
     }
   end
 
@@ -12258,7 +13301,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfaAI",
-      pattern: "gcgatcgc"
+      pattern: "gcgatcgc",
+      suppliers: ["B"]
     }
   end
 
@@ -12271,7 +13315,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfaNI",
-      pattern: "gcatc"
+      pattern: "gcatc",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -12284,7 +13329,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfcI",
-      pattern: "ctryag"
+      pattern: "ctryag",
+      suppliers: ["N"]
     }
   end
 
@@ -12297,7 +13343,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfeI",
-      pattern: "ctryag"
+      pattern: "ctryag",
+      suppliers: []
     }
   end
 
@@ -12310,7 +13357,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfiI",
-      pattern: "ggccnnnnnggcc"
+      pattern: "ggccnnnnnggcc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "V", "X"]
     }
   end
 
@@ -12323,7 +13371,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sfl13829III",
-      pattern: "gnycag"
+      pattern: "gnycag",
+      suppliers: []
     }
   end
 
@@ -12336,7 +13385,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfoI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["N"]
     }
   end
 
@@ -12349,7 +13399,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sfr274I",
-      pattern: "ctcgag"
+      pattern: "ctcgag",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -12362,7 +13413,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sfr303I",
-      pattern: "ccgcgg"
+      pattern: "ccgcgg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -12375,7 +13427,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SfuI",
-      pattern: "ttcgaa"
+      pattern: "ttcgaa",
+      suppliers: ["M", "S"]
     }
   end
 
@@ -12388,7 +13441,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgeI",
-      pattern: "cnng"
+      pattern: "cnng",
+      suppliers: ["B"]
     }
   end
 
@@ -12401,7 +13455,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgfI",
-      pattern: "gcgatcgc"
+      pattern: "gcgatcgc",
+      suppliers: ["R"]
     }
   end
 
@@ -12414,7 +13469,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sgr7807I",
-      pattern: "gccgagg"
+      pattern: "gccgagg",
+      suppliers: []
     }
   end
 
@@ -12427,7 +13483,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgrAI",
-      pattern: "crccggyg"
+      pattern: "crccggyg",
+      suppliers: ["N"]
     }
   end
 
@@ -12440,7 +13497,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgrAII",
-      pattern: "cgagatc"
+      pattern: "cgagatc",
+      suppliers: []
     }
   end
 
@@ -12453,7 +13511,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgrBI",
-      pattern: "ccgcgg"
+      pattern: "ccgcgg",
+      suppliers: ["C"]
     }
   end
 
@@ -12466,7 +13525,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgrDI",
-      pattern: "cgtcgacg"
+      pattern: "cgtcgacg",
+      suppliers: ["B"]
     }
   end
 
@@ -12479,7 +13539,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgrTI",
-      pattern: "ccds"
+      pattern: "ccds",
+      suppliers: []
     }
   end
 
@@ -12492,7 +13553,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SgsI",
-      pattern: "ggcgcgcc"
+      pattern: "ggcgcgcc",
+      suppliers: ["B"]
     }
   end
 
@@ -12505,7 +13567,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SimI",
-      pattern: "gggtc"
+      pattern: "gggtc",
+      suppliers: []
     }
   end
 
@@ -12518,7 +13581,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SinI",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: ["X"]
     }
   end
 
@@ -12531,7 +13595,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SlaI",
-      pattern: "ctcgag"
+      pattern: "ctcgag",
+      suppliers: ["C", "Y"]
     }
   end
 
@@ -12544,7 +13609,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmaI",
-      pattern: "cccggg"
+      pattern: "cccggg",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "S", "V", "X", "Y"]
     }
   end
 
@@ -12557,7 +13623,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sma325I",
-      pattern: "arccct"
+      pattern: "arccct",
+      suppliers: []
     }
   end
 
@@ -12570,7 +13637,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sma10259II",
-      pattern: "caaaga"
+      pattern: "caaaga",
+      suppliers: []
     }
   end
 
@@ -12583,7 +13651,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmaUMH5I",
-      pattern: "cttgac"
+      pattern: "cttgac",
+      suppliers: []
     }
   end
 
@@ -12596,7 +13665,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmaUMH8I",
-      pattern: "gcgaacb"
+      pattern: "gcgaacb",
+      suppliers: []
     }
   end
 
@@ -12609,7 +13679,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmiI",
-      pattern: "atttaaat"
+      pattern: "atttaaat",
+      suppliers: ["B", "I", "K", "V"]
     }
   end
 
@@ -12622,7 +13693,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmiMI",
-      pattern: "caynnnnrtg"
+      pattern: "caynnnnrtg",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -12635,7 +13707,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmlI",
-      pattern: "ctyrag"
+      pattern: "ctyrag",
+      suppliers: ["N"]
     }
   end
 
@@ -12648,7 +13721,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SmoI",
-      pattern: "ctyrag"
+      pattern: "ctyrag",
+      suppliers: ["B"]
     }
   end
 
@@ -12661,7 +13735,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SnaI",
-      pattern: "gtatac"
+      pattern: "gtatac",
+      suppliers: []
     }
   end
 
@@ -12674,7 +13749,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sna507VIII",
-      pattern: "crttgag"
+      pattern: "crttgag",
+      suppliers: []
     }
   end
 
@@ -12687,7 +13763,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SnaBI",
-      pattern: "tacgta"
+      pattern: "tacgta",
+      suppliers: ["C", "K", "M", "N"]
     }
   end
 
@@ -12700,7 +13777,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sno506I",
-      pattern: "ggccgag"
+      pattern: "ggccgag",
+      suppliers: []
     }
   end
 
@@ -12713,7 +13791,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SpeI",
-      pattern: "actagt"
+      pattern: "actagt",
+      suppliers: ["B", "J", "K", "M", "N", "O", "Q", "R", "S", "X"]
     }
   end
 
@@ -12726,7 +13805,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Spe19205IV",
-      pattern: "ggacy"
+      pattern: "ggacy",
+      suppliers: []
     }
   end
 
@@ -12739,7 +13819,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SphI",
-      pattern: "gcatgc"
+      pattern: "gcatgc",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "O", "Q", "R", "V", "X"]
     }
   end
 
@@ -12752,7 +13833,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SplI",
-      pattern: "cgtacg"
+      pattern: "cgtacg",
+      suppliers: []
     }
   end
 
@@ -12765,7 +13847,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SpnRII",
-      pattern: "tcgag"
+      pattern: "tcgag",
+      suppliers: []
     }
   end
 
@@ -12778,7 +13861,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SpoDI",
-      pattern: "gcggrag"
+      pattern: "gcggrag",
+      suppliers: []
     }
   end
 
@@ -12791,7 +13875,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SrfI",
-      pattern: "gcccgggc"
+      pattern: "gcccgggc",
+      suppliers: ["N"]
     }
   end
 
@@ -12804,7 +13889,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sse9I",
-      pattern: "aatt"
+      pattern: "aatt",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -12817,7 +13903,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sse232I",
-      pattern: "cgccggcg"
+      pattern: "cgccggcg",
+      suppliers: []
     }
   end
 
@@ -12830,7 +13917,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sse8387I",
-      pattern: "cctgcagg"
+      pattern: "cctgcagg",
+      suppliers: ["K"]
     }
   end
 
@@ -12843,7 +13931,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sse8647I",
-      pattern: "aggwcct"
+      pattern: "aggwcct",
+      suppliers: []
     }
   end
 
@@ -12856,7 +13945,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SseBI",
-      pattern: "aggcct"
+      pattern: "aggcct",
+      suppliers: ["C"]
     }
   end
 
@@ -12869,7 +13959,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SsiI",
-      pattern: "ccgc"
+      pattern: "ccgc",
+      suppliers: ["B"]
     }
   end
 
@@ -12882,7 +13973,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SspI",
-      pattern: "aatatt"
+      pattern: "aatatt",
+      suppliers: ["B", "C", "I", "J", "K", "N", "Q", "V", "X"]
     }
   end
 
@@ -12895,7 +13987,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ssp714II",
-      pattern: "cgcagcg"
+      pattern: "cgcagcg",
+      suppliers: []
     }
   end
 
@@ -12908,7 +14001,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Ssp6803IV",
-      pattern: "gaaggc"
+      pattern: "gaaggc",
+      suppliers: []
     }
   end
 
@@ -12921,7 +14015,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SspDI",
-      pattern: "ggcgcc"
+      pattern: "ggcgcc",
+      suppliers: ["B"]
     }
   end
 
@@ -12934,7 +14029,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SspD5I",
-      pattern: "ggtga"
+      pattern: "ggtga",
+      suppliers: []
     }
   end
 
@@ -12947,7 +14043,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SspJOR1II",
-      pattern: "agcganc"
+      pattern: "agcganc",
+      suppliers: []
     }
   end
 
@@ -12960,7 +14057,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SspMI",
-      pattern: "ctag"
+      pattern: "ctag",
+      suppliers: ["I"]
     }
   end
 
@@ -12973,7 +14071,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SstI",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: ["C"]
     }
   end
 
@@ -12986,7 +14085,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SstE37I",
-      pattern: "cgaagac"
+      pattern: "cgaagac",
+      suppliers: []
     }
   end
 
@@ -12999,7 +14099,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sth132I",
-      pattern: "cccg"
+      pattern: "cccg",
+      suppliers: []
     }
   end
 
@@ -13012,7 +14113,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sth302II",
-      pattern: "ccgg"
+      pattern: "ccgg",
+      suppliers: []
     }
   end
 
@@ -13025,7 +14127,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Sth20745III",
-      pattern: "ggacgac"
+      pattern: "ggacgac",
+      suppliers: []
     }
   end
 
@@ -13038,7 +14141,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SthSt3II",
-      pattern: "gaagt"
+      pattern: "gaagt",
+      suppliers: []
     }
   end
 
@@ -13051,7 +14155,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "StsI",
-      pattern: "ggatg"
+      pattern: "ggatg",
+      suppliers: []
     }
   end
 
@@ -13064,7 +14169,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "StuI",
-      pattern: "aggcct"
+      pattern: "aggcct",
+      suppliers: ["B", "J", "K", "M", "N", "Q", "X"]
     }
   end
 
@@ -13077,7 +14183,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "StyI",
-      pattern: "ccwwgg"
+      pattern: "ccwwgg",
+      suppliers: ["C", "J", "N"]
     }
   end
 
@@ -13090,7 +14197,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "StyD4I",
-      pattern: "ccngg"
+      pattern: "ccngg",
+      suppliers: ["N"]
     }
   end
 
@@ -13103,7 +14211,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SurP32aII",
-      pattern: "acrgag"
+      pattern: "acrgag",
+      suppliers: []
     }
   end
 
@@ -13116,7 +14225,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "SwaI",
-      pattern: "atttaaat"
+      pattern: "atttaaat",
+      suppliers: ["J", "M", "N", "S"]
+    }
+  end
+
+  @doc false
+  def sxy1780i do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "Sxy1780I",
+      pattern: "gggtna",
+      suppliers: []
     }
   end
 
@@ -13129,7 +14253,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TaaI",
-      pattern: "acngt"
+      pattern: "acngt",
+      suppliers: ["B"]
     }
   end
 
@@ -13142,7 +14267,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TagI",
-      pattern: "acgt"
+      pattern: "acgt",
+      suppliers: []
     }
   end
 
@@ -13155,7 +14281,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TaiI",
-      pattern: "acgt"
+      pattern: "acgt",
+      suppliers: ["B"]
     }
   end
 
@@ -13168,7 +14295,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TaqI",
-      pattern: "tcga"
+      pattern: "tcga",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "Q", "R", "V", "X"]
     }
   end
 
@@ -13181,7 +14309,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TaqII",
-      pattern: "gaccga"
+      pattern: "gaccga",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -13194,7 +14323,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TaqIII",
-      pattern: "caccca"
+      pattern: "caccca",
+      suppliers: []
     }
   end
 
@@ -13207,7 +14337,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TasI",
-      pattern: "aatt"
+      pattern: "aatt",
+      suppliers: ["B"]
     }
   end
 
@@ -13220,7 +14351,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TatI",
-      pattern: "wgtacw"
+      pattern: "wgtacw",
+      suppliers: ["B"]
     }
   end
 
@@ -13233,7 +14365,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TauI",
-      pattern: "gcsgc"
+      pattern: "gcsgc",
+      suppliers: ["B"]
     }
   end
 
@@ -13246,7 +14379,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TfiI",
-      pattern: "gawtc"
+      pattern: "gawtc",
+      suppliers: ["N"]
     }
   end
 
@@ -13259,7 +14393,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TkoI",
-      pattern: "gtgaag"
+      pattern: "gtgaag",
+      suppliers: []
     }
   end
 
@@ -13272,7 +14407,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TkoII",
-      pattern: "ttcaag"
+      pattern: "ttcaag",
+      suppliers: []
     }
   end
 
@@ -13285,7 +14421,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TpyTP2I",
-      pattern: "accaag"
+      pattern: "accaag",
+      suppliers: []
     }
   end
 
@@ -13298,7 +14435,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Tru1I",
-      pattern: "ttaa"
+      pattern: "ttaa",
+      suppliers: ["B"]
     }
   end
 
@@ -13311,7 +14449,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Tru9I",
-      pattern: "ttaa"
+      pattern: "ttaa",
+      suppliers: ["I", "M", "V"]
     }
   end
 
@@ -13324,7 +14463,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TscAI",
-      pattern: "castg"
+      pattern: "castg",
+      suppliers: ["B"]
     }
   end
 
@@ -13337,7 +14477,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TseI",
-      pattern: "gcwgc"
+      pattern: "gcwgc",
+      suppliers: ["N"]
     }
   end
 
@@ -13350,7 +14491,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TseFI",
-      pattern: "gtsac"
+      pattern: "gtsac",
+      suppliers: ["I"]
     }
   end
 
@@ -13363,7 +14505,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TsoI",
-      pattern: "tarcca"
+      pattern: "tarcca",
+      suppliers: []
     }
   end
 
@@ -13376,7 +14519,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Tsp45I",
-      pattern: "gtsac"
+      pattern: "gtsac",
+      suppliers: ["N"]
     }
   end
 
@@ -13389,7 +14533,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TspARh3I",
-      pattern: "gracgac"
+      pattern: "gracgac",
+      suppliers: []
     }
   end
 
@@ -13402,7 +14547,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Tsp4CI",
-      pattern: "acngt"
+      pattern: "acngt",
+      suppliers: []
     }
   end
 
@@ -13415,7 +14561,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TspDTI",
-      pattern: "atgaa"
+      pattern: "atgaa",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -13428,7 +14575,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TspEI",
-      pattern: "aatt"
+      pattern: "aatt",
+      suppliers: []
     }
   end
 
@@ -13441,7 +14589,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TspGWI",
-      pattern: "acgga"
+      pattern: "acgga",
+      suppliers: ["Q", "X"]
     }
   end
 
@@ -13454,7 +14603,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TspMI",
-      pattern: "cccggg"
+      pattern: "cccggg",
+      suppliers: ["N"]
     }
   end
 
@@ -13467,7 +14617,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TspRI",
-      pattern: "castg"
+      pattern: "castg",
+      suppliers: ["N"]
     }
   end
 
@@ -13480,7 +14631,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TssI",
-      pattern: "gagnnnctc"
+      pattern: "gagnnnctc",
+      suppliers: []
     }
   end
 
@@ -13493,7 +14645,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 24,
       cut_4: 19,
       name: "TstI",
-      pattern: "cacnnnnnntcc"
+      pattern: "cacnnnnnntcc",
+      suppliers: []
     }
   end
 
@@ -13506,7 +14659,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "TsuI",
-      pattern: "gcgac"
+      pattern: "gcgac",
+      suppliers: []
     }
   end
 
@@ -13519,7 +14673,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Tth111I",
-      pattern: "gacnnngtc"
+      pattern: "gacnnngtc",
+      suppliers: ["I", "K", "N", "Q", "V", "X"]
     }
   end
 
@@ -13532,7 +14687,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Tth111II",
-      pattern: "caarca"
+      pattern: "caarca",
+      suppliers: []
     }
   end
 
@@ -13545,7 +14701,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UbaF9I",
-      pattern: "tacnnnnnrtgt"
+      pattern: "tacnnnnnrtgt",
+      suppliers: []
     }
   end
 
@@ -13558,7 +14715,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UbaF11I",
-      pattern: "tcgta"
+      pattern: "tcgta",
+      suppliers: []
     }
   end
 
@@ -13571,7 +14729,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UbaF12I",
-      pattern: "ctacnnngtc"
+      pattern: "ctacnnngtc",
+      suppliers: []
     }
   end
 
@@ -13584,7 +14743,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UbaF13I",
-      pattern: "gagnnnnnnctgg"
+      pattern: "gagnnnnnnctgg",
+      suppliers: []
     }
   end
 
@@ -13597,7 +14757,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UbaF14I",
-      pattern: "ccannnnntcg"
+      pattern: "ccannnnntcg",
+      suppliers: []
     }
   end
 
@@ -13610,7 +14771,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UbaPI",
-      pattern: "cgaacg"
+      pattern: "cgaacg",
+      suppliers: []
     }
   end
 
@@ -13623,7 +14785,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 11,
       cut_4: 13,
       name: "UcoMSI",
-      pattern: "gagctc"
+      pattern: "gagctc",
+      suppliers: []
     }
   end
 
@@ -13636,7 +14799,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "UnbI",
-      pattern: "ggncc"
+      pattern: "ggncc",
+      suppliers: []
     }
   end
 
@@ -13649,7 +14813,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Van91I",
-      pattern: "ccannnnntgg"
+      pattern: "ccannnnntgg",
+      suppliers: ["B", "K"]
     }
   end
 
@@ -13662,7 +14827,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Van9116I",
-      pattern: "cckaag"
+      pattern: "cckaag",
+      suppliers: []
     }
   end
 
@@ -13675,7 +14841,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "VchE4II",
-      pattern: "rtaaayg"
+      pattern: "rtaaayg",
+      suppliers: []
     }
   end
 
@@ -13688,7 +14855,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Vdi96II",
-      pattern: "gncytag"
+      pattern: "gncytag",
+      suppliers: []
     }
   end
 
@@ -13701,7 +14869,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Vha464I",
-      pattern: "cttaag"
+      pattern: "cttaag",
+      suppliers: ["V"]
     }
   end
 
@@ -13714,7 +14883,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "VneI",
-      pattern: "gtgcac"
+      pattern: "gtgcac",
+      suppliers: ["I", "V"]
     }
   end
 
@@ -13727,7 +14897,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "VpaK11AI",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: []
     }
   end
 
@@ -13740,7 +14911,22 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "VpaK11BI",
-      pattern: "ggwcc"
+      pattern: "ggwcc",
+      suppliers: ["K"]
+    }
+  end
+
+  @doc false
+  def vpaskiii do
+    %Bio.Restriction.Enzyme{
+      blunt?: false,
+      cut_1: 0,
+      cut_2: 0,
+      cut_3: 0,
+      cut_4: 0,
+      name: "VpaSKIII",
+      pattern: "cgtcag",
+      suppliers: []
     }
   end
 
@@ -13753,7 +14939,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "VspI",
-      pattern: "attaat"
+      pattern: "attaat",
+      suppliers: ["B", "I", "V"]
     }
   end
 
@@ -13766,7 +14953,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Vtu19109I",
-      pattern: "cacrayc"
+      pattern: "cacrayc",
+      suppliers: []
     }
   end
 
@@ -13779,7 +14967,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "WviI",
-      pattern: "cacrag"
+      pattern: "cacrag",
+      suppliers: []
     }
   end
 
@@ -13792,7 +14981,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XagI",
-      pattern: "cctnnnnnagg"
+      pattern: "cctnnnnnagg",
+      suppliers: ["B"]
     }
   end
 
@@ -13805,7 +14995,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XapI",
-      pattern: "raatty"
+      pattern: "raatty",
+      suppliers: ["B"]
     }
   end
 
@@ -13818,7 +15009,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XbaI",
-      pattern: "tctaga"
+      pattern: "tctaga",
+      suppliers: ["B", "C", "I", "J", "K", "M", "N", "Q", "R", "S", "V", "X"]
     }
   end
 
@@ -13831,7 +15023,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Xca85IV",
-      pattern: "tacgag"
+      pattern: "tacgag",
+      suppliers: []
     }
   end
 
@@ -13844,7 +15037,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XceI",
-      pattern: "rcatgy"
+      pattern: "rcatgy",
+      suppliers: ["B"]
     }
   end
 
@@ -13857,7 +15051,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XcmI",
-      pattern: "ccannnnnnnnntgg"
+      pattern: "ccannnnnnnnntgg",
+      suppliers: ["N"]
     }
   end
 
@@ -13870,7 +15065,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XhoI",
-      pattern: "ctcgag"
+      pattern: "ctcgag",
+      suppliers: ["B", "J", "K", "M", "N", "O", "Q", "R", "X"]
     }
   end
 
@@ -13883,7 +15079,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XhoII",
-      pattern: "rgatcy"
+      pattern: "rgatcy",
+      suppliers: []
     }
   end
 
@@ -13896,7 +15093,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XmaI",
-      pattern: "cccggg"
+      pattern: "cccggg",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -13909,7 +15107,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XmaIII",
-      pattern: "cggccg"
+      pattern: "cggccg",
+      suppliers: []
     }
   end
 
@@ -13922,7 +15121,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XmaJI",
-      pattern: "cctagg"
+      pattern: "cctagg",
+      suppliers: ["B"]
     }
   end
 
@@ -13935,7 +15135,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XmiI",
-      pattern: "gtmkac"
+      pattern: "gtmkac",
+      suppliers: ["B"]
     }
   end
 
@@ -13948,7 +15149,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XmnI",
-      pattern: "gaannnnttc"
+      pattern: "gaannnnttc",
+      suppliers: ["N"]
     }
   end
 
@@ -13961,7 +15163,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "XspI",
-      pattern: "ctag"
+      pattern: "ctag",
+      suppliers: ["K"]
     }
   end
 
@@ -13974,7 +15177,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "YkrI",
-      pattern: "c"
+      pattern: "c",
+      suppliers: []
     }
   end
 
@@ -13987,7 +15191,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Yps3606I",
-      pattern: "cggaag"
+      pattern: "cggaag",
+      suppliers: []
     }
   end
 
@@ -14000,7 +15205,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Yru12986I",
-      pattern: "aggaag"
+      pattern: "aggaag",
+      suppliers: []
     }
   end
 
@@ -14013,7 +15219,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ZraI",
-      pattern: "gacgtc"
+      pattern: "gacgtc",
+      suppliers: ["I", "N", "V"]
     }
   end
 
@@ -14026,7 +15233,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "ZrmI",
-      pattern: "agtact"
+      pattern: "agtact",
+      suppliers: ["I"]
     }
   end
 
@@ -14039,7 +15247,8 @@ defmodule Bio.Restriction.Enzyme do
       cut_3: 0,
       cut_4: 0,
       name: "Zsp2I",
-      pattern: "atgcat"
+      pattern: "atgcat",
+      suppliers: ["I", "V"]
     }
   end
 end
