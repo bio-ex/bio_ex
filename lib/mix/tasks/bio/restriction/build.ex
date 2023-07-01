@@ -76,8 +76,39 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
       "CviKI-1" would become `cviki_1`.
       \"\"\"
 
+      @type supplier_code :: atom()
+      @type supplier_list :: [supplier_code]
+      @type t :: %__MODULE__{
+          blunt?: boolean(),
+          cut_1: integer(),
+          cut_2: integer(),
+          cut_3: integer(),
+          cut_4: integer(),
+          name: String.t(),
+          pattern: String.t(),
+          suppliers: supplier_list
+        }
+
       @suppliers %#{stringify(suppliers)}
 
+      @doc \"\"\"
+      Return a supplier's full name from a code.
+
+      Supplier information is encoded in a list of atoms on each struct, which
+      can be used to filter the enzymes that you make available or ensure that
+      they are available through a given entity.
+
+      This function allows you to get the full name for a given entity from that
+      code.
+
+      # Examples
+          iex>Bio.Restriction.Enzyme.get_supplier(:N)
+          "New England Biolabs"
+
+          iex>Bio.Restriction.Enzyme.get_supplier("b")
+          "Thermo Fisher Scientific"
+      \"\"\"
+      @spec get_supplier(atom() | String.t()) :: String.t()
       def get_supplier(code) when is_binary(code) do
         code
         |> String.upcase()
@@ -117,6 +148,7 @@ defmodule Mix.Tasks.Bio.Restriction.Build do
               pattern: "tgca"
             }
       \"\"\"
+      @spec get(atom() | String.t()) :: t()
       def get(name) when is_atom(name) do
         name
         |> Atom.to_string()
