@@ -2,19 +2,19 @@ defmodule Bio.Ansio do
   @moduledoc false
 
   def error(msg) do
-    "⚠️⚠️⚠️ #{msg} "
+    "#{msg} "
     |> as(:red)
     |> IO.puts()
   end
 
   def info(msg) do
-    "ℹ️  #{msg}"
+    "#{msg}"
     |> as(:blue)
     |> IO.puts()
   end
 
   def success(msg) do
-    "🎉🎉🎉 #{msg}"
+    "#{msg}"
     |> as(:green)
     |> IO.puts()
   end
