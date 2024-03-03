@@ -1,4 +1,6 @@
 # Bio Ex
+The old top-level package. Public Archive only.
+
 
 Bioinformatics tools for Elixir.
 
